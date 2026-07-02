@@ -1,0 +1,7 @@
+dashboard_section,decision_supported,user_question_answered
+Executive Overview,Menilai kondisi umum pelanggan aktif dan transaksi valid,"Berapa pelanggan aktif, order valid, revenue, dan status transaksi?"
+Data Validation,Menjelaskan seleksi data sebelum analisis,Mengapa 18 pelanggan tidak dianalisis dalam dashboard utama?
+Customer RFM,Menentukan prioritas pelanggan aktif,"Pelanggan mana yang aktif, bernilai tinggi, pasif, atau berisiko?"
+Product & Revenue,Melihat kategori favorit tanpa label kosong,Kategori apa yang paling sering menjadi favorit pelanggan aktif?
+Association Rule Validation,Memvalidasi pola bundling/cross-sell,Rules mana yang cukup stabil untuk digunakan sebagai insight?
+Next Best Action,Menentukan rekomendasi produk dan aksi pemasaran,Produk apa yang direkomendasikan dan pesan apa yang digunakan untuk tiap pelanggan aktif?

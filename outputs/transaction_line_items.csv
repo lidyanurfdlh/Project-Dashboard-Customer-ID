@@ -1,0 +1,339 @@
+detail_id,order_id,product_id,quantity,subtotal,product_name,kategori,price,stok,customer_id,order_date,order_total,status,status_clean,is_valid_order,customer_name,city,provinsi
+1,1,1,2,5000.0,Indomie Goreng,Makanan,2500.0,500,1,2024-01-15,50000.0,selesai,selesai,True,Ahmad Fauzi,Jakarta Pusat,DKI Jakarta
+2,1,10,1,45000.0,Sari Lemon,Minuman,5500.0,250,1,2024-01-15,50000.0,selesai,selesai,True,Ahmad Fauzi,Jakarta Pusat,DKI Jakarta
+3,2,5,2,30000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,2,2024-01-18,120000.0,dikirim,dikirim,True,Siti Nurhaliza,Bandung,Jawa Barat
+4,2,26,3,90000.0,Buku Tulis Sidu,Alat Tulis,4000.0,500,2,2024-01-18,120000.0,dikirim,dikirim,True,Siti Nurhaliza,Bandung,Jawa Barat
+5,3,3,1,65000.0,Beras Rojolele 5kg,Makanan,65000.0,200,3,2024-01-20,85000.0,selesai,selesai,True,Budi Santoso,Surabaya,Jawa Timur
+6,3,22,1,20000.0,Gudang Garam Surya,Rokok,26000.0,120,3,2024-01-20,85000.0,selesai,selesai,True,Budi Santoso,Surabaya,Jawa Timur
+7,4,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,4,2024-01-22,67000.0,dibayar,dibayar,True,Dewi Lestari,Medan,Sumatera Utara
+8,4,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,4,2024-01-22,67000.0,dibayar,dibayar,True,Dewi Lestari,Medan,Sumatera Utara
+9,5,2,2,17000.0,Sari Roti Coklat,Makanan,8500.0,300,5,2024-01-25,95000.0,selesai,selesai,True,Rizky Ramadhan,Yogyakarta,DI Yogyakarta
+10,5,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,5,2024-01-25,95000.0,selesai,selesai,True,Rizky Ramadhan,Yogyakarta,DI Yogyakarta
+13,7,50,2,64000.0,Masker Wardah,Perawatan Tubuh,22000.0,180,7,2024-02-01,110000.0,dikirim,dikirim,True,Andi Pratama,Makassar,Sulawesi Selatan
+14,7,60,1,46000.0,U Mild,Rokok,22000.0,140,7,2024-02-01,110000.0,dikirim,dikirim,True,Andi Pratama,Makassar,Sulawesi Selatan
+15,8,28,1,9000.0,Pensil Faber Castell,Alat Tulis,3500.0,700,8,2024-02-05,75000.0,selesai,selesai,True,Lina Marlina,Palembang,Sumatera Selatan
+16,8,33,3,66000.0,Ayam Broiler/kg,Makanan,38000.0,200,8,2024-02-05,75000.0,selesai,selesai,True,Lina Marlina,Palembang,Sumatera Selatan
+17,9,32,2,16000.0,Telur Ayam Kampung,Makanan,3500.0,1000,9,2024-02-10,200000.0,dibayar,dibayar,True,Dimas Aditya,Bogor,Jawa Barat
+18,9,65,4,184000.0,Gunting Fiskars,Alat Tulis,28000.0,180,9,2024-02-10,200000.0,dibayar,dibayar,True,Dimas Aditya,Bogor,Jawa Barat
+19,10,11,1,6000.0,Sabun Lifebuoy,Perawatan Tubuh,6000.0,500,10,2024-02-12,62000.0,selesai,selesai,True,Nadia Putri,Denpasar,Bali
+20,10,48,2,56000.0,Lipstik Wardah,Perawatan Tubuh,32000.0,150,10,2024-02-12,62000.0,selesai,selesai,True,Nadia Putri,Denpasar,Bali
+21,11,12,1,12000.0,Shampoo Sunsilk,Perawatan Tubuh,12000.0,400,11,2024-02-15,88000.0,dikirim,dikirim,True,Eko Prasetyo,Jakarta Barat,DKI Jakarta
+22,11,75,2,76000.0,Margarin Palmia,Makanan,15000.0,230,11,2024-02-15,88000.0,dikirim,dikirim,True,Eko Prasetyo,Jakarta Barat,DKI Jakarta
+23,12,13,2,18000.0,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.0,450,12,2024-02-18,54000.0,selesai,selesai,True,Rina Agustina,Padang,Sumatera Barat
+24,12,55,1,36000.0,Biskuit Bayi Milna,Bayi,25000.0,210,12,2024-02-18,54000.0,selesai,selesai,True,Rina Agustina,Padang,Sumatera Barat
+25,13,14,1,25000.0,Pembalut Kotex,Perawatan Tubuh,25000.0,300,13,2024-02-20,101000.0,dibayar,dibayar,True,Hendra Wijaya,Bandung,Jawa Barat
+26,13,38,2,44000.0,Bumbu Racik Soto,Makanan,7000.0,300,13,2024-02-20,101000.0,dibayar,dibayar,True,Hendra Wijaya,Bandung,Jawa Barat
+29,15,3,1,68000.0,Beras Rojolele 5kg,Makanan,65000.0,200,15,2024-02-25,125000.0,selesai,selesai,True,Agus Firmansyah,Banjarmasin,Kalimantan Selatan
+30,15,46,1,57000.0,Shampoo Clear,Perawatan Tubuh,13000.0,350,15,2024-02-25,125000.0,selesai,selesai,True,Agus Firmansyah,Banjarmasin,Kalimantan Selatan
+31,16,6,2,24000.0,Teh Sariwangi,Minuman,12000.0,600,16,2024-02-28,90000.0,dikirim,dikirim,True,Sari Indah,Manado,Sulawesi Utara
+32,16,51,2,66000.0,Popok Merries,Bayi,92000.0,120,16,2024-02-28,90000.0,dikirim,dikirim,True,Sari Indah,Manado,Sulawesi Utara
+33,17,8,3,9000.0,Aqua Botol 600ml,Minuman,3000.0,1000,17,2024-03-02,77000.0,selesai,selesai,True,Fajar Nugroho,Aceh Besar,Aceh
+34,17,70,1,68000.0,Tempe 1 papan,Makanan,5000.0,600,17,2024-03-02,77000.0,selesai,selesai,True,Fajar Nugroho,Aceh Besar,Aceh
+35,18,9,2,9000.0,Susu Indomilk 200ml,Minuman,4500.0,700,18,2024-03-05,64000.0,dibayar,dibayar,True,Dian Permata,Tangerang,Banten
+36,18,56,2,55000.0,Sampoerna Kretek,Rokok,25000.0,110,18,2024-03-05,64000.0,dibayar,dibayar,True,Dian Permata,Tangerang,Banten
+37,19,36,1,14000.0,Kecap Bango,Makanan,14000.0,400,19,2024-03-08,138000.0,selesai,selesai,True,Rudi Hartono,Pekanbaru,Riau
+38,19,61,3,124000.0,Buku Gambar Karton,Alat Tulis,12000.0,300,19,2024-03-08,138000.0,selesai,selesai,True,Rudi Hartono,Pekanbaru,Riau
+41,21,16,1,25000.0,Popok MamyPoko,Bayi,85000.0,150,21,2024-03-12,92000.0,dikirim,dikirim,True,Yusuf Maulana,Banda Aceh,Aceh
+42,21,66,2,67000.0,Beras Pandan Wangi 5kg,Makanan,72000.0,160,21,2024-03-12,92000.0,dikirim,dikirim,True,Yusuf Maulana,Banda Aceh,Aceh
+43,22,17,2,110000.0,Susu SGM 1+ 400g,Bayi,55000.0,250,22,2024-03-15,83000.0,selesai,selesai,True,Anita Sari,Cirebon,Jawa Barat
+44,22,57,1,17000.0,Class Mild,Rokok,27000.0,100,22,2024-03-15,83000.0,selesai,selesai,True,Anita Sari,Cirebon,Jawa Barat
+45,23,18,1,22000.0,Baby Oil Zwitsal,Bayi,22000.0,300,23,2024-03-18,115000.0,dibayar,dibayar,True,Bayu Setiawan,Balikpapan,Kalimantan Timur
+46,23,62,2,93000.0,Spidol Snowman,Alat Tulis,8000.0,400,23,2024-03-18,115000.0,dibayar,dibayar,True,Bayu Setiawan,Balikpapan,Kalimantan Timur
+47,24,19,2,36000.0,Tisu Bayi Mitu,Bayi,18000.0,400,24,2024-03-20,69000.0,selesai,selesai,True,Fitri Handayani,Samarinda,Kalimantan Timur
+48,24,58,1,33000.0,Clas Mild Menthol,Rokok,27500.0,95,24,2024-03-20,69000.0,selesai,selesai,True,Fitri Handayani,Samarinda,Kalimantan Timur
+51,26,21,2,56000.0,Sampoerna Mild,Rokok,28000.0,100,26,2024-03-26,105000.0,dikirim,dikirim,True,Riska Amalia,Jakarta Pusat,DKI Jakarta
+52,26,67,2,49000.0,Daging Sapi/kg,Makanan,120000.0,100,26,2024-03-26,105000.0,dikirim,dikirim,True,Riska Amalia,Jakarta Pusat,DKI Jakarta
+53,27,23,1,38000.0,Djarum Super,Rokok,24000.0,180,27,2024-03-28,79000.0,selesai,selesai,True,Taufik Hidayat,Jakarta Barat,DKI Jakarta
+54,27,59,2,41000.0,Gudang Garam Signature,Rokok,29000.0,80,27,2024-03-28,79000.0,selesai,selesai,True,Taufik Hidayat,Jakarta Barat,DKI Jakarta
+55,28,24,1,120000.0,LA Light,Rokok,23000.0,150,28,2024-03-30,132000.0,dibayar,dibayar,True,Nurul Huda,Bandung,Jawa Barat
+56,28,71,2,12000.0,Kecap ABC,Makanan,13000.0,420,28,2024-03-30,132000.0,dibayar,dibayar,True,Nurul Huda,Bandung,Jawa Barat
+57,29,25,2,11600.0,Surya Pro Mild,Rokok,30000.0,90,29,2024-04-02,58000.0,selesai,selesai,True,Wahyu Saputra,Surabaya,Jawa Timur
+58,29,49,3,46400.0,Face Wash Scarlett,Perawatan Tubuh,28000.0,200,29,2024-04-02,58000.0,selesai,selesai,True,Wahyu Saputra,Surabaya,Jawa Timur
+61,31,29,1,5000.0,Penghapus Kenko,Alat Tulis,2000.0,800,31,2024-04-08,118000.0,dikirim,dikirim,True,Aditya Pratama,Yogyakarta,DI Yogyakarta
+62,31,72,5,113000.0,Saus Tomat Del Monte,Makanan,12000.0,380,31,2024-04-08,118000.0,dikirim,dikirim,True,Aditya Pratama,Yogyakarta,DI Yogyakarta
+63,32,31,2,24000.0,Beras Sania 5kg,Makanan,68000.0,180,32,2024-04-10,71000.0,selesai,selesai,True,Rina Wijayanti,Makassar,Sulawesi Selatan
+64,32,52,2,47000.0,Susu Frisian Flag 123,Bayi,62000.0,220,32,2024-04-10,71000.0,selesai,selesai,True,Rina Wijayanti,Makassar,Sulawesi Selatan
+65,33,34,1,12000.0,Ikan Lele/kg,Makanan,32000.0,150,33,2024-04-13,85000.0,dibayar,dibayar,True,Hadi Sutrisno,Semarang,Jawa Tengah
+66,33,68,2,73000.0,Telur Ayam Biasa,Makanan,2800.0,1200,33,2024-04-13,85000.0,dibayar,dibayar,True,Hadi Sutrisno,Semarang,Jawa Tengah
+67,34,37,2,19000.0,Saus Sambal ABC,Makanan,9000.0,500,34,2024-04-16,62000.0,selesai,selesai,True,Linda Sari,Palembang,Sumatera Selatan
+68,34,53,1,43000.0,Baby Diaper Huggies,Bayi,88000.0,130,34,2024-04-16,62000.0,selesai,selesai,True,Linda Sari,Palembang,Sumatera Selatan
+71,36,44,1,22000.0,Le Minerale,Minuman,3500.0,1200,36,2024-04-22,109000.0,dikirim,dikirim,True,Dewi Puspita,Banda Aceh,Aceh
+72,36,69,3,87000.0,Tahu Putih/pcs,Makanan,2000.0,800,36,2024-04-22,109000.0,dikirim,dikirim,True,Dewi Puspita,Banda Aceh,Aceh
+73,37,47,2,184000.0,Sabun Giv,Perawatan Tubuh,5500.0,450,37,2024-04-25,82000.0,selesai,selesai,True,Arief Budiman,Malang,Jawa Timur
+74,37,54,1,17000.0,Tisu Basah Sleek,Bayi,16000.0,420,37,2024-04-25,82000.0,selesai,selesai,True,Arief Budiman,Malang,Jawa Timur
+75,38,73,2,220000.0,Bumbu Racik Rendang,Makanan,8000.0,280,38,2024-04-28,95000.0,dibayar,dibayar,True,Siska Anggraini,Yogyakarta,DI Yogyakarta
+76,38,11,1,6000.0,Sabun Lifebuoy,Perawatan Tubuh,6000.0,500,38,2024-04-28,95000.0,dibayar,dibayar,True,Siska Anggraini,Yogyakarta,DI Yogyakarta
+77,39,74,3,63000.0,Tepung Maizena,Makanan,10000.0,300,39,2024-05-01,63000.0,selesai,selesai,True,Indra Wijaya,Manado,Sulawesi Utara
+78,39,13,1,9000.0,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.0,450,39,2024-05-01,63000.0,selesai,selesai,True,Indra Wijaya,Manado,Sulawesi Utara
+81,41,77,1,126000.0,Teh Kotak,Minuman,4500.0,950,41,2024-05-07,126000.0,dikirim,dikirim,True,Dani Prasetyo,Semarang,Jawa Tengah
+82,41,3,1,72000.0,Beras Rojolele 5kg,Makanan,65000.0,200,41,2024-05-07,126000.0,dikirim,dikirim,True,Dani Prasetyo,Semarang,Jawa Tengah
+83,42,78,1,89000.0,Air Zamzam 250ml,Minuman,7000.0,200,42,2024-05-10,89000.0,selesai,selesai,True,Rina Fitriani,Banjarmasin,Kalimantan Selatan
+84,42,9,1,4500.0,Susu Indomilk 200ml,Minuman,4500.0,700,42,2024-05-10,89000.0,selesai,selesai,True,Rina Fitriani,Banjarmasin,Kalimantan Selatan
+85,43,79,2,76000.0,Coca Cola 240ml,Minuman,6000.0,700,43,2024-05-13,76000.0,dibayar,dibayar,True,Anton Wijaya,Denpasar,Bali
+86,43,14,1,25000.0,Pembalut Kotex,Perawatan Tubuh,25000.0,300,43,2024-05-13,76000.0,dibayar,dibayar,True,Anton Wijaya,Denpasar,Bali
+87,44,80,2,110000.0,Sprite 240ml,Minuman,6000.0,700,44,2024-05-16,110000.0,selesai,selesai,True,Siti Aminah,Ambon,Maluku
+88,44,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,44,2024-05-16,110000.0,selesai,selesai,True,Siti Aminah,Ambon,Maluku
+91,46,82,1,94000.0,Sabun Cussons Baby,Perawatan Tubuh,7000.0,480,46,2024-05-22,94000.0,dikirim,dikirim,True,Dinda Ayu,Solo,Jawa Tengah
+92,46,17,1,55000.0,Susu SGM 1+ 400g,Bayi,55000.0,250,46,2024-05-22,94000.0,dikirim,dikirim,True,Dinda Ayu,Solo,Jawa Tengah
+93,47,83,2,102000.0,Bedak Tabur Wardah,Perawatan Tubuh,35000.0,170,47,2024-05-25,102000.0,selesai,selesai,True,Ferry Irawan,Kediri,Jawa Timur
+94,47,18,1,22000.0,Baby Oil Zwitsal,Bayi,22000.0,300,47,2024-05-25,102000.0,selesai,selesai,True,Ferry Irawan,Kediri,Jawa Timur
+95,48,84,1,67000.0,Micellar Water Somethinc,Perawatan Tubuh,45000.0,120,48,2024-05-28,67000.0,dibayar,dibayar,True,Lina Sari,Jambi,Jambi
+96,48,19,1,18000.0,Tisu Bayi Mitu,Bayi,18000.0,400,48,2024-05-28,67000.0,dibayar,dibayar,True,Lina Sari,Jambi,Jambi
+97,49,85,2,73000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,49,2024-06-01,73000.0,selesai,selesai,True,Hendri Gunawan,Bandar Lampung,Lampung
+98,49,20,1,28000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,49,2024-06-01,73000.0,selesai,selesai,True,Hendri Gunawan,Bandar Lampung,Lampung
+101,51,87,1,88000.0,Susu Dancow 1+ 400g,Bayi,58000.0,240,51,2024-06-07,88000.0,dikirim,dikirim,True,Raka Pratama,Pontianak,Kalimantan Barat
+102,51,22,1,20000.0,Gudang Garam Surya,Rokok,26000.0,120,51,2024-06-07,88000.0,dikirim,dikirim,True,Raka Pratama,Pontianak,Kalimantan Barat
+103,52,88,1,85000.0,Minyak Telon Cap Lang,Bayi,25000.0,280,52,2024-06-10,79000.0,selesai,selesai,True,Dewi Kusuma,Makassar,Sulawesi Selatan
+104,52,23,1,38000.0,Djarum Super,Rokok,24000.0,180,52,2024-06-10,79000.0,selesai,selesai,True,Dewi Kusuma,Makassar,Sulawesi Selatan
+105,53,89,1,128000.0,Krim Bayi Cussons,Bayi,20000.0,310,53,2024-06-13,128000.0,dibayar,dibayar,True,Agus Wijaya,Manado,Sulawesi Utara
+106,53,24,1,120000.0,LA Light,Rokok,23000.0,150,53,2024-06-13,128000.0,dibayar,dibayar,True,Agus Wijaya,Manado,Sulawesi Utara
+107,54,90,1,55000.0,Bubur Nestle,Bayi,30000.0,190,54,2024-06-16,55000.0,selesai,selesai,True,Siska Putri,Pekanbaru,Riau
+108,54,25,1,5800.0,Surya Pro Mild,Rokok,30000.0,90,54,2024-06-16,55000.0,selesai,selesai,True,Siska Putri,Pekanbaru,Riau
+111,56,92,1,97000.0,Gudang Garam Filter,Rokok,25500.0,105,56,2024-06-22,97000.0,dikirim,dikirim,True,Lia Permata,Palu,Sulawesi Tengah
+112,56,27,1,100000.0,Pulpen Pilot,Alat Tulis,6000.0,600,56,2024-06-22,97000.0,dikirim,dikirim,True,Lia Permata,Palu,Sulawesi Tengah
+113,57,93,1,84000.0,Djarum Coklat,Rokok,23000.0,160,57,2024-06-25,84000.0,selesai,selesai,True,Toni Prasetyo,Banjarmasin,Kalimantan Selatan
+114,57,28,1,9000.0,Pensil Faber Castell,Alat Tulis,3500.0,700,57,2024-06-25,84000.0,selesai,selesai,True,Toni Prasetyo,Banjarmasin,Kalimantan Selatan
+115,58,94,1,112000.0,A Mild White,Rokok,26000.0,90,58,2024-06-28,112000.0,dibayar,dibayar,True,Maya Sari,Medan,Sumatera Utara
+116,58,29,1,5000.0,Penghapus Kenko,Alat Tulis,2000.0,800,58,2024-06-28,112000.0,dibayar,dibayar,True,Maya Sari,Medan,Sumatera Utara
+117,59,95,2,59000.0,Starmild Blue,Rokok,23500.0,125,59,2024-07-01,59000.0,selesai,selesai,True,Adi Nugroho,Denpasar,Bali
+118,59,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,59,2024-07-01,59000.0,selesai,selesai,True,Adi Nugroho,Denpasar,Bali
+121,61,97,1,106000.0,Tinta Printer Epson,Alat Tulis,85000.0,80,61,2024-07-07,106000.0,dikirim,dikirim,True,Budi Pratama,Bandung,Jawa Barat
+122,61,32,1,8000.0,Telur Ayam Kampung,Makanan,3500.0,1000,61,2024-07-07,106000.0,dikirim,dikirim,True,Budi Pratama,Bandung,Jawa Barat
+123,62,98,1,81000.0,Sticky Notes 3M,Alat Tulis,18000.0,220,62,2024-07-10,81000.0,selesai,selesai,True,Siti Rahayu,Makassar,Sulawesi Selatan
+124,62,33,1,22000.0,Ayam Broiler/kg,Makanan,38000.0,200,62,2024-07-10,81000.0,selesai,selesai,True,Siti Rahayu,Makassar,Sulawesi Selatan
+125,63,99,1,94000.0,Kertas HVS 1 rim,Alat Tulis,50000.0,300,63,2024-07-13,94000.0,dibayar,dibayar,True,Dian Sari,Padang,Sumatera Barat
+126,63,34,1,12000.0,Ikan Lele/kg,Makanan,32000.0,150,63,2024-07-13,94000.0,dibayar,dibayar,True,Dian Sari,Padang,Sumatera Barat
+127,64,100,1,66000.0,Map Plastik Kiky,Alat Tulis,7000.0,420,64,2024-07-16,66000.0,selesai,selesai,True,Agus Santoso,Bandung,Jawa Barat
+128,64,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,64,2024-07-16,66000.0,selesai,selesai,True,Agus Santoso,Bandung,Jawa Barat
+131,66,102,1,119000.0,Kuku Bima Ginseng,Minuman,6500.0,400,66,2024-07-22,119000.0,dikirim,dikirim,True,Fajar Wijaya,Banjarmasin,Kalimantan Selatan
+132,66,37,1,9500.0,Saus Sambal ABC,Makanan,9000.0,500,66,2024-07-22,119000.0,dikirim,dikirim,True,Fajar Wijaya,Banjarmasin,Kalimantan Selatan
+133,67,103,1,87000.0,Bear Brand,Minuman,10000.0,350,67,2024-07-25,87000.0,selesai,selesai,True,Nadia Sari,Manado,Sulawesi Utara
+134,67,38,1,22000.0,Bumbu Racik Soto,Makanan,7000.0,300,67,2024-07-25,87000.0,selesai,selesai,True,Nadia Sari,Manado,Sulawesi Utara
+135,68,104,1,74000.0,Susu Ultra Murni,Minuman,12000.0,500,68,2024-07-28,73000.0,dibayar,dibayar,True,Eko Wijaya,Aceh Besar,Aceh
+136,68,39,1,47000.0,Tepung Terigu Segitiga,Makanan,12000.0,250,68,2024-07-28,73000.0,dibayar,dibayar,True,Eko Wijaya,Aceh Besar,Aceh
+137,69,105,1,105000.0,Yoghurt Cimory,Minuman,15000.0,280,69,2024-08-01,105000.0,selesai,selesai,True,Riska Sari,Tangerang,Banten
+138,69,40,1,5500.0,Mentega Blue Band,Makanan,16000.0,200,69,2024-08-01,105000.0,selesai,selesai,True,Riska Sari,Tangerang,Banten
+141,71,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,71,2024-08-07,92000.0,dikirim,dikirim,True,Anita Wijaya,Balikpapan,Kalimantan Timur
+142,71,10,2,90000.0,Sari Lemon,Minuman,5500.0,250,71,2024-08-07,92000.0,dikirim,dikirim,True,Anita Wijaya,Balikpapan,Kalimantan Timur
+143,72,15,2,32000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,72,2024-08-10,84000.0,selesai,selesai,True,Bayu Prasetyo,Samarinda,Kalimantan Timur
+144,72,20,2,56000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,72,2024-08-10,84000.0,selesai,selesai,True,Bayu Prasetyo,Samarinda,Kalimantan Timur
+145,73,25,1,5800.0,Surya Pro Mild,Rokok,30000.0,90,73,2024-08-13,116000.0,dibayar,dibayar,True,Fitri Sari,Jakarta Selatan,DKI Jakarta
+146,73,30,2,102000.0,Penggaris 30cm,Alat Tulis,5000.0,400,73,2024-08-13,116000.0,dibayar,dibayar,True,Fitri Sari,Jakarta Selatan,DKI Jakarta
+147,74,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,74,2024-08-16,62000.0,selesai,selesai,True,Irfan Wijaya,Jakarta Pusat,DKI Jakarta
+148,74,40,1,5500.0,Mentega Blue Band,Makanan,16000.0,200,74,2024-08-16,62000.0,selesai,selesai,True,Irfan Wijaya,Jakarta Pusat,DKI Jakarta
+151,76,55,1,36000.0,Biskuit Bayi Milna,Bayi,25000.0,210,76,2024-08-22,108000.0,dikirim,dikirim,True,Hadi Prasetyo,Semarang,Jawa Tengah
+152,76,60,2,92000.0,U Mild,Rokok,22000.0,140,76,2024-08-22,108000.0,dikirim,dikirim,True,Hadi Prasetyo,Semarang,Jawa Tengah
+153,77,65,2,92000.0,Gunting Fiskars,Alat Tulis,28000.0,180,77,2024-08-25,89000.0,selesai,selesai,True,Linda Wijaya,Palembang,Sumatera Selatan
+154,77,70,1,15000.0,Tempe 1 papan,Makanan,5000.0,600,77,2024-08-25,89000.0,selesai,selesai,True,Linda Wijaya,Palembang,Sumatera Selatan
+155,78,75,1,38000.0,Margarin Palmia,Makanan,15000.0,230,78,2024-08-28,96000.0,dibayar,dibayar,True,Rizal Wijaya,Pekanbaru,Riau
+156,78,80,1,58000.0,Sprite 240ml,Minuman,6000.0,700,78,2024-08-28,96000.0,dibayar,dibayar,True,Rizal Wijaya,Pekanbaru,Riau
+157,79,85,1,38000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,79,2024-09-01,54000.0,selesai,selesai,True,Dewi Anggraini,Banda Aceh,Aceh
+158,79,90,1,16000.0,Bubur Nestle,Bayi,30000.0,190,79,2024-09-01,54000.0,selesai,selesai,True,Dewi Anggraini,Banda Aceh,Aceh
+161,81,1,1,2500.0,Indomie Goreng,Makanan,2500.0,500,81,2024-09-07,121000.0,dikirim,dikirim,True,Siska Marlina,Yogyakarta,DI Yogyakarta
+162,81,100,1,118500.0,Map Plastik Kiky,Alat Tulis,7000.0,420,81,2024-09-07,121000.0,dikirim,dikirim,True,Siska Marlina,Yogyakarta,DI Yogyakarta
+163,82,5,3,45000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,82,2024-09-10,83000.0,selesai,selesai,True,Indra Prasetyo,Manado,Sulawesi Utara
+164,82,90,1,38000.0,Bubur Nestle,Bayi,30000.0,190,82,2024-09-10,83000.0,selesai,selesai,True,Indra Prasetyo,Manado,Sulawesi Utara
+165,83,10,1,45000.0,Sari Lemon,Minuman,5500.0,250,83,2024-09-13,75000.0,dibayar,dibayar,True,Maya Putri,Padang,Sumatera Barat
+166,83,75,1,30000.0,Margarin Palmia,Makanan,15000.0,230,83,2024-09-13,75000.0,dibayar,dibayar,True,Maya Putri,Padang,Sumatera Barat
+167,84,20,2,56000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,84,2024-09-16,109000.0,selesai,selesai,True,Dani Wijaya,Semarang,Jawa Tengah
+168,84,85,1,53000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,84,2024-09-16,109000.0,selesai,selesai,True,Dani Wijaya,Semarang,Jawa Tengah
+171,86,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,86,2024-09-22,93000.0,dikirim,dikirim,True,Anton Prasetyo,Denpasar,Bali
+172,86,56,1,42000.0,Sampoerna Kretek,Rokok,25000.0,110,86,2024-09-22,93000.0,dikirim,dikirim,True,Anton Prasetyo,Denpasar,Bali
+173,87,46,1,57000.0,Shampoo Clear,Perawatan Tubuh,13000.0,350,87,2024-09-25,101000.0,selesai,selesai,True,Siti Lestari,Ambon,Maluku
+174,87,41,1,44000.0,Teh Botol Sosro,Minuman,5000.0,900,87,2024-09-25,101000.0,selesai,selesai,True,Siti Lestari,Ambon,Maluku
+175,88,51,1,33000.0,Popok Merries,Bayi,92000.0,120,88,2024-09-28,66000.0,dibayar,dibayar,True,Bambang Wijaya,Tegal,Jawa Tengah
+176,88,38,1,33000.0,Bumbu Racik Soto,Makanan,7000.0,300,88,2024-09-28,66000.0,dibayar,dibayar,True,Bambang Wijaya,Tegal,Jawa Tengah
+177,89,61,2,124000.0,Buku Gambar Karton,Alat Tulis,12000.0,300,89,2024-10-01,72000.0,selesai,selesai,True,Dinda Sari,Solo,Jawa Tengah
+178,89,3,1,72000.0,Beras Rojolele 5kg,Makanan,65000.0,200,89,2024-10-01,72000.0,selesai,selesai,True,Dinda Sari,Solo,Jawa Tengah
+181,91,71,1,6000.0,Kecap ABC,Makanan,13000.0,420,91,2024-10-07,87000.0,dikirim,dikirim,True,Lina Putri,Jambi,Jambi
+182,91,76,2,81000.0,Nescafe Classic,Minuman,16000.0,550,91,2024-10-07,87000.0,dikirim,dikirim,True,Lina Putri,Jambi,Jambi
+183,92,77,1,87000.0,Teh Kotak,Minuman,4500.0,950,92,2024-10-10,78000.0,selesai,selesai,True,Hendri Wijaya,Bandar Lampung,Lampung
+184,92,4,1,28000.0,Minyak Goreng Bimoli 1L,Makanan,28000.0,150,92,2024-10-10,78000.0,selesai,selesai,True,Hendri Wijaya,Bandar Lampung,Lampung
+185,93,78,1,78000.0,Air Zamzam 250ml,Minuman,7000.0,200,93,2024-10-13,127000.0,dibayar,dibayar,True,Nina Sari,Banda Aceh,Aceh
+186,93,83,1,49000.0,Bedak Tabur Wardah,Perawatan Tubuh,35000.0,170,93,2024-10-13,127000.0,dibayar,dibayar,True,Nina Sari,Banda Aceh,Aceh
+187,94,88,1,54000.0,Minyak Telon Cap Lang,Bayi,25000.0,280,94,2024-10-16,54000.0,selesai,selesai,True,Raka Wijaya,Pontianak,Kalimantan Barat
+188,94,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,94,2024-10-16,54000.0,selesai,selesai,True,Raka Wijaya,Pontianak,Kalimantan Barat
+191,96,98,2,80000.0,Sticky Notes 3M,Alat Tulis,18000.0,220,96,2024-10-22,96000.0,dikirim,dikirim,True,Agus Prasetyo,Manado,Sulawesi Utara
+192,96,103,1,16000.0,Bear Brand,Minuman,10000.0,350,96,2024-10-22,96000.0,dikirim,dikirim,True,Agus Prasetyo,Manado,Sulawesi Utara
+193,97,2,2,17000.0,Sari Roti Coklat,Makanan,8500.0,300,97,2024-10-25,83000.0,selesai,selesai,True,Siska Wijaya,Pekanbaru,Riau
+194,97,100,1,66000.0,Map Plastik Kiky,Alat Tulis,7000.0,420,97,2024-10-25,83000.0,selesai,selesai,True,Siska Wijaya,Pekanbaru,Riau
+195,98,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,98,2024-10-28,111000.0,dibayar,dibayar,True,Rudi Wijaya,Semarang,Jawa Tengah
+196,98,32,3,48000.0,Telur Ayam Kampung,Makanan,3500.0,1000,98,2024-10-28,111000.0,dibayar,dibayar,True,Rudi Wijaya,Semarang,Jawa Tengah
+197,99,10,2,90000.0,Sari Lemon,Minuman,5500.0,250,99,2024-11-01,58000.0,selesai,selesai,True,Lia Sari,Palu,Sulawesi Tengah
+198,99,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,99,2024-11-01,58000.0,selesai,selesai,True,Lia Sari,Palu,Sulawesi Tengah
+201,101,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,101,2024-11-07,105000.0,dikirim,dikirim,True,Maya Wijaya,Medan,Sumatera Utara
+202,101,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,101,2024-11-07,105000.0,dikirim,dikirim,True,Maya Wijaya,Medan,Sumatera Utara
+203,102,40,1,5500.0,Mentega Blue Band,Makanan,16000.0,200,102,2024-11-10,80000.0,selesai,selesai,True,Adi Wijaya,Denpasar,Bali
+204,102,45,2,64000.0,Yakult,Minuman,8500.0,300,102,2024-11-10,80000.0,selesai,selesai,True,Adi Wijaya,Denpasar,Bali
+205,103,50,1,32000.0,Masker Wardah,Perawatan Tubuh,22000.0,180,103,2024-11-13,93000.0,dibayar,dibayar,True,Rina Sari,Jakarta Barat,DKI Jakarta
+206,103,55,1,36000.0,Biskuit Bayi Milna,Bayi,25000.0,210,103,2024-11-13,93000.0,dibayar,dibayar,True,Rina Sari,Jakarta Barat,DKI Jakarta
+207,104,60,1,46000.0,U Mild,Rokok,22000.0,140,104,2024-11-16,65000.0,selesai,selesai,True,Budi Wijaya,Bandung,Jawa Barat
+208,104,65,1,46000.0,Gunting Fiskars,Alat Tulis,28000.0,180,104,2024-11-16,65000.0,selesai,selesai,True,Budi Wijaya,Bandung,Jawa Barat
+211,106,80,1,58000.0,Sprite 240ml,Minuman,6000.0,700,1,2024-12-02,98000.0,dikirim,dikirim,True,Ahmad Fauzi,Jakarta Pusat,DKI Jakarta
+212,106,85,1,40000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,1,2024-12-02,98000.0,dikirim,dikirim,True,Ahmad Fauzi,Jakarta Pusat,DKI Jakarta
+213,107,90,1,38000.0,Bubur Nestle,Bayi,30000.0,190,2,2024-12-05,86000.0,selesai,selesai,True,Siti Nurhaliza,Bandung,Jawa Barat
+214,107,95,1,48000.0,Starmild Blue,Rokok,23500.0,125,2,2024-12-05,86000.0,selesai,selesai,True,Siti Nurhaliza,Bandung,Jawa Barat
+215,108,1,2,5000.0,Indomie Goreng,Makanan,2500.0,500,3,2024-12-08,119000.0,dibayar,dibayar,True,Budi Santoso,Surabaya,Jawa Timur
+216,108,100,1,81000.0,Map Plastik Kiky,Alat Tulis,7000.0,420,3,2024-12-08,119000.0,dibayar,dibayar,True,Budi Santoso,Surabaya,Jawa Timur
+217,109,5,2,30000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,4,2024-12-11,59000.0,selesai,selesai,True,Dewi Lestari,Medan,Sumatera Utara
+218,109,26,2,60000.0,Buku Tulis Sidu,Alat Tulis,4000.0,500,4,2024-12-11,59000.0,selesai,selesai,True,Dewi Lestari,Medan,Sumatera Utara
+221,111,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,6,2024-12-17,107000.0,dikirim,dikirim,True,Putri Wulandari,Semarang,Jawa Tengah
+222,111,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,6,2024-12-17,107000.0,dikirim,dikirim,True,Putri Wulandari,Semarang,Jawa Tengah
+223,112,2,1,8500.0,Sari Roti Coklat,Makanan,8500.0,300,7,2024-12-20,89000.0,selesai,selesai,True,Andi Pratama,Makassar,Sulawesi Selatan
+224,112,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,7,2024-12-20,89000.0,selesai,selesai,True,Andi Pratama,Makassar,Sulawesi Selatan
+225,113,40,1,5500.0,Mentega Blue Band,Makanan,16000.0,200,8,2024-12-23,76000.0,dibayar,dibayar,True,Lina Marlina,Palembang,Sumatera Selatan
+226,113,45,1,32000.0,Yakult,Minuman,8500.0,300,8,2024-12-23,76000.0,dibayar,dibayar,True,Lina Marlina,Palembang,Sumatera Selatan
+227,114,50,1,32000.0,Masker Wardah,Perawatan Tubuh,22000.0,180,9,2024-12-26,110000.0,selesai,selesai,True,Dimas Aditya,Bogor,Jawa Barat
+228,114,60,1,46000.0,U Mild,Rokok,22000.0,140,9,2024-12-26,110000.0,selesai,selesai,True,Dimas Aditya,Bogor,Jawa Barat
+231,116,32,1,8000.0,Telur Ayam Kampung,Makanan,3500.0,1000,11,2025-01-02,95000.0,dikirim,dikirim,True,Eko Prasetyo,Jakarta Barat,DKI Jakarta
+232,116,65,3,138000.0,Gunting Fiskars,Alat Tulis,28000.0,180,11,2025-01-02,95000.0,dikirim,dikirim,True,Eko Prasetyo,Jakarta Barat,DKI Jakarta
+233,117,11,2,12000.0,Sabun Lifebuoy,Perawatan Tubuh,6000.0,500,12,2025-01-05,82000.0,selesai,selesai,True,Rina Agustina,Padang,Sumatera Barat
+234,117,48,1,28000.0,Lipstik Wardah,Perawatan Tubuh,32000.0,150,12,2025-01-05,82000.0,selesai,selesai,True,Rina Agustina,Padang,Sumatera Barat
+235,118,12,2,24000.0,Shampoo Sunsilk,Perawatan Tubuh,12000.0,400,13,2025-01-08,128000.0,dibayar,dibayar,True,Hendra Wijaya,Bandung,Jawa Barat
+236,118,75,1,38000.0,Margarin Palmia,Makanan,15000.0,230,13,2025-01-08,128000.0,dibayar,dibayar,True,Hendra Wijaya,Bandung,Jawa Barat
+237,119,13,1,9000.0,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.0,450,14,2025-01-11,63000.0,selesai,selesai,True,Maya Sari,Malang,Jawa Timur
+238,119,55,2,72000.0,Biskuit Bayi Milna,Bayi,25000.0,210,14,2025-01-11,63000.0,selesai,selesai,True,Maya Sari,Malang,Jawa Timur
+241,121,3,1,68000.0,Beras Rojolele 5kg,Makanan,65000.0,200,16,2025-01-17,111000.0,dikirim,dikirim,True,Sari Indah,Manado,Sulawesi Utara
+242,121,46,1,57000.0,Shampoo Clear,Perawatan Tubuh,13000.0,350,16,2025-01-17,111000.0,dikirim,dikirim,True,Sari Indah,Manado,Sulawesi Utara
+243,122,6,1,12000.0,Teh Sariwangi,Minuman,12000.0,600,17,2025-01-20,94000.0,selesai,selesai,True,Fajar Nugroho,Aceh Besar,Aceh
+244,122,51,2,66000.0,Popok Merries,Bayi,92000.0,120,17,2025-01-20,94000.0,selesai,selesai,True,Fajar Nugroho,Aceh Besar,Aceh
+245,123,8,2,6000.0,Aqua Botol 600ml,Minuman,3000.0,1000,18,2025-01-23,81000.0,dibayar,dibayar,True,Dian Permata,Tangerang,Banten
+246,123,70,1,68000.0,Tempe 1 papan,Makanan,5000.0,600,18,2025-01-23,81000.0,dibayar,dibayar,True,Dian Permata,Tangerang,Banten
+247,124,9,1,4500.0,Susu Indomilk 200ml,Minuman,4500.0,700,19,2025-01-26,105000.0,selesai,selesai,True,Rudi Hartono,Pekanbaru,Riau
+248,124,56,2,55000.0,Sampoerna Kretek,Rokok,25000.0,110,19,2025-01-26,105000.0,selesai,selesai,True,Rudi Hartono,Pekanbaru,Riau
+251,126,41,1,55000.0,Teh Botol Sosro,Minuman,5000.0,900,21,2025-02-01,97000.0,dikirim,dikirim,True,Yusuf Maulana,Banda Aceh,Aceh
+252,126,7,1,10000.0,Kopi Kapal Api,Minuman,18000.0,350,21,2025-02-01,97000.0,dikirim,dikirim,True,Yusuf Maulana,Banda Aceh,Aceh
+253,127,16,1,25000.0,Popok MamyPoko,Bayi,85000.0,150,22,2025-02-04,85000.0,selesai,selesai,True,Anita Sari,Cirebon,Jawa Barat
+254,127,66,1,33500.0,Beras Pandan Wangi 5kg,Makanan,72000.0,160,22,2025-02-04,85000.0,selesai,selesai,True,Anita Sari,Cirebon,Jawa Barat
+255,128,17,2,110000.0,Susu SGM 1+ 400g,Bayi,55000.0,250,23,2025-02-07,118000.0,dibayar,dibayar,True,Bayu Setiawan,Balikpapan,Kalimantan Timur
+256,128,57,1,17000.0,Class Mild,Rokok,27000.0,100,23,2025-02-07,118000.0,dibayar,dibayar,True,Bayu Setiawan,Balikpapan,Kalimantan Timur
+257,129,18,2,44000.0,Baby Oil Zwitsal,Bayi,22000.0,300,24,2025-02-10,68000.0,selesai,selesai,True,Fitri Handayani,Samarinda,Kalimantan Timur
+258,129,62,1,46500.0,Spidol Snowman,Alat Tulis,8000.0,400,24,2025-02-10,68000.0,selesai,selesai,True,Fitri Handayani,Samarinda,Kalimantan Timur
+261,131,20,2,56000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,26,2025-02-16,102000.0,dikirim,dikirim,True,Riska Amalia,Jakarta Pusat,DKI Jakarta
+262,131,43,1,18000.0,Pocari Sweat,Minuman,8000.0,600,26,2025-02-16,102000.0,dikirim,dikirim,True,Riska Amalia,Jakarta Pusat,DKI Jakarta
+263,132,21,1,28000.0,Sampoerna Mild,Rokok,28000.0,100,27,2025-02-19,87000.0,selesai,selesai,True,Taufik Hidayat,Jakarta Barat,DKI Jakarta
+264,132,67,2,49000.0,Daging Sapi/kg,Makanan,120000.0,100,27,2025-02-19,87000.0,selesai,selesai,True,Taufik Hidayat,Jakarta Barat,DKI Jakarta
+265,133,23,1,38000.0,Djarum Super,Rokok,24000.0,180,28,2025-02-22,94000.0,dibayar,dibayar,True,Nurul Huda,Bandung,Jawa Barat
+266,133,59,1,20500.0,Gudang Garam Signature,Rokok,29000.0,80,28,2025-02-22,94000.0,dibayar,dibayar,True,Nurul Huda,Bandung,Jawa Barat
+267,134,24,1,120000.0,LA Light,Rokok,23000.0,150,29,2025-02-25,58000.0,selesai,selesai,True,Wahyu Saputra,Surabaya,Jawa Timur
+268,134,71,1,6000.0,Kecap ABC,Makanan,13000.0,420,29,2025-02-25,58000.0,selesai,selesai,True,Wahyu Saputra,Surabaya,Jawa Timur
+271,136,27,1,100000.0,Pulpen Pilot,Alat Tulis,6000.0,600,31,2025-03-03,116000.0,dikirim,dikirim,True,Aditya Pratama,Yogyakarta,DI Yogyakarta
+272,136,1,1,2500.0,Indomie Goreng,Makanan,2500.0,500,31,2025-03-03,116000.0,dikirim,dikirim,True,Aditya Pratama,Yogyakarta,DI Yogyakarta
+273,137,29,1,5000.0,Penghapus Kenko,Alat Tulis,2000.0,800,32,2025-03-06,83000.0,selesai,selesai,True,Rina Wijayanti,Makassar,Sulawesi Selatan
+274,137,72,4,90400.0,Saus Tomat Del Monte,Makanan,12000.0,380,32,2025-03-06,83000.0,selesai,selesai,True,Rina Wijayanti,Makassar,Sulawesi Selatan
+275,138,31,1,12000.0,Beras Sania 5kg,Makanan,68000.0,180,33,2025-03-09,96000.0,dibayar,dibayar,True,Hadi Sutrisno,Semarang,Jawa Tengah
+276,138,52,2,47000.0,Susu Frisian Flag 123,Bayi,62000.0,220,33,2025-03-09,96000.0,dibayar,dibayar,True,Hadi Sutrisno,Semarang,Jawa Tengah
+277,139,34,2,24000.0,Ikan Lele/kg,Makanan,32000.0,150,34,2025-03-12,69000.0,selesai,selesai,True,Linda Sari,Palembang,Sumatera Selatan
+278,139,68,1,36500.0,Telur Ayam Biasa,Makanan,2800.0,1200,34,2025-03-12,69000.0,selesai,selesai,True,Linda Sari,Palembang,Sumatera Selatan
+281,141,39,1,47000.0,Tepung Terigu Segitiga,Makanan,12000.0,250,36,2025-03-18,108000.0,dikirim,dikirim,True,Dewi Puspita,Banda Aceh,Aceh
+282,141,2,1,8500.0,Sari Roti Coklat,Makanan,8500.0,300,36,2025-03-18,108000.0,dikirim,dikirim,True,Dewi Puspita,Banda Aceh,Aceh
+283,142,44,2,44000.0,Le Minerale,Minuman,3500.0,1200,37,2025-03-21,89000.0,selesai,selesai,True,Arief Budiman,Malang,Jawa Timur
+284,142,69,2,58000.0,Tahu Putih/pcs,Makanan,2000.0,800,37,2025-03-21,89000.0,selesai,selesai,True,Arief Budiman,Malang,Jawa Timur
+285,143,47,1,92000.0,Sabun Giv,Perawatan Tubuh,5500.0,450,38,2025-03-24,77000.0,dibayar,dibayar,True,Siska Anggraini,Yogyakarta,DI Yogyakarta
+286,143,54,1,17000.0,Tisu Basah Sleek,Bayi,16000.0,420,38,2025-03-24,77000.0,dibayar,dibayar,True,Siska Anggraini,Yogyakarta,DI Yogyakarta
+287,144,73,1,95000.0,Bumbu Racik Rendang,Makanan,8000.0,280,39,2025-03-27,111000.0,selesai,selesai,True,Indra Wijaya,Manado,Sulawesi Utara
+288,144,11,1,6000.0,Sabun Lifebuoy,Perawatan Tubuh,6000.0,500,39,2025-03-27,111000.0,selesai,selesai,True,Indra Wijaya,Manado,Sulawesi Utara
+291,146,76,1,27000.0,Nescafe Classic,Minuman,16000.0,550,41,2025-04-02,94000.0,dikirim,dikirim,True,Dani Prasetyo,Semarang,Jawa Tengah
+292,146,13,1,9000.0,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.0,450,41,2025-04-02,94000.0,dikirim,dikirim,True,Dani Prasetyo,Semarang,Jawa Tengah
+293,147,77,1,94000.0,Teh Kotak,Minuman,4500.0,950,42,2025-04-05,86000.0,selesai,selesai,True,Rina Fitriani,Banjarmasin,Kalimantan Selatan
+294,147,3,1,72000.0,Beras Rojolele 5kg,Makanan,65000.0,200,42,2025-04-05,86000.0,selesai,selesai,True,Rina Fitriani,Banjarmasin,Kalimantan Selatan
+295,148,78,1,86000.0,Air Zamzam 250ml,Minuman,7000.0,200,43,2025-04-08,119000.0,dibayar,dibayar,True,Anton Wijaya,Denpasar,Bali
+296,148,4,1,28000.0,Minyak Goreng Bimoli 1L,Makanan,28000.0,150,43,2025-04-08,119000.0,dibayar,dibayar,True,Anton Wijaya,Denpasar,Bali
+297,149,79,1,119000.0,Coca Cola 240ml,Minuman,6000.0,700,44,2025-04-11,64000.0,selesai,selesai,True,Siti Aminah,Ambon,Maluku
+298,149,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,44,2025-04-11,64000.0,selesai,selesai,True,Siti Aminah,Ambon,Maluku
+301,151,81,1,69000.0,Shampoo Dove,Perawatan Tubuh,14000.0,330,46,2025-04-17,103000.0,dikirim,dikirim,True,Dinda Ayu,Solo,Jawa Tengah
+302,151,7,1,10000.0,Kopi Kapal Api,Minuman,18000.0,350,46,2025-04-17,103000.0,dikirim,dikirim,True,Dinda Ayu,Solo,Jawa Tengah
+303,152,82,1,103000.0,Sabun Cussons Baby,Perawatan Tubuh,7000.0,480,47,2025-04-20,91000.0,selesai,selesai,True,Ferry Irawan,Kediri,Jawa Timur
+304,152,8,1,3000.0,Aqua Botol 600ml,Minuman,3000.0,1000,47,2025-04-20,91000.0,selesai,selesai,True,Ferry Irawan,Kediri,Jawa Timur
+305,153,83,1,81000.0,Bedak Tabur Wardah,Perawatan Tubuh,35000.0,170,48,2025-04-23,78000.0,dibayar,dibayar,True,Lina Sari,Jambi,Jambi
+306,153,9,1,4500.0,Susu Indomilk 200ml,Minuman,4500.0,700,48,2025-04-23,78000.0,dibayar,dibayar,True,Lina Sari,Jambi,Jambi
+307,154,84,1,78000.0,Micellar Water Somethinc,Perawatan Tubuh,45000.0,120,49,2025-04-26,95000.0,selesai,selesai,True,Hendri Gunawan,Bandar Lampung,Lampung
+308,154,10,1,45000.0,Sari Lemon,Minuman,5500.0,250,49,2025-04-26,95000.0,selesai,selesai,True,Hendri Gunawan,Bandar Lampung,Lampung
+311,156,86,1,46000.0,Popok Lovies,Bayi,80000.0,140,51,2025-05-02,107000.0,dikirim,dikirim,True,Raka Pratama,Pontianak,Kalimantan Barat
+312,156,12,1,12000.0,Shampoo Sunsilk,Perawatan Tubuh,12000.0,400,51,2025-05-02,107000.0,dikirim,dikirim,True,Raka Pratama,Pontianak,Kalimantan Barat
+313,157,87,1,107000.0,Susu Dancow 1+ 400g,Bayi,58000.0,240,52,2025-05-05,84000.0,selesai,selesai,True,Dewi Kusuma,Makassar,Sulawesi Selatan
+314,157,13,1,9000.0,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.0,450,52,2025-05-05,84000.0,selesai,selesai,True,Dewi Kusuma,Makassar,Sulawesi Selatan
+315,158,88,1,84000.0,Minyak Telon Cap Lang,Bayi,25000.0,280,53,2025-05-08,120000.0,dibayar,dibayar,True,Agus Wijaya,Manado,Sulawesi Utara
+316,158,14,1,25000.0,Pembalut Kotex,Perawatan Tubuh,25000.0,300,53,2025-05-08,120000.0,dibayar,dibayar,True,Agus Wijaya,Manado,Sulawesi Utara
+317,159,89,1,120000.0,Krim Bayi Cussons,Bayi,20000.0,310,54,2025-05-11,67000.0,selesai,selesai,True,Siska Putri,Pekanbaru,Riau
+318,159,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,54,2025-05-11,67000.0,selesai,selesai,True,Siska Putri,Pekanbaru,Riau
+321,161,91,1,71000.0,Sampoerna Hijau,Rokok,24000.0,130,56,2025-05-17,98000.0,dikirim,dikirim,True,Lia Permata,Palu,Sulawesi Tengah
+322,161,17,1,55000.0,Susu SGM 1+ 400g,Bayi,55000.0,250,56,2025-05-17,98000.0,dikirim,dikirim,True,Lia Permata,Palu,Sulawesi Tengah
+323,162,92,1,98000.0,Gudang Garam Filter,Rokok,25500.0,105,57,2025-05-20,85000.0,selesai,selesai,True,Toni Prasetyo,Banjarmasin,Kalimantan Selatan
+324,162,18,1,22000.0,Baby Oil Zwitsal,Bayi,22000.0,300,57,2025-05-20,85000.0,selesai,selesai,True,Toni Prasetyo,Banjarmasin,Kalimantan Selatan
+325,163,93,1,85000.0,Djarum Coklat,Rokok,23000.0,160,58,2025-05-23,113000.0,dibayar,dibayar,True,Maya Sari,Medan,Sumatera Utara
+326,163,19,1,18000.0,Tisu Bayi Mitu,Bayi,18000.0,400,58,2025-05-23,113000.0,dibayar,dibayar,True,Maya Sari,Medan,Sumatera Utara
+327,164,94,1,38000.0,A Mild White,Rokok,26000.0,90,59,2025-05-26,59000.0,selesai,selesai,True,Adi Nugroho,Denpasar,Bali
+328,164,99,1,28000.0,Kertas HVS 1 rim,Alat Tulis,50000.0,300,59,2025-05-26,59000.0,selesai,selesai,True,Adi Nugroho,Denpasar,Bali
+331,166,102,1,117000.0,Kuku Bima Ginseng,Minuman,6500.0,400,61,2025-06-01,105000.0,dikirim,dikirim,True,Budi Pratama,Bandung,Jawa Barat
+332,166,21,1,28000.0,Sampoerna Mild,Rokok,28000.0,100,61,2025-06-01,105000.0,dikirim,dikirim,True,Budi Pratama,Bandung,Jawa Barat
+333,167,103,1,88000.0,Bear Brand,Minuman,10000.0,350,62,2025-06-04,82000.0,selesai,selesai,True,Siti Rahayu,Makassar,Sulawesi Selatan
+334,167,22,1,20000.0,Gudang Garam Surya,Rokok,26000.0,120,62,2025-06-04,82000.0,selesai,selesai,True,Siti Rahayu,Makassar,Sulawesi Selatan
+335,168,104,1,74000.0,Susu Ultra Murni,Minuman,12000.0,500,63,2025-06-07,95000.0,dibayar,dibayar,True,Dian Sari,Padang,Sumatera Barat
+336,168,23,1,38000.0,Djarum Super,Rokok,24000.0,180,63,2025-06-07,95000.0,dibayar,dibayar,True,Dian Sari,Padang,Sumatera Barat
+337,169,105,1,106000.0,Yoghurt Cimory,Minuman,15000.0,280,64,2025-06-10,66000.0,selesai,selesai,True,Agus Santoso,Bandung,Jawa Barat
+338,169,24,1,120000.0,LA Light,Rokok,23000.0,150,64,2025-06-10,66000.0,selesai,selesai,True,Agus Santoso,Bandung,Jawa Barat
+341,171,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,66,2025-06-16,117000.0,dikirim,dikirim,True,Fajar Wijaya,Banjarmasin,Kalimantan Selatan
+342,171,10,2,90000.0,Sari Lemon,Minuman,5500.0,250,66,2025-06-16,117000.0,dikirim,dikirim,True,Fajar Wijaya,Banjarmasin,Kalimantan Selatan
+343,172,15,1,16000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,67,2025-06-19,88000.0,selesai,selesai,True,Nadia Sari,Manado,Sulawesi Utara
+344,172,20,2,56000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,67,2025-06-19,88000.0,selesai,selesai,True,Nadia Sari,Manado,Sulawesi Utara
+345,173,25,1,5800.0,Surya Pro Mild,Rokok,30000.0,90,68,2025-06-22,74000.0,dibayar,dibayar,True,Eko Wijaya,Aceh Besar,Aceh
+346,173,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,68,2025-06-22,74000.0,dibayar,dibayar,True,Eko Wijaya,Aceh Besar,Aceh
+347,174,35,2,156000.0,Udang Windu/kg,Makanan,120000.0,80,69,2025-06-25,106000.0,selesai,selesai,True,Riska Sari,Tangerang,Banten
+348,174,40,1,5500.0,Mentega Blue Band,Makanan,16000.0,200,69,2025-06-25,106000.0,selesai,selesai,True,Riska Sari,Tangerang,Banten
+351,176,55,1,36000.0,Biskuit Bayi Milna,Bayi,25000.0,210,71,2025-07-01,92000.0,dikirim,dikirim,True,Anita Wijaya,Balikpapan,Kalimantan Timur
+352,176,60,1,46000.0,U Mild,Rokok,22000.0,140,71,2025-07-01,92000.0,dikirim,dikirim,True,Anita Wijaya,Balikpapan,Kalimantan Timur
+353,177,65,1,46000.0,Gunting Fiskars,Alat Tulis,28000.0,180,72,2025-07-04,83000.0,selesai,selesai,True,Bayu Prasetyo,Samarinda,Kalimantan Timur
+354,177,70,1,15000.0,Tempe 1 papan,Makanan,5000.0,600,72,2025-07-04,83000.0,selesai,selesai,True,Bayu Prasetyo,Samarinda,Kalimantan Timur
+355,178,75,2,76000.0,Margarin Palmia,Makanan,15000.0,230,73,2025-07-07,115000.0,dibayar,dibayar,True,Fitri Sari,Jakarta Selatan,DKI Jakarta
+356,178,80,1,58000.0,Sprite 240ml,Minuman,6000.0,700,73,2025-07-07,115000.0,dibayar,dibayar,True,Fitri Sari,Jakarta Selatan,DKI Jakarta
+357,179,85,2,76000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,74,2025-07-10,61000.0,selesai,selesai,True,Irfan Wijaya,Jakarta Pusat,DKI Jakarta
+358,179,90,1,38000.0,Bubur Nestle,Bayi,30000.0,190,74,2025-07-10,61000.0,selesai,selesai,True,Irfan Wijaya,Jakarta Pusat,DKI Jakarta
+361,181,1,1,2500.0,Indomie Goreng,Makanan,2500.0,500,76,2025-07-16,108000.0,dikirim,dikirim,True,Hadi Prasetyo,Semarang,Jawa Tengah
+362,181,100,1,117500.0,Map Plastik Kiky,Alat Tulis,7000.0,420,76,2025-07-16,108000.0,dikirim,dikirim,True,Hadi Prasetyo,Semarang,Jawa Tengah
+363,182,5,2,30000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,77,2025-07-19,89000.0,selesai,selesai,True,Linda Wijaya,Palembang,Sumatera Selatan
+364,182,90,1,38000.0,Bubur Nestle,Bayi,30000.0,190,77,2025-07-19,89000.0,selesai,selesai,True,Linda Wijaya,Palembang,Sumatera Selatan
+365,183,10,2,90000.0,Sari Lemon,Minuman,5500.0,250,78,2025-07-22,95000.0,dibayar,dibayar,True,Rizal Wijaya,Pekanbaru,Riau
+366,183,75,1,30000.0,Margarin Palmia,Makanan,15000.0,230,78,2025-07-22,95000.0,dibayar,dibayar,True,Rizal Wijaya,Pekanbaru,Riau
+367,184,20,1,28000.0,Bubur Bayi Cerelac,Bayi,28000.0,200,79,2025-07-25,53000.0,selesai,selesai,True,Dewi Anggraini,Banda Aceh,Aceh
+368,184,85,1,53000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,79,2025-07-25,53000.0,selesai,selesai,True,Dewi Anggraini,Banda Aceh,Aceh
+371,186,30,2,102000.0,Penggaris 30cm,Alat Tulis,5000.0,400,81,2025-08-01,120000.0,dikirim,dikirim,True,Siska Marlina,Yogyakarta,DI Yogyakarta
+372,186,56,1,42000.0,Sampoerna Kretek,Rokok,25000.0,110,81,2025-08-01,120000.0,dikirim,dikirim,True,Siska Marlina,Yogyakarta,DI Yogyakarta
+373,187,46,1,57000.0,Shampoo Clear,Perawatan Tubuh,13000.0,350,82,2025-08-04,83000.0,selesai,selesai,True,Indra Prasetyo,Manado,Sulawesi Utara
+374,187,41,1,44000.0,Teh Botol Sosro,Minuman,5000.0,900,82,2025-08-04,83000.0,selesai,selesai,True,Indra Prasetyo,Manado,Sulawesi Utara
+375,188,51,2,66000.0,Popok Merries,Bayi,92000.0,120,83,2025-08-07,74000.0,dibayar,dibayar,True,Maya Putri,Padang,Sumatera Barat
+376,188,38,1,33000.0,Bumbu Racik Soto,Makanan,7000.0,300,83,2025-08-07,74000.0,dibayar,dibayar,True,Maya Putri,Padang,Sumatera Barat
+377,189,61,1,62000.0,Buku Gambar Karton,Alat Tulis,12000.0,300,84,2025-08-10,108000.0,selesai,selesai,True,Dani Wijaya,Semarang,Jawa Tengah
+378,189,3,1,72000.0,Beras Rojolele 5kg,Makanan,65000.0,200,84,2025-08-10,108000.0,selesai,selesai,True,Dani Wijaya,Semarang,Jawa Tengah
+381,191,71,2,12000.0,Kecap ABC,Makanan,13000.0,420,86,2025-08-16,92000.0,dikirim,dikirim,True,Anton Prasetyo,Denpasar,Bali
+382,191,76,1,40500.0,Nescafe Classic,Minuman,16000.0,550,86,2025-08-16,92000.0,dikirim,dikirim,True,Anton Prasetyo,Denpasar,Bali
+383,192,77,1,86000.0,Teh Kotak,Minuman,4500.0,950,87,2025-08-19,100000.0,selesai,selesai,True,Siti Lestari,Ambon,Maluku
+384,192,4,1,28000.0,Minyak Goreng Bimoli 1L,Makanan,28000.0,150,87,2025-08-19,100000.0,selesai,selesai,True,Siti Lestari,Ambon,Maluku
+385,193,78,1,77000.0,Air Zamzam 250ml,Minuman,7000.0,200,88,2025-08-22,65000.0,dibayar,dibayar,True,Bambang Wijaya,Tegal,Jawa Tengah
+386,193,83,1,49000.0,Bedak Tabur Wardah,Perawatan Tubuh,35000.0,170,88,2025-08-22,65000.0,dibayar,dibayar,True,Bambang Wijaya,Tegal,Jawa Tengah
+387,194,88,1,53000.0,Minyak Telon Cap Lang,Bayi,25000.0,280,89,2025-08-25,71000.0,selesai,selesai,True,Dinda Sari,Solo,Jawa Tengah
+388,194,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,89,2025-08-25,71000.0,selesai,selesai,True,Dinda Sari,Solo,Jawa Tengah
+391,196,98,1,40000.0,Sticky Notes 3M,Alat Tulis,18000.0,220,91,2025-09-01,86000.0,dikirim,dikirim,True,Lina Putri,Jambi,Jambi
+392,196,103,2,32000.0,Bear Brand,Minuman,10000.0,350,91,2025-09-01,86000.0,dikirim,dikirim,True,Lina Putri,Jambi,Jambi
+393,197,2,1,8500.0,Sari Roti Coklat,Makanan,8500.0,300,92,2025-09-04,77000.0,selesai,selesai,True,Hendri Wijaya,Bandar Lampung,Lampung
+394,197,100,1,66000.0,Map Plastik Kiky,Alat Tulis,7000.0,420,92,2025-09-04,77000.0,selesai,selesai,True,Hendri Wijaya,Bandar Lampung,Lampung
+395,198,5,2,30000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,93,2025-09-07,126000.0,dibayar,dibayar,True,Nina Sari,Banda Aceh,Aceh
+396,198,32,2,32000.0,Telur Ayam Kampung,Makanan,3500.0,1000,93,2025-09-07,126000.0,dibayar,dibayar,True,Nina Sari,Banda Aceh,Aceh
+397,199,10,1,45000.0,Sari Lemon,Minuman,5500.0,250,94,2025-09-10,53000.0,selesai,selesai,True,Raka Wijaya,Pontianak,Kalimantan Barat
+398,199,15,2,32000.0,Deodorant Rexona,Perawatan Tubuh,16000.0,200,94,2025-09-10,53000.0,selesai,selesai,True,Raka Wijaya,Pontianak,Kalimantan Barat
+401,201,30,1,51000.0,Penggaris 30cm,Alat Tulis,5000.0,400,96,2025-09-16,95000.0,dikirim,dikirim,True,Agus Prasetyo,Manado,Sulawesi Utara
+402,201,35,1,78000.0,Udang Windu/kg,Makanan,120000.0,80,96,2025-09-16,95000.0,dikirim,dikirim,True,Agus Prasetyo,Manado,Sulawesi Utara
+403,202,40,2,11000.0,Mentega Blue Band,Makanan,16000.0,200,97,2025-09-19,82000.0,selesai,selesai,True,Siska Wijaya,Pekanbaru,Riau
+404,202,45,1,32000.0,Yakult,Minuman,8500.0,300,97,2025-09-19,82000.0,selesai,selesai,True,Siska Wijaya,Pekanbaru,Riau
+405,203,50,2,64000.0,Masker Wardah,Perawatan Tubuh,22000.0,180,98,2025-09-22,110000.0,dibayar,dibayar,True,Rudi Wijaya,Semarang,Jawa Tengah
+406,203,55,1,36000.0,Biskuit Bayi Milna,Bayi,25000.0,210,98,2025-09-22,110000.0,dibayar,dibayar,True,Rudi Wijaya,Semarang,Jawa Tengah
+407,204,60,1,46000.0,U Mild,Rokok,22000.0,140,99,2025-09-25,57000.0,selesai,selesai,True,Lia Sari,Palu,Sulawesi Tengah
+408,204,65,1,46000.0,Gunting Fiskars,Alat Tulis,28000.0,180,99,2025-09-25,57000.0,selesai,selesai,True,Lia Sari,Palu,Sulawesi Tengah
+411,206,80,1,58000.0,Sprite 240ml,Minuman,6000.0,700,101,2025-10-01,104000.0,dikirim,dikirim,True,Maya Wijaya,Medan,Sumatera Utara
+412,206,85,1,40000.0,Sheet Mask Emina,Perawatan Tubuh,12000.0,250,101,2025-10-01,104000.0,dikirim,dikirim,True,Maya Wijaya,Medan,Sumatera Utara
+413,207,90,1,38000.0,Bubur Nestle,Bayi,30000.0,190,102,2025-10-04,79000.0,selesai,selesai,True,Adi Wijaya,Denpasar,Bali
+414,207,95,1,48000.0,Starmild Blue,Rokok,23500.0,125,102,2025-10-04,79000.0,selesai,selesai,True,Adi Wijaya,Denpasar,Bali
+415,208,1,1,2500.0,Indomie Goreng,Makanan,2500.0,500,103,2025-10-07,92000.0,dibayar,dibayar,True,Rina Sari,Jakarta Barat,DKI Jakarta
+416,208,100,1,94500.0,Map Plastik Kiky,Alat Tulis,7000.0,420,103,2025-10-07,92000.0,dibayar,dibayar,True,Rina Sari,Jakarta Barat,DKI Jakarta
+417,209,5,1,15000.0,Gula Pasir Gulaku 1kg,Makanan,15000.0,400,104,2025-10-10,64000.0,selesai,selesai,True,Budi Wijaya,Bandung,Jawa Barat
+418,209,26,2,60000.0,Buku Tulis Sidu,Alat Tulis,4000.0,500,104,2025-10-10,64000.0,selesai,selesai,True,Budi Wijaya,Bandung,Jawa Barat

@@ -1,0 +1,6 @@
+business_objective,kpi,formula,dashboard_source,recommended_use
+Meningkatkan retensi pelanggan aktif,Repeat Purchase Rate,Jumlah pelanggan repeat order / jumlah pelanggan aktif,"Customer RFM, Segment Summary",Memantau efektivitas nudge loyalty dan win-back.
+Meningkatkan nilai transaksi,Average Order Value,Total revenue / jumlah order valid,"Customer RFM, Monthly Trend",Mengevaluasi keberhasilan premium upsell dan bundling.
+Meningkatkan pembelian bundling,Bundle Uptake Rate,Order yang membeli produk rekomendasi bundling / order yang menerima rekomendasi,"Association Rule, Bundling Recommendation",Mengukur efektivitas cross-sell dari rules.
+Mengaktifkan pelanggan pasif,Reactivation Rate,Pelanggan pasif yang kembali transaksi / pelanggan yang diberi win-back nudge,Next Best Action,Mengevaluasi campaign At Risk dan Hibernating.
+Mengukur relevansi rekomendasi,Recommendation Relevance Rate,Rekomendasi utama sesuai kategori favorit / total rekomendasi customer aktif,Recommendation Evaluation,Menilai apakah rekomendasi utama sudah sesuai perilaku customer aktif.

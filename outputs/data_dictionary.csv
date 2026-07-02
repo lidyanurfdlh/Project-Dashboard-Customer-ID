@@ -1,0 +1,12 @@
+file,column,description
+preprocessing_audit.csv,analyzed_customers,Jumlah pelanggan dengan minimal satu transaksi valid dan dipakai dalam dashboard utama.
+excluded_customers.csv,customer_id,Pelanggan yang tidak masuk analisis karena tidak memiliki transaksi valid.
+customer_rfm.csv,recency_days,Selisih analysis_date dan last_order_date untuk pelanggan aktif.
+customer_rfm.csv,frequency,Jumlah order valid per pelanggan aktif.
+customer_rfm.csv,monetary,Total subtotal transaksi valid per pelanggan aktif.
+customer_rfm.csv,favorite_category,Kategori favorit pelanggan aktif; tidak lagi berisi tanda - atau pelanggan tanpa transaksi valid.
+customer_rfm.csv,segment,Segmen RFM untuk pelanggan aktif saja. Segmen No Valid Purchase dihapus dari dashboard utama.
+market_basket_rules.csv,support,Jumlah basket yang memuat antecedent dan consequent dibagi total basket.
+market_basket_rules.csv,confidence,Peluang consequent muncul ketika antecedent muncul.
+market_basket_rules.csv,lift,Kekuatan hubungan dibandingkan peluang acak.
+next_best_action.csv,nudge_type,Jenis pesan nudge untuk pelanggan aktif sesuai segment.

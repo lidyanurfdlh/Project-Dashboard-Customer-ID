@@ -1,0 +1,6 @@
+metric,value,explanation
+total_rules,16,Jumlah rules yang dibentuk dari transaksi valid.
+category_rules,8,Rules kategori digunakan sebagai insight utama karena lebih stabil.
+product_rules_exploratory,8,Rules produk bersifat eksploratif karena lebih sensitif pada sparse transaction.
+extreme_lift_threshold,10,Lift di atas 10 perlu dibaca hati-hati karena dapat muncul dari support kecil.
+sparse_basket_threshold,4,Basket count <= 4 ditandai sebagai dukungan transaksi terbatas.

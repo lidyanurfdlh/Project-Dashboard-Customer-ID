@@ -1,0 +1,7 @@
+evaluation_area,metric,value,interpretation
+RFM validity,negative_recency_count,0.0,Harus 0 agar perhitungan recency valid.
+Active customer filter,analyzed_customers,87.0,Jumlah pelanggan yang dianalisis setelah pelanggan tanpa transaksi valid dikeluarkan.
+Active customer filter,excluded_customers_without_valid_orders,18.0,"Pelanggan ini tidak dianalisis dalam dashboard utama agar tidak muncul segmen No Valid Purchase dan kategori favorit ""-""."
+Recommendation relevance,main_recommendation_matches_favorite_category_pct,100.0,Persentase rekomendasi utama yang tetap berada pada kategori favorit pelanggan aktif.
+Association Rule coverage,customers_with_cross_sell_rule_pct,93.1,Persentase pelanggan aktif yang memiliki rekomendasi cross-sell berbasis Association Rule kategori.
+Nudge coverage,customers_with_nudge_message_pct,100.0,Persentase pelanggan aktif yang memperoleh nudge type dan action recommendation.

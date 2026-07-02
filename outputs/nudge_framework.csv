@@ -1,0 +1,5 @@
+segment,customers,nudge_type,nudge_objective,recommended_message,measurement_kpi
+Potential Loyalist,35,Bundling prompt,Tawarkan bundling kategori favorit untuk meningkatkan frequency.,Tawarkan bundling kategori favorit untuk meningkatkan frequency.,Repeat purchase rate / AOV / Reactivation rate sesuai segmen.
+Big Spenders,24,Premium upsell,Tawarkan produk premium atau paket bernilai lebih tinggi.,Tawarkan produk premium atau paket bernilai lebih tinggi.,Repeat purchase rate / AOV / Reactivation rate sesuai segmen.
+At Risk,6,Win-back reminder,Kirim reminder dan promo terbatas untuk mendorong pembelian ulang.,Kirim reminder dan promo terbatas untuk mendorong pembelian ulang.,Repeat purchase rate / AOV / Reactivation rate sesuai segmen.
+Hibernating,22,Reactivation,Berikan diskon reaktivasi atau rekomendasi produk favorit sebelumnya.,Berikan diskon reaktivasi atau rekomendasi produk favorit sebelumnya.,Repeat purchase rate / AOV / Reactivation rate sesuai segmen.

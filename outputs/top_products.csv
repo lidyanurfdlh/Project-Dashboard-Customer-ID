@@ -1,0 +1,101 @@
+product_id,product_name,kategori,quantity,revenue,orders,customers
+35,Udang Windu/kg,Makanan,8,624000.0,7,7
+100,Map Plastik Kiky,Alat Tulis,7,609500.0,7,7
+30,Penggaris 30cm,Alat Tulis,11,561000.0,9,9
+65,Gunting Fiskars,Alat Tulis,12,552000.0,6,6
+10,Sari Lemon,Minuman,12,540000.0,8,8
+3,Beras Rojolele 5kg,Makanan,7,489000.0,7,7
+24,LA Light,Rokok,4,480000.0,4,4
+77,Teh Kotak,Minuman,4,393000.0,4,4
+85,Sheet Mask Emina,Perawatan Tubuh,9,373000.0,7,6
+80,Sprite 240ml,Minuman,6,342000.0,5,5
+78,Air Zamzam 250ml,Minuman,4,330000.0,4,4
+17,Susu SGM 1+ 400g,Bayi,6,330000.0,4,4
+60,U Mild,Rokok,7,322000.0,6,6
+73,Bumbu Racik Rendang,Makanan,3,315000.0,2,2
+61,Buku Gambar Karton,Alat Tulis,6,310000.0,3,3
+75,Margarin Palmia,Makanan,8,288000.0,6,5
+83,Bedak Tabur Wardah,Perawatan Tubuh,5,281000.0,4,4
+20,Bubur Bayi Cerelac,Bayi,10,280000.0,6,6
+47,Sabun Giv,Perawatan Tubuh,3,276000.0,2,2
+88,Minyak Telon Cap Lang,Bayi,4,276000.0,4,4
+5,Gula Pasir Gulaku 1kg,Makanan,18,270000.0,12,12
+90,Bubur Nestle,Bayi,7,261000.0,7,7
+55,Biskuit Bayi Milna,Bayi,7,252000.0,6,6
+89,Krim Bayi Cussons,Bayi,2,248000.0,2,2
+102,Kuku Bima Ginseng,Minuman,2,236000.0,2,2
+51,Popok Merries,Bayi,7,231000.0,4,4
+46,Shampoo Clear,Perawatan Tubuh,4,228000.0,4,4
+103,Bear Brand,Minuman,5,223000.0,4,4
+105,Yoghurt Cimory,Minuman,2,211000.0,2,2
+26,Buku Tulis Sidu,Alat Tulis,7,210000.0,3,3
+72,Saus Tomat Del Monte,Makanan,9,203400.0,2,2
+98,Sticky Notes 3M,Alat Tulis,4,201000.0,3,3
+27,Pulpen Pilot,Alat Tulis,2,200000.0,2,2
+82,Sabun Cussons Baby,Perawatan Tubuh,2,197000.0,2,2
+87,Susu Dancow 1+ 400g,Bayi,2,195000.0,2,2
+79,Coca Cola 240ml,Minuman,3,195000.0,2,2
+92,Gudang Garam Filter,Rokok,2,195000.0,2,2
+56,Sampoerna Kretek,Rokok,6,194000.0,4,4
+50,Masker Wardah,Perawatan Tubuh,6,192000.0,4,4
+93,Djarum Coklat,Rokok,2,169000.0,2,2
+70,Tempe 1 papan,Makanan,4,166000.0,4,4
+15,Deodorant Rexona,Perawatan Tubuh,10,160000.0,8,8
+95,Starmild Blue,Rokok,4,155000.0,3,3
+23,Djarum Super,Rokok,4,152000.0,4,4
+94,A Mild White,Rokok,2,150000.0,2,2
+76,Nescafe Classic,Minuman,4,148500.0,3,3
+104,Susu Ultra Murni,Minuman,2,148000.0,2,2
+84,Micellar Water Somethinc,Perawatan Tubuh,2,145000.0,2,2
+69,Tahu Putih/pcs,Makanan,5,145000.0,2,2
+41,Teh Botol Sosro,Minuman,3,143000.0,3,3
+62,Spidol Snowman,Alat Tulis,3,139500.0,2,2
+38,Bumbu Racik Soto,Makanan,5,132000.0,4,4
+45,Yakult,Minuman,4,128000.0,3,3
+99,Kertas HVS 1 rim,Alat Tulis,2,122000.0,2,2
+21,Sampoerna Mild,Rokok,4,112000.0,3,3
+32,Telur Ayam Kampung,Makanan,9,112000.0,5,5
+18,Baby Oil Zwitsal,Bayi,5,110000.0,4,4
+68,Telur Ayam Biasa,Makanan,3,109500.0,2,2
+97,Tinta Printer Epson,Alat Tulis,1,106000.0,1,1
+66,Beras Pandan Wangi 5kg,Makanan,3,100500.0,2,2
+67,Daging Sapi/kg,Makanan,4,98000.0,2,2
+52,Susu Frisian Flag 123,Bayi,4,94000.0,2,2
+39,Tepung Terigu Segitiga,Makanan,2,94000.0,2,2
+33,Ayam Broiler/kg,Makanan,4,88000.0,2,2
+48,Lipstik Wardah,Perawatan Tubuh,3,84000.0,2,2
+4,Minyak Goreng Bimoli 1L,Makanan,3,84000.0,3,3
+14,Pembalut Kotex,Perawatan Tubuh,3,75000.0,3,3
+19,Tisu Bayi Mitu,Bayi,4,72000.0,3,3
+91,Sampoerna Hijau,Rokok,1,71000.0,1,1
+81,Shampoo Dove,Perawatan Tubuh,1,69000.0,1,1
+44,Le Minerale,Minuman,3,66000.0,2,2
+74,Tepung Maizena,Makanan,3,63000.0,1,1
+59,Gudang Garam Signature,Rokok,3,61500.0,2,2
+22,Gudang Garam Surya,Rokok,3,60000.0,3,3
+2,Sari Roti Coklat,Makanan,7,59500.0,5,5
+13,Pasta Gigi Pepsodent,Perawatan Tubuh,6,54000.0,5,5
+16,Popok MamyPoko,Bayi,2,50000.0,2,2
+34,Ikan Lele/kg,Makanan,4,48000.0,3,3
+12,Shampoo Sunsilk,Perawatan Tubuh,4,48000.0,3,3
+49,Face Wash Scarlett,Perawatan Tubuh,3,46400.0,1,1
+86,Popok Lovies,Bayi,1,46000.0,1,1
+53,Baby Diaper Huggies,Bayi,1,43000.0,1,1
+40,Mentega Blue Band,Makanan,7,38500.0,6,5
+6,Teh Sariwangi,Minuman,3,36000.0,2,2
+71,Kecap ABC,Makanan,6,36000.0,4,4
+31,Beras Sania 5kg,Makanan,3,36000.0,2,2
+57,Class Mild,Rokok,2,34000.0,2,2
+54,Tisu Basah Sleek,Bayi,2,34000.0,2,2
+58,Clas Mild Menthol,Rokok,1,33000.0,1,1
+11,Sabun Lifebuoy,Perawatan Tubuh,5,30000.0,4,4
+25,Surya Pro Mild,Rokok,5,29000.0,4,4
+37,Saus Sambal ABC,Makanan,3,28500.0,2,2
+9,Susu Indomilk 200ml,Minuman,5,22500.0,4,4
+1,Indomie Goreng,Makanan,8,20000.0,6,6
+7,Kopi Kapal Api,Minuman,2,20000.0,2,2
+8,Aqua Botol 600ml,Minuman,6,18000.0,3,3
+28,Pensil Faber Castell,Alat Tulis,2,18000.0,2,2
+43,Pocari Sweat,Minuman,1,18000.0,1,1
+29,Penghapus Kenko,Alat Tulis,3,15000.0,3,3
+36,Kecap Bango,Makanan,1,14000.0,1,1

@@ -1,0 +1,13 @@
+metric,value,explanation
+raw_customers,105,Jumlah seluruh pelanggan pada pelanggan.csv sebelum seleksi transaksi valid.
+analyzed_customers,87,"Jumlah pelanggan yang memiliki minimal satu transaksi valid. Hanya kelompok ini dipakai dalam RFM, rekomendasi, dan dashboard utama."
+excluded_customers_without_valid_orders,18,"Pelanggan tanpa transaksi valid. Kelompok ini tidak dimasukkan ke RFM agar dashboard tidak menampilkan segmen No Valid Purchase dan tidak memunculkan kategori favorit ""-""."
+raw_orders,226,Jumlah order pada orders.csv sebelum filter status.
+orders_selesai_only,91,"Order dengan status selesai saja. Angka ini bukan total order valid, melainkan completed orders."
+orders_dikirim,46,"Order yang sudah dikirim dan tidak dibatalkan, sehingga dimasukkan sebagai transaksi valid untuk analisis."
+orders_dibayar,45,"Order yang sudah dibayar dan tidak dibatalkan, sehingga dimasukkan sebagai transaksi valid untuk analisis."
+orders_dibatalkan,44,"Order dibatalkan dan dikeluarkan dari analisis RFM, market basket, rekomendasi, dan dashboard utama."
+valid_non_cancelled_orders,182,Order valid untuk analisis = selesai + dikirim + dibayar. Ini menjelaskan mengapa angkanya lebih besar dari order selesai saja.
+raw_line_items,420,Jumlah baris detail produk sebelum filter status order.
+valid_line_items,338,Jumlah baris detail produk setelah hanya mengambil order valid.
+analysis_date,2025-12-01,Tanggal referensi RFM = satu hari setelah tanggal order valid terakhir agar recency tidak negatif.

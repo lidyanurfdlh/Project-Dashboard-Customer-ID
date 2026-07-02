@@ -1,0 +1,5 @@
+table_name,raw_records,fields,primary_key,description
+pelanggan,105,7,pelanggan_id,Master data pelanggan sebelum filter transaksi valid
+orders,226,5,order_id,Raw order records sebelum filtering status
+detil_order,420,5,detil_id,Detail transaksi atau line items sebelum preprocessing
+produk,115,5,produk_id,Master data produk dan kategori sebelum join

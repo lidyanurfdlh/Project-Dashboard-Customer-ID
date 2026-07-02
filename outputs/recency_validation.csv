@@ -1,0 +1,6 @@
+check,value,status,explanation
+negative_recency_count,0,PASS,Recency tidak boleh negatif. Nilai harus 0 atau lebih.
+analysis_date,2025-12-01,INFO,Analysis date dihitung dari tanggal order valid terakhir + 1 hari.
+latest_valid_order_date,2025-11-30,INFO,Tanggal order valid terakhir pada dataset.
+min_recency_days,1.0,PASS,Nilai recency minimum setelah validasi.
+max_recency_days,676.0,INFO,Nilai recency maksimum setelah validasi.

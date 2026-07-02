@@ -1,0 +1,17 @@
+rule_level,antecedent,consequent,support,confidence,lift,basket_count,reliability_flag,interpretation_scope
+category,Alat Tulis,Makanan,0.15384615384615385,0.6046511627906976,1.20218878248974,26,category_stable,Insight utama kategori untuk cross-sell.
+category,Minuman,Makanan,0.15384615384615385,0.48148148148148145,0.9572984749455337,26,category_stable,Insight utama kategori untuk cross-sell.
+category,Makanan,Alat Tulis,0.15384615384615385,0.3058823529411765,1.2021887824897401,26,category_stable,Insight utama kategori untuk cross-sell.
+category,Makanan,Minuman,0.15384615384615385,0.3058823529411765,0.9572984749455338,26,category_stable,Insight utama kategori untuk cross-sell.
+category,Bayi,Perawatan Tubuh,0.11834319526627218,0.4,1.352,20,category_stable,Insight utama kategori untuk cross-sell.
+category,Perawatan Tubuh,Bayi,0.11834319526627218,0.4,1.352,20,category_stable,Insight utama kategori untuk cross-sell.
+category,Perawatan Tubuh,Minuman,0.08875739644970414,0.3,0.9388888888888888,15,category_stable,Insight utama kategori untuk cross-sell.
+category,Minuman,Perawatan Tubuh,0.08875739644970414,0.2777777777777778,0.9388888888888889,15,category_stable,Insight utama kategori untuk cross-sell.
+product,Indomie Goreng,Map Plastik Kiky,0.023668639053254437,0.6666666666666666,16.09523809523809,4,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Map Plastik Kiky,Indomie Goreng,0.023668639053254437,0.5714285714285714,16.095238095238095,4,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Yakult,Mentega Blue Band,0.01775147928994083,1.0,28.166666666666664,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Buku Tulis Sidu,Gula Pasir Gulaku 1kg,0.01775147928994083,1.0,14.083333333333332,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Mentega Blue Band,Yakult,0.01775147928994083,0.5,28.166666666666664,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Bubur Bayi Cerelac,Sheet Mask Emina,0.01775147928994083,0.5,12.071428571428571,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Sheet Mask Emina,Bubur Bayi Cerelac,0.01775147928994083,0.42857142857142855,12.071428571428571,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.
+product,Gula Pasir Gulaku 1kg,Buku Tulis Sidu,0.01775147928994083,0.25,14.083333333333332,3,product_exploratory,Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai strategi utama.

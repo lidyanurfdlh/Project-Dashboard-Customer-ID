@@ -1,0 +1,5 @@
+status_clean,orders,customers,order_total,valid_for_analysis
+selesai,91,48,7243000.0,True
+dikirim,46,23,4726000.0,True
+dibayar,45,23,4475000.0,True
+dibatalkan,44,23,2739000.0,False
