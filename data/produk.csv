@@ -1,0 +1,116 @@
+"produk_id","nama_produk","kategori","harga","stok"
+1,Indomie Goreng,Makanan,2500.00,500
+2,Sari Roti Coklat,Makanan,8500.00,300
+3,Beras Rojolele 5kg,Makanan,65000.00,200
+4,Minyak Goreng Bimoli 1L,Makanan,28000.00,150
+5,Gula Pasir Gulaku 1kg,Makanan,15000.00,400
+6,Teh Sariwangi,Minuman,12000.00,600
+7,Kopi Kapal Api,Minuman,18000.00,350
+8,Aqua Botol 600ml,Minuman,3000.00,1000
+9,Susu Indomilk 200ml,Minuman,4500.00,700
+10,Sari Lemon,Minuman,5500.00,250
+11,Sabun Lifebuoy,Perawatan Tubuh,6000.00,500
+12,Shampoo Sunsilk,Perawatan Tubuh,12000.00,400
+13,Pasta Gigi Pepsodent,Perawatan Tubuh,9000.00,450
+14,Pembalut Kotex,Perawatan Tubuh,25000.00,300
+15,Deodorant Rexona,Perawatan Tubuh,16000.00,200
+16,Popok MamyPoko,Bayi,85000.00,150
+17,Susu SGM 1+ 400g,Bayi,55000.00,250
+18,Baby Oil Zwitsal,Bayi,22000.00,300
+19,Tisu Bayi Mitu,Bayi,18000.00,400
+20,Bubur Bayi Cerelac,Bayi,28000.00,200
+21,Sampoerna Mild,Rokok,28000.00,100
+22,Gudang Garam Surya,Rokok,26000.00,120
+23,Djarum Super,Rokok,24000.00,180
+24,LA Light,Rokok,23000.00,150
+25,Surya Pro Mild,Rokok,30000.00,90
+26,Buku Tulis Sidu,Alat Tulis,4000.00,500
+27,Pulpen Pilot,Alat Tulis,6000.00,600
+28,Pensil Faber Castell,Alat Tulis,3500.00,700
+29,Penghapus Kenko,Alat Tulis,2000.00,800
+30,Penggaris 30cm,Alat Tulis,5000.00,400
+31,Beras Sania 5kg,Makanan,68000.00,180
+32,Telur Ayam Kampung,Makanan,3500.00,1000
+33,Ayam Broiler/kg,Makanan,38000.00,200
+34,Ikan Lele/kg,Makanan,32000.00,150
+35,Udang Windu/kg,Makanan,120000.00,80
+36,Kecap Bango,Makanan,14000.00,400
+37,Saus Sambal ABC,Makanan,9000.00,500
+38,Bumbu Racik Soto,Makanan,7000.00,300
+39,Tepung Terigu Segitiga,Makanan,12000.00,250
+40,Mentega Blue Band,Makanan,16000.00,200
+41,Teh Botol Sosro,Minuman,5000.00,900
+42,Fruit Tea,Minuman,5500.00,850
+43,Pocari Sweat,Minuman,8000.00,600
+44,Le Minerale,Minuman,3500.00,1200
+45,Yakult,Minuman,8500.00,300
+46,Shampoo Clear,Perawatan Tubuh,13000.00,350
+47,Sabun Giv,Perawatan Tubuh,5500.00,450
+48,Lipstik Wardah,Perawatan Tubuh,32000.00,150
+49,Face Wash Scarlett,Perawatan Tubuh,28000.00,200
+50,Masker Wardah,Perawatan Tubuh,22000.00,180
+51,Popok Merries,Bayi,92000.00,120
+52,Susu Frisian Flag 123,Bayi,62000.00,220
+53,Baby Diaper Huggies,Bayi,88000.00,130
+54,Tisu Basah Sleek,Bayi,16000.00,420
+55,Biskuit Bayi Milna,Bayi,25000.00,210
+56,Sampoerna Kretek,Rokok,25000.00,110
+57,Class Mild,Rokok,27000.00,100
+58,Clas Mild Menthol,Rokok,27500.00,95
+59,Gudang Garam Signature,Rokok,29000.00,80
+60,U Mild,Rokok,22000.00,140
+61,Buku Gambar Karton,Alat Tulis,12000.00,300
+62,Spidol Snowman,Alat Tulis,8000.00,400
+63,Stabilo Highlighter,Alat Tulis,10000.00,350
+64,Lem Uhu,Alat Tulis,15000.00,250
+65,Gunting Fiskars,Alat Tulis,28000.00,180
+66,Beras Pandan Wangi 5kg,Makanan,72000.00,160
+67,Daging Sapi/kg,Makanan,120000.00,100
+68,Telur Ayam Biasa,Makanan,2800.00,1200
+69,Tahu Putih/pcs,Makanan,2000.00,800
+70,Tempe 1 papan,Makanan,5000.00,600
+71,Kecap ABC,Makanan,13000.00,420
+72,Saus Tomat Del Monte,Makanan,12000.00,380
+73,Bumbu Racik Rendang,Makanan,8000.00,280
+74,Tepung Maizena,Makanan,10000.00,300
+75,Margarin Palmia,Makanan,15000.00,230
+76,Nescafe Classic,Minuman,16000.00,550
+77,Teh Kotak,Minuman,4500.00,950
+78,Air Zamzam 250ml,Minuman,7000.00,200
+79,Coca Cola 240ml,Minuman,6000.00,700
+80,Sprite 240ml,Minuman,6000.00,700
+81,Shampoo Dove,Perawatan Tubuh,14000.00,330
+82,Sabun Cussons Baby,Perawatan Tubuh,7000.00,480
+83,Bedak Tabur Wardah,Perawatan Tubuh,35000.00,170
+84,Micellar Water Somethinc,Perawatan Tubuh,45000.00,120
+85,Sheet Mask Emina,Perawatan Tubuh,12000.00,250
+86,Popok Lovies,Bayi,80000.00,140
+87,Susu Dancow 1+ 400g,Bayi,58000.00,240
+88,Minyak Telon Cap Lang,Bayi,25000.00,280
+89,Krim Bayi Cussons,Bayi,20000.00,310
+90,Bubur Nestle,Bayi,30000.00,190
+91,Sampoerna Hijau,Rokok,24000.00,130
+92,Gudang Garam Filter,Rokok,25500.00,105
+93,Djarum Coklat,Rokok,23000.00,160
+94,A Mild White,Rokok,26000.00,90
+95,Starmild Blue,Rokok,23500.00,125
+96,Buku Tulis Kiky,Alat Tulis,3500.00,550
+97,Tinta Printer Epson,Alat Tulis,85000.00,80
+98,Sticky Notes 3M,Alat Tulis,18000.00,220
+99,Kertas HVS 1 rim,Alat Tulis,50000.00,300
+100,Map Plastik Kiky,Alat Tulis,7000.00,420
+101,Teh Pucuk Harum,Minuman,4000.00,1000
+102,Kuku Bima Ginseng,Minuman,6500.00,400
+103,Bear Brand,Minuman,10000.00,350
+104,Susu Ultra Murni,Minuman,12000.00,500
+105,Yoghurt Cimory,Minuman,15000.00,280
+106,Shampoo Head & Shoulders,Perawatan Tubuh,15000.00,320
+107,Sabun Cuci Muka Emina,Perawatan Tubuh,24000.00,200
+108,Pelembab Acnes,Perawatan Tubuh,18000.00,230
+109,Toner Scarlett,Perawatan Tubuh,32000.00,180
+110,Sunscreen Wardah,Perawatan Tubuh,42000.00,150
+111,Popok Drypers,Bayi,82000.00,160
+112,Susu Bebelac Gold,Bayi,180000.00,100
+113,Kapas Bayi Mitu,Bayi,15000.00,380
+114,Baby Oil Pure,Bayi,21000.00,290
+115,Biskuit Zee,Bayi,27000.00,195
