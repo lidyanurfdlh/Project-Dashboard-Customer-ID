@@ -59,7 +59,7 @@ p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;}
 
 BASE = Path(__file__).resolve().parent
 OUT = BASE / "outputs"
-RAW_DIR = BASE.parent / "data"
+RAW_DIR = BASE / "data"
 
 def load_csv(name):
     path = OUT / name
