@@ -251,7 +251,7 @@ tabs = st.tabs(["🏠 Executive Overview", "🧹 Data Validation", "👥 Custome
 
 with tabs[0]:
     section("Executive Overview", "Ringkasan utama dashboard berdasarkan data pelanggan, transaksi, segmentasi RFM, dan rekomendasi pemasaran.")
-    st.subheader("Raw Data Before Preprocessing")
+    st.subheader("Raw Data Sebelum Preprocessing")
     rc1, rc2, rc3, rc4 = st.columns(4)
     with rc1: metric_card("Raw Pelanggan", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields sebelum preprocessing")
     with rc2: metric_card("Raw Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields sebelum filter status")
