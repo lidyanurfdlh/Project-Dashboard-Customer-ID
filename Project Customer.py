@@ -28,9 +28,60 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] * {color:#1E293B !important;}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
-div[data-baseweb="select"] > div {background-color:#FFFFFF !important; border:1px solid #BFDBFE !important; border-radius:14px !important; box-shadow:0 6px 16px rgba(37,99,235,.08) !important; padding-left:8px !important; overflow:visible !important;}
-.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important; color:#0F172A !important; border-radius:999px !important; border:1px solid #93C5FD !important; font-weight:700 !important; margin-left:4px !important; padding-left:10px !important; overflow:visible !important; max-width:none !important;}
-.stMultiSelect [data-baseweb="tag"] span {overflow:visible !important; text-overflow:clip !important; white-space:nowrap !important;}
+
+/* 1. Paksa container utama multiselect agar tingginya fleksibel (mengikuti isi tag) */
+div[data-baseweb="select"] {
+    height: auto !important;
+    min-height: 48px !important;
+}
+
+/* 2. Bebaskan batas height kaku pada pembungkus internal BaseWeb */
+div[data-baseweb="select"] > div,
+div[data-baseweb="select"] div[class*="ControlContainer"] {
+    background-color: #FFFFFF !important;
+    border: 1px solid #BFDBFE !important;
+    border-radius: 14px !important;
+    box-shadow: 0 6px 16px rgba(37,99,235,.08) !important;
+    padding: 6px 8px !important;
+    height: auto !important;
+    min-height: 48px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-items: center !important;
+}
+
+/* 3. Atur container pembungkus tag (value container) */
+div[data-baseweb="select"] [data-testid="stValueContainer"] {
+    padding: 2px 0 !important;
+    gap: 4px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* 4. Sesuaikan tag pill agar ukurannya pas & teratur */
+.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {
+    background: linear-gradient(135deg, #DBEAFE 0%, #CCFBF1 100%) !important;
+    color: #0F172A !important;
+    border-radius: 999px !important;
+    border: 1px solid #93C5FD !important;
+    font-weight: 700 !important;
+    margin: 3px 2px !important;
+    padding: 2px 10px !important;
+    height: 28px !important;
+    max-width: none !important;
+    overflow: visible !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* 5. Teks di dalam tag */
+.stMultiSelect [data-baseweb="tag"] span {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+}
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
