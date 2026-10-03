@@ -24,9 +24,9 @@
 
 ## Cara menjalankan
 ```bash
-cd customer_id_final_fix_v2/streamlit_customer_id_final_v2
+cd Project Customer 
 python -m pip install -r requirements.txt
-python -m streamlit run app_customer_id_final_v2.py
+python -m streamlit run "Project Customer.py" 
 ```
 
 ## Update raw data audit sebelum preprocessing
