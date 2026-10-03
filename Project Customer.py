@@ -16,142 +16,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ==========================================
-# MULTI-LANGUAGE (i18n) DICTIONARY & SETUP
-# ==========================================
-if "lang" not in st.session_state:
-    st.session_state.lang = "en"  # Default English untuk kebutuhan figure/screenshot
-
-st.sidebar.markdown("### 🌐 Language / Bahasa")
-lang_choice = st.sidebar.radio(
-    "Select Language / Pilih Bahasa",
-    options=["English", "Bahasa Indonesia"],
-    index=0 if st.session_state.lang == "en" else 1,
-    label_visibility="collapsed"
-)
-st.session_state.lang = "en" if lang_choice == "English" else "id"
-
-TRANSLATIONS = {
-    # Headers & Hero
-    "title_hero": {
-        "id": "🛒 Customer ID Recommendation Dashboard",
-        "en": "🛒 Customer ID Recommendation Dashboard"
-    },
-    "hero_desc": {
-        "id": "Dashboard ini menyajikan analisis pelanggan berbasis Customer RFM, Association Rule Mining, dan Nudge Framework untuk mendukung rekomendasi strategi pemasaran berbasis data transaksi.",
-        "en": "This dashboard presents customer analytics based on Customer RFM, Association Rule Mining, and Nudge Framework to support data-driven marketing strategy recommendations."
-    },
-    # Metrics
-    "m_raw_cust": {"id": "Raw Customers", "en": "Raw Customers"},
-    "m_raw_cust_help": {"id": "Total pelanggan awal pada dataset.", "en": "Initial total customers in dataset."},
-    "m_analyzed_cust": {"id": "Analyzed Customers", "en": "Analyzed Customers"},
-    "m_analyzed_cust_help": {"id": "Jumlah pelanggan yang masuk proses analisis.", "en": "Number of customers processed for analysis."},
-    "m_audit_cust": {"id": "Audit Customers", "en": "Audit Customers"},
-    "m_audit_cust_help": {"id": "Jumlah pelanggan yang tercatat pada audit data.", "en": "Number of customers recorded in data audit."},
-    "m_valid_orders": {"id": "Valid Orders", "en": "Valid Orders"},
-    "m_valid_orders_help": {"id": "Order berstatus dibayar, dikirim, dan selesai.", "en": "Orders with paid, shipped, and completed status."},
-    "m_relevance": {"id": "Relevance Rate", "en": "Relevance Rate"},
-    "m_relevance_help": {"id": "Rekomendasi sesuai kategori favorit pelanggan aktif.", "en": "Recommendations matching active customers' favorite category."},
-
-    # Tabs Title
-    "tab_exec": {"id": "🏠 Executive Overview", "en": "🏠 Executive Overview"},
-    "tab_val": {"id": "🧹 Data Validation", "en": "🧹 Data Validation"},
-    "tab_rfm": {"id": "👥 Customer RFM", "en": "👥 Customer RFM"},
-    "tab_prod": {"id": "📦 Product & Revenue", "en": "📦 Product & Revenue"},
-    "tab_assoc": {"id": "🔗 Association Rule Validation", "en": "🔗 Association Rule Validation"},
-    "tab_nba": {"id": "🎯 Next Best Action", "en": "🎯 Next Best Action"},
-    "tab_nudge": {"id": "🧠 Nudge Framework", "en": "🧠 Nudge Framework"},
-    "tab_kpi": {"id": "📈 KPI & Decision Support", "en": "📈 KPI & Decision Support"},
-    "tab_exp": {"id": "📋 Data Explorer", "en": "📋 Data Explorer"},
-    "tab_guide": {"id": "📖 Panduan Baca", "en": "📖 User Guide"},
-    "tab_raw": {"id": "📥 Raw Data Audit", "en": "📥 Raw Data Audit"},
-
-    # Chart Titles & Section Headers
-    "sec_exec_title": {"id": "Executive Overview", "en": "Executive Overview"},
-    "sec_exec_desc": {
-        "id": "Ringkasan utama dashboard berdasarkan data pelanggan, transaksi, segmentasi RFM, dan rekomendasi pemasaran.",
-        "en": "Executive summary based on customer, transaction, RFM segmentation, and marketing recommendation data."
-    },
-    "sec_val_title": {"id": "Data Validation", "en": "Data Validation"},
-    "sec_val_desc": {
-        "id": "Ringkasan validasi data, status transaksi, pelanggan audit, dan recency sebelum digunakan dalam analisis.",
-        "en": "Summary of data validation, transaction status, audit customers, and recency prior to analysis."
-    },
-    "sec_rfm_title": {"id": "Customer RFM", "en": "Customer RFM"},
-    "sec_rfm_desc": {
-        "id": "Segmentasi pelanggan berdasarkan Recency, Frequency, dan Monetary.",
-        "en": "Customer segmentation based on Recency, Frequency, and Monetary metrics."
-    },
-    "sec_prod_title": {"id": "Product & Revenue", "en": "Product & Revenue"},
-    "sec_prod_desc": {
-        "id": "Visualisasi kontribusi kategori, produk, dan pola pembelian pelanggan.",
-        "en": "Visualization of category contribution, products, and customer purchasing patterns."
-    },
-    "sec_assoc_title": {"id": "Association Rule Validation", "en": "Association Rule Validation"},
-    "sec_assoc_desc": {
-        "id": "Validasi pola pembelian bersama menggunakan support, confidence, lift, dan basket count.",
-        "en": "Validation of co-purchase patterns using support, confidence, lift, and basket count."
-    },
-    "sec_nba_title": {"id": "Next Best Action per Active Customer", "en": "Next Best Action per Active Customer"},
-    "sec_nba_desc": {
-        "id": "Rekomendasi utama hanya diberikan untuk pelanggan aktif dengan kategori favorit yang valid.",
-        "en": "Primary recommendations provided exclusively for active customers with valid favorite categories."
-    },
-    "sec_nudge_title": {"id": "Nudge Framework", "en": "Nudge Framework"},
-    "sec_nudge_desc": {
-        "id": "Nudge ditampilkan sebagai strategi per segmen pelanggan aktif, bukan sebagai grafik kategori numerik.",
-        "en": "Nudges displayed as strategies per active customer segment rather than numerical category charts."
-    },
-    "sec_kpi_title": {"id": "KPI & Decision Support", "en": "KPI & Decision Support"},
-    "sec_kpi_desc": {
-        "id": "KPI dan kerangka keputusan untuk mengevaluasi strategi rekomendasi pada pelanggan aktif.",
-        "en": "KPIs and decision-support framework to evaluate recommendation strategies on active customers."
-    },
-    "sec_exp_title": {"id": "Data Explorer", "en": "Data Explorer"},
-    "sec_exp_desc": {
-        "id": "Akses dataset hasil pengolahan, termasuk tabel audit pelanggan yang dikeluarkan dari analisis utama.",
-        "en": "Access processed datasets, including customer audit tables excluded from primary analysis."
-    },
-    "sec_guide_title": {"id": "Panduan Baca Dashboard", "en": "Dashboard User Guide"},
-    "sec_guide_desc": {
-        "id": "Panduan singkat untuk membaca setiap menu utama pada dashboard.",
-        "en": "A brief guide to understanding each primary menu on the dashboard."
-    },
-    "sec_raw_title": {"id": "Raw Data Audit", "en": "Raw Data Audit"},
-    "sec_raw_desc": {
-        "id": "Ringkasan jumlah record dan jumlah field dari setiap tabel data mentah.",
-        "en": "Summary of total records and field counts for each raw data table."
-    },
-
-    # Specific Chart Titles
-    "chart_raw_before": {"id": "Raw Data Sebelum Preprocessing", "en": "Raw Data Before Preprocessing"},
-    "chart_raw_fields": {"id": "Jumlah Field pada Setiap Tabel Mentah", "en": "Number of Fields in Each Raw Table"},
-    "chart_cust_per_seg": {"id": "Jumlah Pelanggan Aktif per Segmen", "en": "Number of Active Customers per Segment"},
-    "chart_rev_share": {"id": "Pangsa Pendapatan per Segmen", "en": "Revenue Share by Segment"},
-    "chart_monthly_rev": {"id": "Pendapatan Bulanan per Segmen", "en": "Monthly Revenue by Segment"},
-    "chart_order_status": {"id": "Distribusi Status Pesanan", "en": "Order Status Distribution"},
-    "chart_recency_dist": {"id": "Distribusi Recency Pelanggan Aktif", "en": "Active Customer Recency Distribution"},
-    "chart_freq_dist": {"id": "Distribusi Frekuensi", "en": "Frequency Distribution"},
-    "chart_monetary_dist": {"id": "Distribusi Monetary", "en": "Monetary Distribution"},
-    "chart_rfm_map": {"id": "Customer RFM Map: Recency vs Monetary", "en": "Customer RFM Map: Recency vs Monetary"},
-    "chart_rev_cat": {"id": "Pendapatan per Kategori", "en": "Revenue by Category"},
-    "chart_top_prod": {"id": "Top 15 Produk Berdasarkan Pendapatan", "en": "Top 15 Products by Revenue"},
-    "chart_fav_cat": {"id": "Distribusi Kategori Favorit", "en": "Favorite Category Distribution"},
-    "chart_cust_prod_pattern": {"id": "Pola Pembelian Produk Pelanggan", "en": "Customer Product Purchase Pattern"},
-    "chart_supp_conf": {"id": "Support vs Confidence berdasarkan Keandalan", "en": "Support vs Confidence by Reliability"},
-    "chart_rule_rel": {"id": "Distribusi Keandalan Rule", "en": "Rule Reliability Distribution"},
-    "chart_rec_cat_dist": {"id": "Distribusi Kategori Rekomendasi", "en": "Recommended Category Distribution"},
-    "chart_nudge_dist": {"id": "Distribusi Tipe Nudge", "en": "Nudge Type Distribution"},
-    "chart_nudge_segment": {"id": "Jumlah Customer per Segment dan Recommended Nudge", "en": "Number of Customers per Segment and Recommended Nudge"},
-    "chart_eval_metrics": {"id": "Metrik Evaluasi", "en": "Evaluation Metrics"},
-    "chart_raw_rec_table": {"id": "Jumlah Record per Tabel Mentah", "en": "Raw Records by Table"},
-    "chart_raw_field_table": {"id": "Jumlah Field per Tabel Mentah", "en": "Raw Fields by Table"}
-}
-
-def t(key):
-    return TRANSLATIONS.get(key, {}).get(st.session_state.lang, key)
-
-# === STYLES ===
 st.markdown("""
 <style>
 html, body, .stApp, [data-testid="stAppViewContainer"] {
@@ -220,13 +84,8 @@ def build_raw_audit(raw_tables):
     rows = []
     field_rows = []
     for name, df in raw_tables.items():
-        display_name = name
-        if st.session_state.lang == "en":
-            table_map = {"pelanggan": "customers", "detil_order": "order_details", "produk": "products", "orders": "orders"}
-            display_name = table_map.get(name, name)
-
         rows.append({
-            "table_name": display_name,
+            "table_name": name,
             "raw_records": int(len(df)),
             "fields": int(len(df.columns)),
             "primary_key": primary_keys.get(name, "-"),
@@ -234,7 +93,7 @@ def build_raw_audit(raw_tables):
         })
         for col in df.columns:
             field_rows.append({
-                "table_name": display_name,
+                "table_name": name,
                 "field_name": col,
                 "dtype": str(df[col].dtype),
                 "missing_values": int(df[col].isna().sum()),
@@ -260,6 +119,7 @@ def section(title, desc):
     <div class="section"><h2>{title}</h2><p>{desc}</p></div>
     """, unsafe_allow_html=True)
 
+# === PERBAIKAN FINAL V4 01: WARNA KONSISTEN TANPA NO VALID PURCHASE ===
 SEGMENT_COLORS = {
     "At Risk": "#7DD3FC",
     "Big Spenders": "#1D4ED8",
@@ -290,10 +150,9 @@ def short_reliability_flag(row):
     rule_level = str(row.get("rule_level", "")).lower()
     lift = pd.to_numeric(row.get("lift"), errors="coerce")
     basket_count = pd.to_numeric(row.get("basket_count"), errors="coerce")
-    if "stable" in flag and rule_level == "category": return "Stabil" if st.session_state.lang == "id" else "Stable"
-    if ("product" in rule_level) or (pd.notna(lift) and lift > EXTREME_LIFT_THRESHOLD) or (pd.notna(basket_count) and basket_count <= SPARSE_BASKET_THRESHOLD): 
-        return "Eksploratif" if st.session_state.lang == "id" else "Exploratory"
-    return "Perlu Validasi" if st.session_state.lang == "id" else "Needs Validation"
+    if "stable" in flag and rule_level == "category": return "Stabil"
+    if ("product" in rule_level) or (pd.notna(lift) and lift > EXTREME_LIFT_THRESHOLD) or (pd.notna(basket_count) and basket_count <= SPARSE_BASKET_THRESHOLD): return "Eksploratif"
+    return "Perlu Validasi"
 
 def plotly_common_layout(fig, height=430):
     fig.update_layout(
@@ -351,20 +210,20 @@ for df in [rfm, segment_summary, monthly, rules, nba, top_products, line_items, 
         if col in ["recency_days","frequency","monetary","revenue","quantity","orders","support","confidence","lift","basket_count","priority_score","customers"]:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-# Sidebar Filter
-st.sidebar.title("🧭 Filter Dashboard" if st.session_state.lang == "id" else "🧭 Dashboard Filters")
-st.sidebar.caption("Filter diterapkan pada Customer RFM dan Next Best Action." if st.session_state.lang == "id" else "Filters applied to Customer RFM and Next Best Action.")
+# === PERBAIKAN FINAL V4 02: FILTER HANYA PELANGGAN AKTIF ===
+st.sidebar.title("🧭 Filter Dashboard")
+st.sidebar.caption("Filter diterapkan pada Customer RFM dan Next Best Action.")
 segments = sorted(rfm["segment"].dropna().unique())
 selected_segments = st.sidebar.multiselect("Segment", segments, default=segments)
 provinces = sorted(rfm["provinsi"].dropna().unique()) if "provinsi" in rfm.columns else []
-selected_provinces = st.sidebar.multiselect("Provinsi" if st.session_state.lang == "id" else "Province", provinces, default=provinces) if provinces else []
+selected_provinces = st.sidebar.multiselect("Provinsi", provinces, default=provinces) if provinces else []
 rfm_view = rfm[rfm["segment"].isin(selected_segments)].copy()
 if selected_provinces: rfm_view = rfm_view[rfm_view["provinsi"].isin(selected_provinces)]
 nba_view = nba[nba["segment"].isin(selected_segments)].copy()
 if selected_provinces and "provinsi" in nba_view.columns: nba_view = nba_view[nba_view["provinsi"].isin(selected_provinces)]
 
 st.sidebar.divider()
-st.sidebar.markdown("### Ringkasan Data" if st.session_state.lang == "id" else "### Data Summary")
+st.sidebar.markdown("### Ringkasan Data")
 st.sidebar.write(f"""
 Total pelanggan awal: **{fmt_int(summary.get('raw_customers', 0))}**  
 Pelanggan dianalisis: **{fmt_int(summary.get('analyzed_customers', 0))}**  
@@ -372,72 +231,61 @@ Valid orders: **{fmt_int(summary.get('valid_non_cancelled_orders', 0))}**
 Valid line items: **{fmt_int(summary.get('valid_line_items', len(line_items) if 'line_items' in globals() else 0))}**
 """)
 
-# Header Hero
-st.markdown(f"""
+# Header
+st.markdown("""
 <div class="hero">
-<h1>{t('title_hero')}</h1>
-<p>{t('hero_desc')}</p>
+<h1>🛒 Customer ID Recommendation Dashboard</h1>
+<p>Dashboard ini menyajikan analisis pelanggan berbasis <b>Customer RFM</b>, <b>Association Rule Mining</b>, dan <b>Nudge Framework</b> untuk mendukung rekomendasi strategi pemasaran berbasis data transaksi.</p>
 <span class="pill">Customer RFM</span><span class="pill">Association Rule Mining</span><span class="pill">Next Best Action</span><span class="pill">Digital Nudging</span><span class="pill">Business KPI</span>
 </div>
 """, unsafe_allow_html=True)
 
-# Metric Cards
 c1,c2,c3,c4,c5 = st.columns(5)
-with c1: metric_card(t("m_raw_cust"), fmt_int(summary["raw_customers"]), t("m_raw_cust_help"))
-with c2: metric_card(t("m_analyzed_cust"), fmt_int(summary["analyzed_customers"]), t("m_analyzed_cust_help"))
-with c3: metric_card(t("m_audit_cust"), fmt_int(summary["excluded_customers_without_valid_orders"]), t("m_audit_cust_help"))
-with c4: metric_card(t("m_valid_orders"), fmt_int(summary["valid_non_cancelled_orders"]), t("m_valid_orders_help"))
-with c5: metric_card(t("m_relevance"), f"{summary['recommendation_relevance_rate_pct']}%", t("m_relevance_help"))
+with c1: metric_card("Raw Customers", fmt_int(summary["raw_customers"]), "Total pelanggan awal pada dataset.")
+with c2: metric_card("Analyzed Customers", fmt_int(summary["analyzed_customers"]), "Jumlah pelanggan yang masuk proses analisis.")
+with c3: metric_card("Audit Customers", fmt_int(summary["excluded_customers_without_valid_orders"]), "Jumlah pelanggan yang tercatat pada audit data.")
+with c4: metric_card("Valid Orders", fmt_int(summary["valid_non_cancelled_orders"]), "Order berstatus dibayar, dikirim, dan selesai.")
+with c5: metric_card("Relevance Rate", f"{summary['recommendation_relevance_rate_pct']}%", "Rekomendasi sesuai kategori favorit pelanggan aktif.")
 
-# Tabs Initialization
-tabs = st.tabs([
-    t("tab_exec"), t("tab_val"), t("tab_rfm"), t("tab_prod"), 
-    t("tab_assoc"), t("tab_nba"), t("tab_nudge"), t("tab_kpi"), 
-    t("tab_exp"), t("tab_guide"), t("tab_raw")
-])
+tabs = st.tabs(["🏠 Executive Overview", "🧹 Data Validation", "👥 Customer RFM", "📦 Product & Revenue", "🔗 Association Rule Validation", "🎯 Next Best Action", "🧠 Nudge Framework", "📈 KPI & Decision Support", "📋 Data Explorer", "📖 Panduan Baca", "📥 Raw Data Audit"])
 
-# === TAB 0: EXECUTIVE OVERVIEW ===
 with tabs[0]:
-    section(t("sec_exec_title"), t("sec_exec_desc"))
-    
-    st.subheader(t("chart_raw_before"))
+    section("Executive Overview", "Ringkasan utama dashboard berdasarkan data pelanggan, transaksi, segmentasi RFM, dan rekomendasi pemasaran.")
+    st.subheader("Raw Data Sebelum Preprocessing")
     rc1, rc2, rc3, rc4 = st.columns(4)
-    with rc1: metric_card("Raw Customers" if st.session_state.lang == "en" else "Raw Pelanggan", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields")
-    with rc2: metric_card("Raw Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields")
-    with rc3: metric_card("Raw Order Details" if st.session_state.lang == "en" else "Raw Detil Order", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields")
-    with rc4: metric_card("Raw Products" if st.session_state.lang == "en" else "Raw Produk", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields")
-    
+    with rc1: metric_card("Raw Pelanggan", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields sebelum preprocessing")
+    with rc2: metric_card("Raw Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields sebelum filter status")
+    with rc3: metric_card("Raw Detil Order", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields sebelum join dan filter")
+    with rc4: metric_card("Raw Produk", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields master produk")
     raw_col1, raw_col2 = st.columns(2)
     with raw_col1:
-        fig = px.bar(raw_data_summary, x="table_name", y="raw_records", color="table_name", text="raw_records", title=t("chart_raw_before"))
+        fig = px.bar(raw_data_summary, x="table_name", y="raw_records", color="table_name", text="raw_records", title="Raw Data Records Before Preprocessing")
         fig.update_layout(showlegend=False)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with raw_col2:
-        fig = px.bar(raw_data_summary, x="table_name", y="fields", color="table_name", text="fields", title=t("chart_raw_fields"))
+        fig = px.bar(raw_data_summary, x="table_name", y="fields", color="table_name", text="fields", title="Number of Fields in Each Raw Table")
         fig.update_layout(showlegend=False)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
     col1,col2 = st.columns(2)
     with col1:
-        fig = px.bar(segment_summary, x="segment", y="customers", color="segment", text="customers", title=t("chart_cust_per_seg"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.bar(segment_summary, x="segment", y="customers", color="segment", text="customers", title="Jumlah Pelanggan Aktif per Segmen", color_discrete_map=SEGMENT_COLORS)
         fig.update_layout(showlegend=False)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
-        fig = px.pie(segment_summary, names="segment", values="total_revenue", hole=.45, title=t("chart_rev_share"), color="segment", color_discrete_map=SEGMENT_COLORS)
+        fig = px.pie(segment_summary, names="segment", values="total_revenue", hole=.45, title="Revenue Share by Segment", color="segment", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
-        
     col3,col4 = st.columns(2)
     with col3:
-        fig = px.line(monthly, x="month", y="revenue", color="segment", markers=True, title=t("chart_monthly_rev"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.line(monthly, x="month", y="revenue", color="segment", markers=True, title="Monthly Revenue by Segment", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col4:
-        fig = px.bar(status_summary, x="status_clean", y="orders", color="valid_for_analysis", text="orders", title=t("chart_order_status"), color_discrete_map=STATUS_COLORS)
+        fig = px.bar(status_summary, x="status_clean", y="orders", color="valid_for_analysis", text="orders", title="Order Status Distribution", color_discrete_map=STATUS_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-# === TAB 1: DATA VALIDATION ===
 with tabs[1]:
-    section(t("sec_val_title"), t("sec_val_desc"))
-    st.subheader("Raw Data Audit Before Preprocessing" if st.session_state.lang == "en" else "Audit Data Mentah Sebelum Preprocessing")
+    section("Data Validation", "Ringkasan validasi data, status transaksi, pelanggan audit, dan recency sebelum digunakan dalam analisis.")
+    st.subheader("Raw Data Audit Before Preprocessing")
     st.dataframe(raw_data_summary, use_container_width=True, height=180)
     st.subheader("Preprocessing Audit")
     st.dataframe(preprocessing_audit, use_container_width=True, height=360)
@@ -448,57 +296,52 @@ with tabs[1]:
         st.subheader("Recency Validation")
         st.dataframe(recency_validation, use_container_width=True)
     with col2:
-        fig = px.histogram(rfm, x="recency_days", color="segment", title=t("chart_recency_dist"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.histogram(rfm, x="recency_days", color="segment", title="Distribusi Recency Pelanggan Aktif", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-# === TAB 2: CUSTOMER RFM ===
 with tabs[2]:
-    section(t("sec_rfm_title"), t("sec_rfm_desc"))
+    section("Customer RFM", "Segmentasi pelanggan berdasarkan Recency, Frequency, dan Monetary.")
     col1,col2,col3 = st.columns(3)
     with col1:
-        fig = px.histogram(rfm_view, x="recency_days", color="segment", title=t("chart_recency_dist"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.histogram(rfm_view, x="recency_days", color="segment", title="Recency Distribution", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
-        fig = px.histogram(rfm_view, x="frequency", color="segment", title=t("chart_freq_dist"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.histogram(rfm_view, x="frequency", color="segment", title="Frequency Distribution", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col3:
-        fig = px.histogram(rfm_view, x="monetary", color="segment", title=t("chart_monetary_dist"), color_discrete_map=SEGMENT_COLORS)
+        fig = px.histogram(rfm_view, x="monetary", color="segment", title="Monetary Distribution", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
-    fig = px.scatter(rfm_view, x="recency_days", y="monetary", size="frequency", color="segment", hover_data=["customer_id","customer_name","favorite_category","favorite_product","rfm_score"], title=t("chart_rfm_map"), color_discrete_map=SEGMENT_COLORS)
+    fig = px.scatter(rfm_view, x="recency_days", y="monetary", size="frequency", color="segment", hover_data=["customer_id","customer_name","favorite_category","favorite_product","rfm_score"], title="Customer RFM Map: Recency vs Monetary", color_discrete_map=SEGMENT_COLORS)
     st.plotly_chart(plotly_common_layout(fig, height=520), use_container_width=True, theme=None)
     st.subheader("Customer RFM Table")
     st.dataframe(rfm_view.sort_values("rfm_total", ascending=False), use_container_width=True, height=520)
 
-# === TAB 3: PRODUCT & REVENUE ===
 with tabs[3]:
-    section(t("sec_prod_title"), t("sec_prod_desc"))
+    section("Product & Revenue", "Visualisasi kontribusi kategori, produk, dan pola pembelian pelanggan.")
     col1,col2 = st.columns(2)
     with col1:
         cat_rev = line_items.groupby("kategori").agg(revenue=("subtotal","sum"), quantity=("quantity","sum"), orders=("order_id","nunique")).reset_index().sort_values("revenue", ascending=False)
-        fig = px.bar(cat_rev, x="kategori", y="revenue", color="kategori", text="quantity", title=t("chart_rev_cat"), color_discrete_map=CATEGORY_COLORS)
+        fig = px.bar(cat_rev, x="kategori", y="revenue", color="kategori", text="quantity", title="Revenue by Category", color_discrete_map=CATEGORY_COLORS)
         fig.update_layout(showlegend=False)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
-        fig = px.bar(top_products.head(15), x="product_name", y="revenue", color="kategori", title=t("chart_top_prod"), color_discrete_map=CATEGORY_COLORS)
+        fig = px.bar(top_products.head(15), x="product_name", y="revenue", color="kategori", title="Top 15 Products by Revenue", color_discrete_map=CATEGORY_COLORS)
         fig.update_layout(xaxis_tickangle=-35)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     col3,col4 = st.columns(2)
     with col3:
         fav_cat = rfm["favorite_category"].value_counts().reset_index()
         fav_cat.columns = ["favorite_category","customers"]
-        fig = px.bar(fav_cat, x="customers", y="favorite_category", color="favorite_category", orientation="h", title=t("chart_fav_cat"), color_discrete_map=CATEGORY_COLORS)
+        fig = px.bar(fav_cat, x="customers", y="favorite_category", color="favorite_category", orientation="h", title="Favorite Category Distribution", color_discrete_map=CATEGORY_COLORS)
         fig.update_layout(showlegend=False, yaxis_title="favorite_category", xaxis_title="customers")
         st.plotly_chart(plotly_common_layout(fig, height=460), use_container_width=True, theme=None)
     with col4:
-        fig = px.scatter(customer_product, x="quantity", y="revenue", color="kategori", hover_data=["customer_id","product_name","segment"], title=t("chart_cust_prod_pattern"), color_discrete_map=CATEGORY_COLORS)
+        fig = px.scatter(customer_product, x="quantity", y="revenue", color="kategori", hover_data=["customer_id","product_name","segment"], title="Customer Product Purchase Pattern", color_discrete_map=CATEGORY_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-# === TAB 4: ASSOCIATION RULE VALIDATION ===
 with tabs[4]:
-    section(t("sec_assoc_title"), t("sec_assoc_desc"))
+    section("Association Rule Validation", "Validasi pola pembelian bersama menggunakan support, confidence, lift, dan basket count.")
     st.markdown(f"""
-    <div class="warn-box"><b>Methodological note:</b> Category rules are used as primary insights. Product rules with basket count ≤ {SPARSE_BASKET_THRESHOLD} or lift &gt; {EXTREME_LIFT_THRESHOLD} are interpreted as exploratory findings.</div>
-    """ if st.session_state.lang == "en" else f"""
     <div class="warn-box"><b>Catatan metodologis:</b> rule kategori digunakan sebagai insight utama. Rule produk dengan basket count ≤ {SPARSE_BASKET_THRESHOLD} atau lift &gt; {EXTREME_LIFT_THRESHOLD} dibaca sebagai temuan eksploratif.</div>
     """, unsafe_allow_html=True)
     rules_plot = rules.copy(); rules_plot["reliability_label"] = rules_plot.apply(short_reliability_flag, axis=1)
@@ -506,12 +349,12 @@ with tabs[4]:
     st.dataframe(association_validation, use_container_width=True)
     col1,col2 = st.columns(2)
     with col1:
-        fig = px.scatter(rules_plot, x="support", y="confidence", size="basket_count", color="reliability_label", hover_data=["rule_level","antecedent","consequent","lift","basket_count"], title=t("chart_supp_conf"))
+        fig = px.scatter(rules_plot, x="support", y="confidence", size="basket_count", color="reliability_label", hover_data=["rule_level","antecedent","consequent","lift","basket_count"], title="Support vs Confidence by Reliability")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
         rel = rules_plot["reliability_label"].value_counts().reset_index(); rel.columns=["reliability_label","rules"]
-        fig = px.bar(rel, x="rules", y="reliability_label", color="reliability_label", orientation="h", text="rules", title=t("chart_rule_rel"))
-        fig.update_layout(yaxis_title="", xaxis_title="Rules Count" if st.session_state.lang == "en" else "Jumlah Rule")
+        fig = px.bar(rel, x="rules", y="reliability_label", color="reliability_label", orientation="h", text="rules", title="Rule Reliability Distribution")
+        fig.update_layout(yaxis_title="", xaxis_title="Jumlah Rule")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     st.subheader("Market Basket Rules")
     level_filter = st.multiselect("Rule level", sorted(rules_plot["rule_level"].unique()), default=sorted(rules_plot["rule_level"].unique()))
@@ -519,19 +362,18 @@ with tabs[4]:
     rules_view = rules_plot[rules_plot["rule_level"].isin(level_filter) & rules_plot["reliability_label"].isin(rel_filter)]
     st.dataframe(rules_view, use_container_width=True, height=520)
 
-# === TAB 5: NEXT BEST ACTION ===
 with tabs[5]:
-    section(t("sec_nba_title"), t("sec_nba_desc"))
-    segment_reco = st.selectbox("Recommended Segment" if st.session_state.lang == "en" else "Segment rekomendasi", ["All" if st.session_state.lang == "en" else "Semua"] + sorted(nba_view["segment"].dropna().unique()))
-    nba_filtered = nba_view[nba_view["segment"] == segment_reco].copy() if segment_reco not in ["Semua", "All"] else nba_view.copy()
+    section("Next Best Action per Active Customer", "Rekomendasi utama hanya diberikan untuk pelanggan aktif dengan kategori favorit yang valid.")
+    segment_reco = st.selectbox("Segment rekomendasi", ["Semua"] + sorted(nba_view["segment"].dropna().unique()))
+    nba_filtered = nba_view[nba_view["segment"] == segment_reco].copy() if segment_reco != "Semua" else nba_view.copy()
     col1,col2 = st.columns(2)
     with col1:
         rec_cat = nba_filtered["recommended_category"].value_counts().reset_index(); rec_cat.columns=["recommended_category","customers"]
-        fig = px.bar(rec_cat, x="recommended_category", y="customers", color="recommended_category", title=t("chart_rec_cat_dist"), color_discrete_map=CATEGORY_COLORS)
+        fig = px.bar(rec_cat, x="recommended_category", y="customers", color="recommended_category", title="Recommended Category Distribution", color_discrete_map=CATEGORY_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
         nudge_count = nba_filtered["nudge_type"].value_counts().reset_index(); nudge_count.columns=["nudge_type","customers"]
-        fig = px.pie(nudge_count, names="nudge_type", values="customers", hole=.45, title=t("chart_nudge_dist"))
+        fig = px.pie(nudge_count, names="nudge_type", values="customers", hole=.45, title="Nudge Type Distribution")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     st.subheader("Next Best Action Table")
     nba_display = nba_filtered.copy()
@@ -539,102 +381,86 @@ with tabs[5]:
         if col in nba_display.columns: nba_display[col] = nba_display[col].apply(clean_empty)
     st.dataframe(nba_display, use_container_width=True, height=560)
 
-# === TAB 6: NUDGE FRAMEWORK ===
 with tabs[6]:
-    section(t("sec_nudge_title"), t("sec_nudge_desc"))
+    section("Nudge Framework", "Nudge ditampilkan sebagai strategi per segmen pelanggan aktif, bukan sebagai grafik kategori numerik.")
     st.dataframe(nudge_framework, use_container_width=True, height=360)
-    fig = px.bar(nudge_framework, x="customers", y="segment", color="nudge_type", orientation="h", text="customers", title=t("chart_nudge_segment"))
-    fig.update_layout(yaxis_title="Segment", xaxis_title="Active Customers Count" if st.session_state.lang == "en" else "Jumlah customer aktif")
+    fig = px.bar(nudge_framework, x="customers", y="segment", color="nudge_type", orientation="h", text="customers", title="Jumlah Customer per Segment dan Recommended Nudge")
+    fig.update_layout(yaxis_title="Segment", xaxis_title="Jumlah customer aktif")
     st.plotly_chart(plotly_common_layout(fig, height=430), use_container_width=True, theme=None)
 
-# === TAB 7: KPI & DECISION SUPPORT ===
 with tabs[7]:
-    section(t("sec_kpi_title"), t("sec_kpi_desc"))
+    section("KPI & Decision Support", "KPI dan kerangka keputusan untuk mengevaluasi strategi rekomendasi pada pelanggan aktif.")
     st.subheader("KPI Framework"); st.dataframe(kpi_framework, use_container_width=True, height=330)
     st.subheader("Decision-Support Framework"); st.dataframe(decision_framework, use_container_width=True, height=280)
     st.subheader("Recommendation Evaluation"); st.dataframe(recommendation_evaluation, use_container_width=True, height=280)
     eval_chart = recommendation_evaluation.copy(); eval_chart["value"] = pd.to_numeric(eval_chart["value"], errors="coerce")
-    fig = px.bar(eval_chart.dropna(subset=["value"]), x="metric", y="value", color="evaluation_area", title=t("chart_eval_metrics"))
+    fig = px.bar(eval_chart.dropna(subset=["value"]), x="metric", y="value", color="evaluation_area", title="Evaluation Metrics")
     fig.update_layout(xaxis_tickangle=-30)
     st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-# === TAB 8: DATA EXPLORER ===
 with tabs[8]:
-    section(t("sec_exp_title"), t("sec_exp_desc"))
+    section("Data Explorer", "Akses dataset hasil pengolahan, termasuk tabel audit pelanggan yang dikeluarkan dari analisis utama.")
     tables = {"raw_data_summary":raw_data_summary, "raw_field_summary":raw_field_summary, "raw_pelanggan":raw_tables["pelanggan"], "raw_orders":raw_tables["orders"], "raw_detil_order":raw_tables["detil_order"], "raw_produk":raw_tables["produk"], "customer_rfm":rfm, "excluded_customers":excluded_customers, "segment_summary":segment_summary, "customer_monthly_summary":monthly, "customer_product_summary":customer_product, "market_basket_rules":rules, "next_best_action":nba, "top_products":top_products, "transaction_line_items":line_items, "status_summary":status_summary, "preprocessing_audit":preprocessing_audit, "recency_validation":recency_validation, "association_rule_validation":association_validation, "recommendation_evaluation":recommendation_evaluation, "nudge_framework":nudge_framework, "kpi_framework":kpi_framework, "dashboard_decision_framework":decision_framework, "data_dictionary":data["data_dictionary"]}
-    selected_table = st.selectbox("Select Table" if st.session_state.lang == "en" else "Pilih tabel", list(tables.keys()))
-    st.markdown(f"<div class='info-box'><b>Table Function:</b> Data processing output table to support dashboard visualization.</div>" if st.session_state.lang == "en" else f"<div class='info-box'><b>Fungsi Tabel:</b> Tabel output pengolahan data untuk mendukung visualisasi dashboard.</div>", unsafe_allow_html=True)
+    table_info = {
+        "customer_rfm": "Berisi hasil segmentasi pelanggan berdasarkan RFM.",
+        "excluded_customers": "Berisi tabel audit pelanggan.",
+        "next_best_action": "Berisi rekomendasi produk dan nudge untuk pelanggan.",
+        "market_basket_rules": "Berisi aturan asosiasi kategori dan produk berdasarkan transaksi valid.",
+        "raw_data_summary": "Ringkasan jumlah record dan jumlah field pada setiap tabel mentah sebelum preprocessing.",
+        "raw_field_summary": "Daftar nama field, tipe data, missing value, dan unique value pada tabel mentah.",
+        "raw_orders": "Tabel orders mentah sebelum status dibersihkan dan sebelum valid-order filtering.",
+        "raw_detil_order": "Tabel detail order mentah sebelum join dengan orders dan produk.",
+        "raw_pelanggan": "Tabel pelanggan mentah sebelum pemilihan active customers.",
+        "raw_produk": "Tabel produk mentah sebelum join ke detail order.",
+    }
+    selected_table = st.selectbox("Pilih tabel", list(tables.keys()))
+    st.markdown(f"<div class='info-box'><b>Fungsi Tabel:</b> {table_info.get(selected_table, 'Tabel output pengolahan data untuk mendukung visualisasi dashboard.')}</div>", unsafe_allow_html=True)
     st.dataframe(tables[selected_table], use_container_width=True, height=580)
     st.download_button(f"Download {selected_table}.csv", tables[selected_table].to_csv(index=False).encode("utf-8"), file_name=f"{selected_table}.csv", mime="text/csv")
 
-# === TAB 9: USER GUIDE ===
 with tabs[9]:
-    section(t("sec_guide_title"), t("sec_guide_desc"))
-    if st.session_state.lang == "en":
-        st.markdown("""
-        ### Dashboard Menu Summary
+    section("Panduan Baca Dashboard", "Panduan singkat untuk membaca setiap menu utama pada dashboard.")
 
-        **Executive Overview** displays high-level summary metrics for data counts, customers, orders, segmentation, and key recommendations.
+    st.markdown("""
+    ### Ringkasan Menu Dashboard
 
-        **Data Validation** displays initial data validation results prior to analytical processing.
+    **Executive Overview** menampilkan ringkasan jumlah data, pelanggan, order, segmentasi, dan rekomendasi utama.
 
-        **Customer RFM** presents customer segmentation based on Recency, Frequency, and Monetary metrics.
+    **Data Validation** digunakan untuk melihat hasil validasi data sebelum masuk ke tahap analisis.
 
-        **Product & Revenue** displays category and product contributions toward total sales.
+    **Customer RFM** menampilkan segmentasi pelanggan berdasarkan Recency, Frequency, dan Monetary.
 
-        **Association Rule Validation** presents product/category co-purchase patterns derived from transaction data.
+    **Product & Revenue** menampilkan kontribusi kategori dan produk terhadap penjualan.
 
-        **Next Best Action** provides personalized marketing action recommendations per customer.
+    **Association Rule Validation** menampilkan pola hubungan antarproduk atau antarkategori berdasarkan transaksi.
 
-        **Nudge Framework** outlines communication approaches tailored to each customer segment.
+    **Next Best Action** menampilkan rekomendasi tindakan pemasaran untuk setiap pelanggan.
 
-        **KPI & Decision Support** displays strategic key performance indicators to support decision-making.
+    **Nudge Framework** menampilkan pendekatan komunikasi yang sesuai dengan segmen pelanggan.
 
-        **Data Explorer** allows users to view and download processed data tables.
+    **KPI & Decision Support** menampilkan indikator yang dapat digunakan untuk mendukung keputusan pemasaran.
 
-        **Raw Data Audit** summarizes raw dataset tables prior to preprocessing.
-        """)
-    else:
-        st.markdown("""
-        ### Ringkasan Menu Dashboard
+    **Data Explorer** digunakan untuk membuka dan mengunduh tabel data.
 
-        **Executive Overview** menampilkan ringkasan jumlah data, pelanggan, order, segmentasi, dan rekomendasi utama.
+    **Raw Data Audit** menampilkan ringkasan tabel mentah sebelum diproses.
+    """)
 
-        **Data Validation** digunakan untuk melihat hasil validasi data sebelum masuk ke tahap analisis.
 
-        **Customer RFM** menampilkan segmentasi pelanggan berdasarkan Recency, Frequency, dan Monetary.
-
-        **Product & Revenue** menampilkan kontribusi kategori dan produk terhadap penjualan.
-
-        **Association Rule Validation** menampilkan pola hubungan antarproduk atau antarkategori berdasarkan transaksi.
-
-        **Next Best Action** menampilkan rekomendasi tindakan pemasaran untuk setiap pelanggan.
-
-        **Nudge Framework** menampilkan pendekatan komunikasi yang sesuai dengan segmen pelanggan.
-
-        **KPI & Decision Support** menampilkan indikator yang dapat digunakan untuk mendukung keputusan pemasaran.
-
-        **Data Explorer** digunakan untuk membuka dan mengunduh tabel data.
-
-        **Raw Data Audit** menampilkan ringkasan tabel mentah sebelum diproses.
-        """)
-
-# === TAB 10: RAW DATA AUDIT ===
 with tabs[10]:
-    section(t("sec_raw_title"), t("sec_raw_desc"))
+    section("Raw Data Audit", "Ringkasan jumlah record dan jumlah field dari setiap tabel data mentah.")
     c_raw1, c_raw2, c_raw3, c_raw4 = st.columns(4)
-    with c_raw1: metric_card("Customers" if st.session_state.lang == "en" else "Pelanggan", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields pada pelanggan.csv")
+    with c_raw1: metric_card("Pelanggan", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields pada pelanggan.csv")
     with c_raw2: metric_card("Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields pada orders.csv")
-    with c_raw3: metric_card("Order Details" if st.session_state.lang == "en" else "Detil Order", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields pada detil_order.csv")
-    with c_raw4: metric_card("Products" if st.session_state.lang == "en" else "Produk", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields pada produk.csv")
+    with c_raw3: metric_card("Detil Order", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields pada detil_order.csv")
+    with c_raw4: metric_card("Produk", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields pada produk.csv")
 
     col_a, col_b = st.columns(2)
     with col_a:
-        fig = px.bar(raw_data_summary, x="table_name", y="raw_records", color="table_name", text="raw_records", title=t("chart_raw_rec_table"))
+        fig = px.bar(raw_data_summary, x="table_name", y="raw_records", color="table_name", text="raw_records", title="Raw Records by Table")
         fig.update_layout(showlegend=False, xaxis_title="Raw table", yaxis_title="Records")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col_b:
-        fig = px.bar(raw_data_summary, x="table_name", y="fields", color="table_name", text="fields", title=t("chart_raw_field_table"))
+        fig = px.bar(raw_data_summary, x="table_name", y="fields", color="table_name", text="fields", title="Raw Fields by Table")
         fig.update_layout(showlegend=False, xaxis_title="Raw table", yaxis_title="Fields")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
@@ -643,6 +469,6 @@ with tabs[10]:
     st.subheader("Raw Field Summary")
     st.dataframe(raw_field_summary, use_container_width=True, height=320)
 
-    raw_choice = st.selectbox("Select raw table to view" if st.session_state.lang == "en" else "Pilih raw table untuk ditampilkan", list(raw_tables.keys()))
+    raw_choice = st.selectbox("Pilih raw table untuk ditampilkan", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
