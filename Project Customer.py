@@ -36,11 +36,47 @@ input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
 .hero p {font-size:15px; color:#EFF6FF !important; line-height:1.65; max-width:1120px;}
 .pill {display:inline-block; padding:8px 14px; border-radius:999px; margin:12px 7px 0 0; background:rgba(255,255,255,.20); border:1px solid rgba(255,255,255,.38); color:#FFFFFF !important; font-weight:800; font-size:12px; box-shadow:0 5px 14px rgba(15,23,42,.12);}
-.metric-card {background:rgba(255,255,255,.92); border:1px solid #DBEAFE; border-radius:24px; padding:20px 22px; box-shadow:0 14px 30px rgba(37,99,235,.10); min-height:136px; transition:all .25s ease; margin-bottom:14px;}
-.metric-card:hover {transform:translateY(-3px); box-shadow:0 18px 38px rgba(37,99,235,.16);}
-.metric-label {color:#64748B !important; font-size:12px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; margin-bottom:8px;}
-.metric-value {color:#0F172A !important; font-size:31px; font-weight:950; margin-bottom:6px;}
-.metric-help {color:#64748B !important; font-size:12px; line-height:1.5;}
+[data-testid="stColumn"] {
+    display: flex;
+    flex-direction: column;
+}
+.metric-card {
+    background: rgba(255,255,255,.92);
+    border: 1px solid #DBEAFE;
+    border-radius: 24px;
+    padding: 20px 22px;
+    box-shadow: 0 14px 30px rgba(37,99,235,.10);
+    transition: all .25s ease;
+    margin-bottom: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(37,99,235,.16);
+}
+.metric-label {
+    color: #64748B !important;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.metric-value {
+    color: #0F172A !important;
+    font-size: 31px;
+    font-weight: 950;
+    margin-bottom: 6px;
+}
+.metric-help {
+    color: #64748B !important;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: auto;
+}
 .section {background:rgba(255,255,255,.94); border:1px solid #DBEAFE; border-radius:24px; padding:22px 24px; box-shadow:0 12px 28px rgba(37,99,235,.09); margin:18px 0 18px;}
 .section h2 {font-size:24px; margin:0 0 8px; color:#0F172A !important; font-weight:900;}
 .section p {font-size:14px; color:#64748B !important; line-height:1.7; margin:0;}
