@@ -29,32 +29,49 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
 
-/* Menyesuaikan container multiselect agar leluasa untuk beberapa baris tag */
+/* Mengatur wadah input multiselect agar fleksibel secara vertikal */
 div[data-baseweb="select"] > div {
     background-color: #FFFFFF !important;
     border: 1px solid #BFDBFE !important;
     border-radius: 14px !important;
-    box-shadow: 0 6px 16px rgba(37, 99, 235, .08) !important;
+    box-shadow: 0 6px 16px rgba(37,99,235,.08) !important;
     padding: 6px 8px !important;
-    min-height: auto !important;
     height: auto !important;
-    overflow: visible !important;
+    min-height: 48px !important;
+    align-items: center !important;
 }
 
-/* Menyesuaikan ukuran margin dan padding pada pill agar tidak terpotong */
+/* Mengatur ruang pembungkus tag (value container) */
+div[data-baseweb="select"] [data-testid="stValueContainer"] {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    gap: 6px !important;
+}
+
+/* Mereset tag agar tidak terdorong atau terpotong di atas/bawah */
 .stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {
     background: linear-gradient(135deg, #DBEAFE 0%, #CCFBF1 100%) !important;
     color: #0F172A !important;
     border-radius: 999px !important;
     border: 1px solid #93C5FD !important;
     font-weight: 700 !important;
-    margin: 3px 4px !important;
+    margin: 2px 2px !important;
     padding: 2px 10px !important;
-    overflow: visible !important;
-    max-width: none !important;
+    height: auto !important;
+    min-height: 28px !important;
+    line-height: 1.2 !important;
+    display: inline-flex !important;
+    align-items: center !important;
 }
 
-.stMultiSelect [data-baseweb="tag"] span {overflow:visible !important; text-overflow:clip !important; white-space:nowrap !important;}
+/* Memastikan teks di dalam tag rata tengah secara vertikal */
+.stMultiSelect [data-baseweb="tag"] span {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+}
+
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
