@@ -28,8 +28,33 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] * {color:#1E293B !important;}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
-div[data-baseweb="select"] > div {background-color:#FFFFFF !important; border:1px solid #BFDBFE !important; border-radius:14px !important; box-shadow:0 6px 16px rgba(37,99,235,.08) !important; padding-left:8px !important; overflow:visible !important;}
-.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important; color:#0F172A !important; border-radius:999px !important; border:1px solid #93C5FD !important; font-weight:700 !important; margin-left:4px !important; padding-left:10px !important; overflow:visible !important; max-width:none !important;}
+/* Styling Perbaikan untuk MultiSelect Tag */
+div[data-baseweb="select"] > div {
+    background-color:#FFFFFF !important; 
+    border:1px solid #BFDBFE !important; 
+    border-radius:14px !important; 
+    box-shadow:0 6px 16px rgba(37,99,235,.08) !important; 
+    padding: 4px 8px !important; 
+    overflow:visible !important;
+}
+
+.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {
+    background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important; 
+    color:#0F172A !important; 
+    border-radius:999px !important; 
+    border:1px solid #93C5FD !important; 
+    font-weight:700 !important; 
+    margin: 2px 4px 2px 0px !important; /* Menghapus margin-left negatif/terlalu jauh */
+    padding: 2px 8px !important;        /* Mengatur padding secara proporsional */
+    overflow:visible !important; 
+    max-width:none !important;
+}
+
+.stMultiSelect [data-baseweb="tag"] span {
+    overflow:visible !important; 
+    text-overflow:clip !important; 
+    white-space:nowrap !important;
+}
 .stMultiSelect [data-baseweb="tag"] span {overflow:visible !important; text-overflow:clip !important; white-space:nowrap !important;}
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
