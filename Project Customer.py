@@ -29,58 +29,57 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
 
-/* 1. Paksa container utama multiselect agar tingginya fleksibel (mengikuti isi tag) */
-div[data-baseweb="select"] {
+/* 1. Atur container pembungkus multiselect khusus di Sidebar */
+[data-testid="stSidebar"] div[data-baseweb="select"] {
     height: auto !important;
     min-height: 48px !important;
 }
 
-/* 2. Bebaskan batas height kaku pada pembungkus internal BaseWeb */
-div[data-baseweb="select"] > div,
-div[data-baseweb="select"] div[class*="ControlContainer"] {
+[data-testid="stSidebar"] div[data-baseweb="select"] > div {
     background-color: #FFFFFF !important;
     border: 1px solid #BFDBFE !important;
     border-radius: 14px !important;
-    box-shadow: 0 6px 16px rgba(37,99,235,.08) !important;
-    padding: 6px 8px !important;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, .08) !important;
+    padding: 8px 10px !important;
     height: auto !important;
     min-height: 48px !important;
-    max-height: none !important;
     overflow: visible !important;
-    align-items: center !important;
+    align-items: flex-start !important;
 }
 
-/* 3. Atur container pembungkus tag (value container) */
-div[data-baseweb="select"] [data-testid="stValueContainer"] {
-    padding: 2px 0 !important;
-    gap: 4px !important;
+/* 2. Berikan jarak vertikal yang cukup pada kontainer tag internal */
+[data-testid="stSidebar"] div[data-baseweb="select"] [data-testid="stValueContainer"] {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    gap: 6px 4px !important;
     height: auto !important;
-    max-height: none !important;
     overflow: visible !important;
 }
 
-/* 4. Sesuaikan tag pill agar ukurannya pas & teratur */
-.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {
+/* 3. Atur tag pill agar rata & berjarak aman dari border atas/bawah */
+[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"], 
+[data-testid="stSidebar"] span[data-baseweb="tag"] {
     background: linear-gradient(135deg, #DBEAFE 0%, #CCFBF1 100%) !important;
     color: #0F172A !important;
     border-radius: 999px !important;
     border: 1px solid #93C5FD !important;
     font-weight: 700 !important;
     margin: 3px 2px !important;
-    padding: 2px 10px !important;
-    height: 28px !important;
-    max-width: none !important;
-    overflow: visible !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
     display: inline-flex !important;
     align-items: center !important;
+    max-width: none !important;
+    overflow: visible !important;
 }
 
-/* 5. Teks di dalam tag */
-.stMultiSelect [data-baseweb="tag"] span {
+/* 4. Teks di dalam tag */
+[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span {
     overflow: visible !important;
     text-overflow: clip !important;
     white-space: nowrap !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
 }
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
