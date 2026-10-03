@@ -28,6 +28,40 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] * {color:#1E293B !important;}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
+/* Fix Tuntas Multiselect Tag Terpotong */
+[data-testid="stMultiSelect"] div[role="combobox"] {
+    background-color: #FFFFFF !important;
+    border: 1px solid #BFDBFE !important;
+    border-radius: 14px !important;
+    padding: 6px 12px !important;
+}
+
+/* Memperbaiki Value Container agar tag pertama tidak tergeser ke luar/terpotong */
+[data-testid="stMultiSelect"] div[class*="ValueContainer"] {
+    padding-left: 6px !important;
+    margin-left: 0 !important;
+    overflow: visible !important;
+}
+
+/* Styling Tag (Pill/Badge) */
+[data-testid="stMultiSelect"] span[data-baseweb="tag"],
+[data-testid="stMultiSelect"] [role="button"] {
+    background: linear-gradient(135deg, #DBEAFE 0%, #CCFBF1 100%) !important;
+    border: 1px solid #93C5FD !important;
+    border-radius: 999px !important;
+    margin: 3px 4px !important;
+    padding: 2px 10px !important;
+}
+
+/* Memastikan teks dan tombol silang di dalam tag tidak terpotong */
+[data-testid="stMultiSelect"] span[data-baseweb="tag"] * {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
