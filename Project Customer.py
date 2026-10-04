@@ -390,8 +390,25 @@ with tabs[3]:
         fig.update_layout(showlegend=False, xaxis_title="Category", yaxis_title="Revenue")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     with col2:
-        fig = px.bar(top_products.head(15), x="product_name", y="revenue", color="kategori", title="Top 15 Products by Revenue", color_discrete_map=CATEGORY_COLORS)
-        fig.update_layout(xaxis_tickangle=-35)
+        top_products_chart = top_products.head(15).copy()
+        top_products_chart["category_display"] = top_products_chart["kategori"].map(CATEGORY_DISPLAY_NAMES).fillna(top_products_chart["kategori"])
+        fig = px.bar(
+            top_products_chart,
+            x="product_name",
+            y="revenue",
+            color="category_display",
+            title="Top 15 Products by Revenue",
+            color_discrete_map=display_category_colors,
+            hover_data={"category_display": True, "kategori": False}
+        )
+        fig.update_layout(
+            xaxis_tickangle=-35,
+            xaxis_title="Product",
+            yaxis_title="Revenue"
+        )
+        fig.update_traces(
+            hovertemplate="<b>%{x}</b><br>Category=%{customdata[0]}<br>Revenue=%{y:$,.0f}<extra></extra>"
+        )
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
     col3,col4 = st.columns(2)
     with col3:
