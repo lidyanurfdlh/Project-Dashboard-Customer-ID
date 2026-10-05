@@ -128,6 +128,90 @@ p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;}
 [data-testid="stMultiSelect"] [data-baseweb="tag"] svg {
     flex: 0 0 auto !important;
 }
+
+/* === CLEAN MULTISELECT LAYOUT === */
+/* Keep Streamlit's native tag rendering. Only control the value-container height. */
+
+[data-testid="stMultiSelect"] [data-baseweb="select"] {
+    overflow: visible !important;
+}
+
+/* Segment: compact two-row area */
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-content: flex-start !important;
+    align-items: center !important;
+    column-gap: 4px !important;
+    row-gap: 2px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: thin !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep selected tags intact without styling their internal spans */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    flex: 0 0 auto !important;
+    max-width: none !important;
+}
+
+/* Sidebar multiselects: don't let many selections make the sidebar excessively tall */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    max-height: 68px !important;
+    min-height: 40px !important;
+}
+
+/* Give the select a stable minimum height */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+}
+
+
+/* === MULTISELECT LAYOUT FIX: KEEP TAGS STABLE BEFORE/AFTER FOCUS === */
+
+/* Keep the selected tags from shrinking when the search input is inactive. */
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Do not let BaseWeb compress the selected tag itself. */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+/* Preserve the native text layout inside the tag. */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] > span {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    text-overflow: clip !important;
+}
+
+/* Give the hidden/search input only the remaining space. */
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] input {
+    flex: 1 1 20px !important;
+    min-width: 20px !important;
+    width: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep the clear button and dropdown arrow from being pushed into tags. */
+[data-testid="stMultiSelect"] [data-baseweb="select"] {
+    overflow: visible !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
