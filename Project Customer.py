@@ -28,57 +28,9 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] * {color:#1E293B !important;}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
-div[data-baseweb="select"] > div {
-    background-color:#FFFFFF !important;
-    border:1px solid #BFDBFE !important;
-    border-radius:14px !important;
-    box-shadow:0 6px 16px rgba(37,99,235,.08) !important;
-    padding-left:8px !important;
-    padding-right:8px !important;
-    overflow:visible !important;
-}
-
-/* Prevent selected multiselect tags from shrinking or clipping */
-.stMultiSelect [data-baseweb="tag"],
-span[data-baseweb="tag"] {
-    background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
-    color:#0F172A !important;
-    border-radius:999px !important;
-    border:1px solid #93C5FD !important;
-    font-weight:700 !important;
-    display:inline-flex !important;
-    align-items:center !important;
-    flex-shrink:0 !important;
-    width:auto !important;
-    min-width:max-content !important;
-    max-width:none !important;
-    margin-left:4px !important;
-    margin-right:4px !important;
-    padding-left:10px !important;
-    padding-right:6px !important;
-    overflow:visible !important;
-}
-
-.stMultiSelect [data-baseweb="tag"] span {
-    display:inline-block !important;
-    width:auto !important;
-    min-width:max-content !important;
-    max-width:none !important;
-    overflow:visible !important;
-    text-overflow:clip !important;
-    white-space:nowrap !important;
-    padding-left:2px !important;
-    padding-right:2px !important;
-}
-
-.stMultiSelect [data-baseweb="value-container"] {
-    overflow:visible !important;
-    flex-wrap:wrap !important;
-}
-
-.stMultiSelect [data-baseweb="select"] {
-    overflow:visible !important;
-}
+div[data-baseweb="select"] > div {background-color:#FFFFFF !important; border:1px solid #BFDBFE !important; border-radius:14px !important; box-shadow:0 6px 16px rgba(37,99,235,.08) !important; padding-left:8px !important; overflow:visible !important;}
+.stMultiSelect [data-baseweb="tag"], span[data-baseweb="tag"] {background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important; color:#0F172A !important; border-radius:999px !important; border:1px solid #93C5FD !important; font-weight:700 !important; margin-left:4px !important; padding-left:10px !important; overflow:visible !important; max-width:none !important;}
+.stMultiSelect [data-baseweb="tag"] span {overflow:visible !important; text-overflow:clip !important; white-space:nowrap !important;}
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
@@ -101,76 +53,7 @@ input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; overflow:hidden; background:#FFFFFF !important; box-shadow:0 10px 24px rgba(37,99,235,.08); color:#0F172A !important;}
 .stDownloadButton button,.stButton button {background:linear-gradient(135deg,#2563EB 0%,#14B8A6 100%) !important; color:white !important; border:none !important; border-radius:999px !important; padding:.65rem 1.2rem !important; font-weight:800 !important; box-shadow:0 10px 20px rgba(37,99,235,.18);}
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
-p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} hr {border-color:#DBEAFE !important;}
-
-/* === VERSION C: MINIMAL MULTISELECT CONTAINER FIX === */
-/* Keep Streamlit's native chips, clear-all button, and dropdown arrow.
-   Only add a small left inset to the value container. */
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    padding-left: 8px !important;
-    box-sizing: border-box !important;
-}
-
-
-/* === VERSION D: PREVENT SEARCH INPUT FROM COVERING FIRST CHIP === */
-/* Keep native Streamlit multiselect UI. Only change stacking order. */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    position: relative !important;
-    z-index: 5 !important;
-}
-
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] input {
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-
-/* === VERSION E: KEEP CHIP CLOSE BUTTONS CLICKABLE === */
-/* Version D fixed the visual overlap. This addition restores click priority
-   specifically for the remove buttons inside each selected chip. */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] button {
-    position: relative !important;
-    z-index: 20 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
-[data-testid="stMultiSelect"] [data-baseweb="tag"] [role="button"] {
-    position: relative !important;
-    z-index: 20 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
-
-/* === VERSION F: NATIVE DROPDOWN + SELECT ALL + CLICKABLE CHIPS === */
-
-/* Keep the dropdown menu above the selected chips. */
-[data-testid="stMultiSelect"] [data-baseweb="popover"],
-[data-testid="stMultiSelect"] [role="listbox"] {
-    z-index: 1000 !important;
-}
-
-/* Keep dropdown options fully clickable. */
-[data-testid="stMultiSelect"] [role="option"] {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
-/* Preserve the native clear-all button. */
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div > div:last-child {
-    pointer-events: auto !important;
-}
-
-/* Keep the selected chip close buttons clickable. */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] button,
-[data-testid="stMultiSelect"] [data-baseweb="tag"] [role="button"] {
-    position: relative !important;
-    z-index: 20 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
+p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} [data-baseweb="select"] span {color:#0F172A !important;} hr {border-color:#DBEAFE !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -363,19 +246,9 @@ for df in [rfm, segment_summary, monthly, rules, nba, top_products, line_items, 
 st.sidebar.title("🧭 Dashboard Filters")
 st.sidebar.caption("Filters are applied to Customer RFM and Next Best Action.")
 segments = sorted(rfm["segment"].dropna().unique())
-selected_segments = st.sidebar.multiselect(
-    "Segment",
-    segments,
-    default=segments,
-    key="segment_filter_vc"
-)
+selected_segments = st.sidebar.multiselect("Segment", segments, default=segments)
 provinces = sorted(rfm["provinsi"].dropna().unique()) if "provinsi" in rfm.columns else []
-selected_provinces = st.sidebar.multiselect(
-    "Provinsi",
-    provinces,
-    default=provinces,
-    key="province_filter_vc"
-) if provinces else []
+selected_provinces = st.sidebar.multiselect("Provinsi", provinces, default=provinces) if provinces else []
 rfm_view = rfm[rfm["segment"].isin(selected_segments)].copy()
 if selected_provinces: rfm_view = rfm_view[rfm_view["provinsi"].isin(selected_provinces)]
 nba_view = nba[nba["segment"].isin(selected_segments)].copy()
@@ -716,3 +589,4 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+
