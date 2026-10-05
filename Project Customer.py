@@ -469,7 +469,10 @@ with tabs[0]:
         try:
             indonesia_geojson = load_indonesia_province_geojson()
 
-            fig_map = px.choropleth(
+            # Real geographic basemap + province-level analytical overlay.
+            # This gives the dashboard a map-like appearance while keeping the
+            # choropleth tied to the actual customer data.
+            fig_map = px.choropleth_map(
                 province_map_data,
                 geojson=indonesia_geojson,
                 locations="provinsi",
@@ -483,7 +486,11 @@ with tabs[0]:
                     "aov": ":,.0f",
                     "dominant_segment": True,
                 },
-                color_continuous_scale="Blues",
+                color_continuous_scale="YlGnBu",
+                opacity=0.58,
+                map_style="open-street-map",
+                center={"lat": -2.5, "lon": 118.0},
+                zoom=3.75,
                 labels={
                     "customers": "Customers",
                     "revenue": "Revenue",
@@ -491,25 +498,39 @@ with tabs[0]:
                     "aov": "Average Order Value",
                     "dominant_segment": "Dominant Segment",
                 },
-                title=f"{map_title} per Provinsi"
             )
 
-            fig_map.update_geos(
-                fitbounds="locations",
-                visible=False,
-                bgcolor="rgba(0,0,0,0)",
-                projection_type="mercator"
+            fig_map.update_traces(
+                marker_line_color="#173B63",
+                marker_line_width=0.8,
+                hovertemplate=(
+                    "<b>%{hovertext}</b><br>"
+                    "Customers: %{customdata[0]:,.0f}<br>"
+                    "Revenue: Rp %{customdata[1]:,.0f}<br>"
+                    "Orders: %{customdata[2]:,.0f}<br>"
+                    "AOV: Rp %{customdata[3]:,.0f}<br>"
+                    "Dominant Segment: %{customdata[4]}<extra></extra>"
+                )
             )
+
             fig_map.update_layout(
-                height=560,
-                margin=dict(l=5, r=5, t=65, b=5),
+                height=650,
+                margin=dict(l=0, r=0, t=10, b=0),
                 paper_bgcolor="rgba(255,255,255,0)",
-                plot_bgcolor="#FFFFFF",
+                map=dict(
+                    center={"lat": -2.5, "lon": 118.0},
+                    zoom=3.75,
+                ),
                 coloraxis_colorbar=dict(
                     title=map_title,
                     thickness=14,
-                    len=0.65
-                )
+                    len=0.62,
+                    x=0.985,
+                    xanchor="right",
+                    bgcolor="rgba(255,255,255,.92)",
+                    bordercolor="#CBD5E1",
+                    borderwidth=1,
+                ),
             )
 
             st.plotly_chart(
