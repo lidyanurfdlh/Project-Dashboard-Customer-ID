@@ -102,6 +102,62 @@ div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; ov
 .stDownloadButton button,.stButton button {background:linear-gradient(135deg,#2563EB 0%,#14B8A6 100%) !important; color:white !important; border:none !important; border-radius:999px !important; padding:.65rem 1.2rem !important; font-weight:800 !important; box-shadow:0 10px 20px rgba(37,99,235,.18);}
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
 p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} hr {border-color:#DBEAFE !important;}
+
+/* === STYLED PILLS FILTER === */
+[data-testid="stPills"] {
+    width: 100% !important;
+}
+
+[data-testid="stPills"] [role="radiogroup"],
+[data-testid="stPills"] > div {
+    gap: 7px !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+}
+
+/* Pill buttons */
+[data-testid="stPills"] button {
+    border-radius: 999px !important;
+    border: 1px solid #93C5FD !important;
+    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
+    color: #0F172A !important;
+    font-weight: 600 !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 5px 13px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+}
+
+/* Selected pill */
+[data-testid="stPills"] button[aria-pressed="true"] {
+    background: linear-gradient(135deg,#BFDBFE 0%,#99F6E4 100%) !important;
+    border-color: #60A5FA !important;
+    color: #0F172A !important;
+    font-weight: 700 !important;
+}
+
+/* Hover */
+[data-testid="stPills"] button:hover {
+    border-color: #60A5FA !important;
+    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
+}
+
+/* Keep text fully visible */
+[data-testid="stPills"] button span {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: none !important;
+}
+
+/* Slightly tighter spacing for sidebar */
+[data-testid="stSidebar"] [data-testid="stPills"] {
+    margin-bottom: 4px !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
