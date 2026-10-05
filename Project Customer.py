@@ -103,41 +103,58 @@ div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; ov
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
 p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} [data-baseweb="select"] span {color:#0F172A !important;} hr {border-color:#DBEAFE !important;}
 
-/* === FINAL MULTISELECT TAG FIX === */
+/* === CLEAN MULTISELECT TAG FIX === */
+
 [data-testid="stMultiSelect"] [data-baseweb="select"] {
-    width:100% !important;
-    overflow:visible !important;
-}
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    display:flex !important;
-    align-items:center !important;
-    flex-wrap:wrap !important;
-    gap:4px !important;
-    padding:4px 8px !important;
-    overflow:visible !important;
-}
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    display:inline-flex !important;
-    align-items:center !important;
-    flex:0 0 auto !important;
-    width:auto !important;
-    min-width:fit-content !important;
-    max-width:none !important;
-    padding:5px 8px 5px 14px !important;
-    margin:2px 3px !important;
-    overflow:visible !important;
-    box-sizing:border-box !important;
-}
-[data-testid="stMultiSelect"] [data-baseweb="tag"] span {
-    display:inline-block !important;
-    width:auto !important;
-    min-width:fit-content !important;
-    max-width:none !important;
-    overflow:visible !important;
-    white-space:nowrap !important;
-    text-overflow:unset !important;
+    overflow: visible !important;
 }
 
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+}
+
+/* Style ONLY the outer selected tag */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+
+    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
+    border: 1px solid #93C5FD !important;
+    border-radius: 999px !important;
+    margin: 2px 3px !important;
+    padding: 4px 7px 4px 12px !important;
+
+    overflow: visible !important;
+}
+
+/* Do NOT give the inner text span a background, border, padding, or forced width */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] > span {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    text-overflow: clip !important;
+    flex: 0 1 auto !important;
+}
+
+/* Keep the close button compact */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] svg {
+    flex: 0 0 auto !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -673,6 +690,5 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
-
 
 
