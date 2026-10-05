@@ -624,18 +624,7 @@ with tabs[0]:
 
 
 with tabs[1]:
-    section("Data Validation", "Ringkasan validasi data, kualitas transaksi, dan alur perubahan data sebelum analisis.")
-    st.subheader("Data Cleaning Funnel")
-    funnel = pd.DataFrame({
-        "stage": ["Raw Customers", "Raw Orders", "Raw Line Items", "Valid Orders", "Valid Line Items", "Active RFM Customers"],
-        "records": [
-            len(raw_tables["pelanggan"]), len(raw_tables["orders"]), len(raw_tables["detil_order"]),
-            int(summary.get("valid_non_cancelled_orders", 0)), int(summary.get("valid_line_items", 0)), int(summary.get("analyzed_customers", 0))
-        ]
-    })
-    fig = px.funnel(funnel, y="stage", x="records", title="Data Cleaning Funnel")
-    st.plotly_chart(plotly_common_layout(fig, height=470), use_container_width=True, theme=None)
-
+    section("Data Validation", "Ringkasan validasi data, kualitas transaksi, preprocessing audit, dan validasi recency.")
     c1, c2 = st.columns(2)
     with c1:
         st.subheader("Raw Data Audit Before Preprocessing")
@@ -643,18 +632,6 @@ with tabs[1]:
     with c2:
         st.subheader("Preprocessing Audit")
         st.dataframe(preprocessing_audit, use_container_width=True, height=190)
-
-    st.subheader("Exclusion Reasons")
-    if not excluded_customers.empty:
-        reason_col = next((c for c in excluded_customers.columns if any(k in c.lower() for k in ["reason", "alasan", "status"])), None)
-        if reason_col:
-            reason = excluded_customers[reason_col].fillna("Unknown").astype(str).value_counts().reset_index()
-            reason.columns = ["reason", "customers"]
-            fig = px.bar(reason, x="customers", y="reason", orientation="h", text="customers", title="Customers Excluded from Main RFM Analysis")
-            st.plotly_chart(plotly_common_layout(fig, height=380), use_container_width=True, theme=None)
-        st.dataframe(excluded_customers, use_container_width=True, height=260)
-    else:
-        st.success("Tidak ada pelanggan yang dikeluarkan dari analisis.")
 
     col1,col2 = st.columns(2)
     with col1:
@@ -701,14 +678,11 @@ with tabs[2]:
         else:
             st.info("Tidak ada customer yang tersedia pada filter saat ini.")
 
-    with st.expander("🔄 RFM Segment Migration (Experimental)"):
-        st.info("Fitur migration membutuhkan hasil segmentasi RFM pada minimal dua periode. Dataset dashboard saat ini menggunakan snapshot RFM, sehingga perpindahan segmen tidak dihitung secara artifisial.")
-
     st.subheader("Customer RFM Table")
     st.dataframe(rfm_view.sort_values("rfm_total", ascending=False), use_container_width=True, height=520)
 
 with tabs[3]:
-    section("Product & Revenue", "Visualisasi kontribusi kategori, produk, dan peluang produk berdasarkan revenue dan frekuensi transaksi.")
+    section("Product & Revenue", "Visualisasi kontribusi kategori, produk, revenue, dan pola pembelian pelanggan.")
     col1,col2 = st.columns(2)
     with col1:
         cat_rev = line_items.groupby("kategori").agg(revenue=("subtotal","sum"), quantity=("quantity","sum"), orders=("order_id","nunique")).reset_index().sort_values("revenue", ascending=False)
@@ -729,23 +703,6 @@ with tabs[3]:
         fig = px.scatter(customer_product, x="quantity", y="revenue", color="kategori", hover_data=[c for c in ["customer_id","product_name","segment"] if c in customer_product.columns], title="Customer Product Purchase Pattern", color_discrete_map=CATEGORY_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-    with st.expander("📦 Product Opportunity Matrix", expanded=True):
-        product_matrix = build_product_matrix(line_items)
-        if not product_matrix.empty:
-            fig = px.scatter(product_matrix, x="orders", y="revenue", size="quantity", color="kategori", hover_name="product_name", color_discrete_map=CATEGORY_COLORS, title="Product Performance: Orders vs Revenue")
-            st.plotly_chart(plotly_common_layout(fig, height=520), use_container_width=True, theme=None)
-            st.caption("Kuadran dapat digunakan untuk membedakan produk dengan volume tinggi, revenue tinggi, atau peluang yang masih rendah. Ini adalah analisis deskriptif, bukan prediksi permintaan.")
-
-    with st.expander("📊 Pareto Revenue Analysis"):
-        p = build_product_matrix(line_items)
-        if not p.empty:
-            p = p.sort_values("revenue", ascending=False).reset_index(drop=True)
-            p["cumulative_revenue_pct"] = p["revenue"].cumsum() / p["revenue"].sum() * 100
-            p["product_rank"] = p.index + 1
-            fig = px.line(p, x="product_rank", y="cumulative_revenue_pct", markers=True, title="Cumulative Revenue Contribution by Product")
-            fig.add_hline(y=80, line_dash="dash", annotation_text="80% revenue reference")
-            st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
-            st.dataframe(p.head(20), use_container_width=True, height=300)
 
 with tabs[4]:
     section("Association Rule Validation", "Validasi pola pembelian bersama menggunakan support, confidence, lift, basket count, dan reliability flag.")
@@ -761,12 +718,6 @@ with tabs[4]:
         rel = rules_plot["reliability_label"].value_counts().reset_index(); rel.columns=["reliability_label","rules"]
         fig = px.bar(rel, x="rules", y="reliability_label", color="reliability_label", orientation="h", text="rules", title="Rule Reliability Distribution")
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
-
-    with st.expander("📐 Product Opportunity Matrix: Support vs Lift", expanded=True):
-        matrix = rules_plot.copy()
-        fig = px.scatter(matrix, x="support", y="lift", size="basket_count", color="reliability_label", hover_data=[c for c in ["rule_level","antecedent","consequent","confidence"] if c in matrix.columns], title="Rule Opportunity Matrix")
-        fig.add_hline(y=1, line_dash="dot", annotation_text="Lift = 1 baseline")
-        st.plotly_chart(plotly_common_layout(fig, height=500), use_container_width=True, theme=None)
 
     with st.expander("🔎 Rule Explorer", expanded=True):
         if not rules_plot.empty:
@@ -873,7 +824,7 @@ with tabs[6]:
         """)
 
 with tabs[7]:
-    section("KPI & Decision Support", "KPI, scorecard, dan prioritas segmen untuk membantu menerjemahkan hasil analisis menjadi keputusan pemasaran.")
+    section("KPI & Decision Support", "KPI dan kerangka keputusan untuk membantu menerjemahkan hasil analisis menjadi keputusan pemasaran.")
     st.subheader("KPI Framework"); st.dataframe(kpi_framework, use_container_width=True, height=300)
     st.subheader("Decision-Support Framework"); st.dataframe(decision_framework, use_container_width=True, height=260)
     st.subheader("Recommendation Evaluation"); st.dataframe(recommendation_evaluation, use_container_width=True, height=260)
@@ -882,28 +833,6 @@ with tabs[7]:
     fig.update_layout(xaxis_tickangle=-30)
     st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
-    with st.expander("📊 Marketing Scorecard", expanded=True):
-        score_items = [
-            ("Customer Coverage", summary.get("analyzed_customers", 0), "Active customers included in RFM analysis"),
-            ("Recommendation Relevance", summary.get("recommendation_relevance_rate_pct", 0), "Recommendations aligned with favorite category"),
-            ("Cross-sell Rule Coverage", None, "Coverage from processed recommendation evaluation"),
-            ("Nudge Coverage", None, "Coverage from processed recommendation evaluation")
-        ]
-        for label, value, help_text in score_items:
-            if value is None:
-                match = recommendation_evaluation[recommendation_evaluation.astype(str).apply(lambda row: row.str.contains(label, case=False, na=False).any(), axis=1)] if not recommendation_evaluation.empty else pd.DataFrame()
-                value = match.iloc[0]["value"] if not match.empty and "value" in match.columns else "N/A"
-            c1,c2 = st.columns([1,3])
-            with c1: metric_card(label, str(value), help_text)
-            with c2: st.progress(min(max(float(pd.to_numeric(value, errors="coerce")) / 100, 0), 1) if pd.notna(pd.to_numeric(value, errors="coerce")) else 0)
-
-    with st.expander("🎯 Segment Priority Score"):
-        priority = build_segment_priority(rfm_view, nba_view)
-        if not priority.empty:
-            fig = px.bar(priority, x="priority_score", y="segment", orientation="h", color="segment", text=priority["priority_score"].round(1), title="Exploratory Marketing Priority Score", color_discrete_map=SEGMENT_COLORS)
-            st.plotly_chart(plotly_common_layout(fig, height=420), use_container_width=True, theme=None)
-            st.dataframe(priority, use_container_width=True, height=300)
-            st.caption("Priority score adalah heuristic dashboard (55% revenue contribution + 45% customer count), bukan model prediksi atau causal score.")
 
 with tabs[8]:
     section("Data Explorer", "Akses dataset hasil pengolahan, termasuk tabel audit pelanggan yang dikeluarkan dari analisis utama.")
@@ -925,60 +854,33 @@ with tabs[8]:
     st.dataframe(tables[selected_table], use_container_width=True, height=580)
     st.download_button(f"Download {selected_table}.csv", tables[selected_table].to_csv(index=False).encode("utf-8"), file_name=f"{selected_table}.csv", mime="text/csv")
 
-    with st.expander("🔗 Data Lineage"):
-        st.markdown("""
-        **Raw Tables**  
-        pelanggan + orders + detil_order + produk
-        
-        ↓ **Preprocessing & Validation**
-        
-        **Valid Transactions**
-        
-        ├── **Customer RFM** → Segmentation  
-        ├── **Market Basket Rules** → Product/Category Relationships  
-        └── **Next Best Action** → Recommendation + Nudge
-        
-        ↓
-        
-        **Decision-Support Dashboard** → KPI + Marketing Action
-        """)
 
 with tabs[9]:
-    section("Panduan Baca Dashboard", "Gunakan dashboard dari data quality sampai keputusan pemasaran agar alurnya mudah diikuti.")
+    section("Panduan Baca Dashboard", "Panduan singkat untuk menggunakan setiap menu dan memahami hasil analisis.")
     steps = [
-        ("1", "Validate Data", "Mulai dari Data Validation untuk melihat perubahan raw data menjadi valid transactions."),
-        ("2", "Understand Customers", "Gunakan Customer RFM untuk melihat segmentasi dan Customer 360° profile."),
-        ("3", "Understand Products", "Gunakan Product & Revenue untuk melihat kategori, produk, dan opportunity."),
-        ("4", "Check Product Relationships", "Gunakan Association Rule Validation dan Rule Explorer; perhatikan reliability flag."),
-        ("5", "Select Marketing Action", "Gunakan Next Best Action untuk memilih target dan recommended action."),
-        ("6", "Choose Nudge", "Gunakan Nudge Framework untuk memilih pendekatan komunikasi yang sesuai segmen."),
-        ("7", "Evaluate Decision", "Gunakan KPI & Decision Support untuk melihat coverage dan prioritas."),
-        ("8", "Make Decision", "Gunakan Marketing Decision Center sebagai ringkasan akhir keputusan pemasaran.")
+        ("1", "Validate Data", "Mulai dari Data Validation untuk melihat kualitas data, preprocessing audit, dan validasi recency."),
+        ("2", "Understand Customers", "Gunakan Customer RFM untuk melihat segmentasi, distribusi RFM, dan Customer 360° Profile."),
+        ("3", "Understand Products", "Gunakan Product & Revenue untuk melihat kontribusi kategori, produk, dan pola pembelian pelanggan."),
+        ("4", "Validate Product Relationships", "Gunakan Association Rule Validation untuk melihat support, confidence, lift, reliability, dan Rule Explorer."),
+        ("5", "Select Marketing Action", "Gunakan Next Best Action untuk memilih target segment, campaign target, dan alasan rekomendasi."),
+        ("6", "Choose Nudge", "Gunakan Nudge Framework untuk melihat nudge per segmen, mencoba Nudge Simulator, dan membaca decision tree."),
+        ("7", "Evaluate Decisions", "Gunakan KPI & Decision Support untuk melihat KPI framework, decision framework, dan evaluation metrics."),
+        ("8", "Make Marketing Decision", "Gunakan Marketing Decision Center untuk menggabungkan segment, action, rule-linked customers, dan recommended nudge."),
+        ("9", "Explore Data", "Gunakan Data Explorer dan Raw Data Audit untuk melihat serta mengunduh tabel yang digunakan dalam dashboard.")
     ]
-    for num,title,desc in steps:
+    for num, title, desc in steps:
         st.markdown(f"### {num}. {title}")
         st.markdown(desc)
 
-    st.info("Alur utama dashboard: **Data → Analysis → Insight → Recommendation → Action**.")
+    st.info("Alur utama dashboard: **Data Validation → Customer Analysis → Product Analysis → Association Rules → Next Best Action → Digital Nudge → Decision Support**.")
 
 with tabs[10]:
-    section("Raw Data Audit", "Perbandingan kondisi data mentah dan data yang masuk ke tahap analisis.")
+    section("Raw Data Audit", "Ringkasan struktur dan kondisi tabel data mentah sebelum digunakan dalam analisis.")
     c_raw1, c_raw2, c_raw3, c_raw4 = st.columns(4)
     with c_raw1: metric_card("Customers", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields pada pelanggan.csv")
     with c_raw2: metric_card("Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields pada orders.csv")
     with c_raw3: metric_card("Order Details", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields pada detil_order.csv")
     with c_raw4: metric_card("Products", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields pada produk.csv")
-
-    before_after = pd.DataFrame({
-        "Metric": ["Customers", "Orders", "Line Items"],
-        "Before": [len(raw_tables["pelanggan"]), len(raw_tables["orders"]), len(raw_tables["detil_order"])],
-        "After / Analyzed": [int(summary.get("analyzed_customers",0)), int(summary.get("valid_non_cancelled_orders",0)), int(summary.get("valid_line_items",0))]
-    })
-    st.subheader("Before vs After Preprocessing")
-    st.dataframe(before_after, use_container_width=True, hide_index=True)
-    melted = before_after.melt(id_vars="Metric", var_name="Stage", value_name="Records")
-    fig = px.bar(melted, x="Metric", y="Records", color="Stage", barmode="group", text="Records", title="Before vs After Preprocessing")
-    st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
 
     st.subheader("Raw Data Summary")
     st.dataframe(raw_data_summary, use_container_width=True, height=190)
@@ -986,7 +888,12 @@ with tabs[10]:
     st.dataframe(raw_field_summary, use_container_width=True, height=320)
     raw_choice = st.selectbox("Pilih raw table untuk ditampilkan", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
-    st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+    st.download_button(
+        f"Download raw_{raw_choice}.csv",
+        raw_tables[raw_choice].to_csv(index=False).encode("utf-8"),
+        file_name=f"raw_{raw_choice}.csv",
+        mime="text/csv"
+    )
 
 with tabs[11]:
     section("Marketing Decision Center", "Tempat menggabungkan RFM, NBA, Association Rule, dan Nudge menjadi satu keputusan pemasaran yang mudah dibaca.")
@@ -1027,3 +934,4 @@ with tabs[11]:
         if display_cols:
             st.dataframe(target_nba[display_cols], use_container_width=True, height=360)
     st.warning("Decision Center is a descriptive decision-support layer. It does not predict campaign conversion or causal treatment effects.")
+
