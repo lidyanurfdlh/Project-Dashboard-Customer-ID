@@ -103,59 +103,12 @@ div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; ov
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
 p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} hr {border-color:#DBEAFE !important;}
 
-/* === STYLED PILLS FILTER === */
-[data-testid="stPills"] {
-    width: 100% !important;
-}
-
-[data-testid="stPills"] [role="radiogroup"],
-[data-testid="stPills"] > div {
-    gap: 7px !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-}
-
-/* Pill buttons */
-[data-testid="stPills"] button {
-    border-radius: 999px !important;
-    border: 1px solid #93C5FD !important;
-    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
-    color: #0F172A !important;
-    font-weight: 600 !important;
-    min-height: 34px !important;
-    height: 34px !important;
-    padding: 5px 13px !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    white-space: nowrap !important;
-    flex: 0 0 auto !important;
-}
-
-/* Selected pill */
-[data-testid="stPills"] button[aria-pressed="true"] {
-    background: linear-gradient(135deg,#BFDBFE 0%,#99F6E4 100%) !important;
-    border-color: #60A5FA !important;
-    color: #0F172A !important;
-    font-weight: 700 !important;
-}
-
-/* Hover */
-[data-testid="stPills"] button:hover {
-    border-color: #60A5FA !important;
-    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
-}
-
-/* Keep text fully visible */
-[data-testid="stPills"] button span {
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-    max-width: none !important;
-}
-
-/* Slightly tighter spacing for sidebar */
-[data-testid="stSidebar"] [data-testid="stPills"] {
-    margin-bottom: 4px !important;
+/* === VERSION C: MINIMAL MULTISELECT CONTAINER FIX === */
+/* Keep Streamlit's native chips, clear-all button, and dropdown arrow.
+   Only add a small left inset to the value container. */
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    padding-left: 8px !important;
+    box-sizing: border-box !important;
 }
 
 </style>
@@ -350,20 +303,18 @@ for df in [rfm, segment_summary, monthly, rules, nba, top_products, line_items, 
 st.sidebar.title("🧭 Dashboard Filters")
 st.sidebar.caption("Filters are applied to Customer RFM and Next Best Action.")
 segments = sorted(rfm["segment"].dropna().unique())
-selected_segments = st.sidebar.pills(
+selected_segments = st.sidebar.multiselect(
     "Segment",
     segments,
-    selection_mode="multi",
     default=segments,
-    key="segment_filter_pills"
+    key="segment_filter_vc"
 )
 provinces = sorted(rfm["provinsi"].dropna().unique()) if "provinsi" in rfm.columns else []
-selected_provinces = st.sidebar.pills(
+selected_provinces = st.sidebar.multiselect(
     "Provinsi",
     provinces,
-    selection_mode="multi",
     default=provinces,
-    key="province_filter_pills"
+    key="province_filter_vc"
 ) if provinces else []
 rfm_view = rfm[rfm["segment"].isin(selected_segments)].copy()
 if selected_provinces: rfm_view = rfm_view[rfm_view["provinsi"].isin(selected_provinces)]
@@ -705,3 +656,4 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+
