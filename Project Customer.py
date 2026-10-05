@@ -102,6 +102,42 @@ div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; ov
 .stDownloadButton button,.stButton button {background:linear-gradient(135deg,#2563EB 0%,#14B8A6 100%) !important; color:white !important; border:none !important; border-radius:999px !important; padding:.65rem 1.2rem !important; font-weight:800 !important; box-shadow:0 10px 20px rgba(37,99,235,.18);}
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
 p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} [data-baseweb="select"] span {color:#0F172A !important;} hr {border-color:#DBEAFE !important;}
+
+/* === FINAL MULTISELECT TAG FIX === */
+[data-testid="stMultiSelect"] [data-baseweb="select"] {
+    width:100% !important;
+    overflow:visible !important;
+}
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
+    display:flex !important;
+    align-items:center !important;
+    flex-wrap:wrap !important;
+    gap:4px !important;
+    padding:4px 8px !important;
+    overflow:visible !important;
+}
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    display:inline-flex !important;
+    align-items:center !important;
+    flex:0 0 auto !important;
+    width:auto !important;
+    min-width:fit-content !important;
+    max-width:none !important;
+    padding:5px 8px 5px 14px !important;
+    margin:2px 3px !important;
+    overflow:visible !important;
+    box-sizing:border-box !important;
+}
+[data-testid="stMultiSelect"] [data-baseweb="tag"] span {
+    display:inline-block !important;
+    width:auto !important;
+    min-width:fit-content !important;
+    max-width:none !important;
+    overflow:visible !important;
+    white-space:nowrap !important;
+    text-overflow:unset !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
