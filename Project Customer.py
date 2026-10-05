@@ -38,47 +38,20 @@ div[data-baseweb="select"] > div {
     overflow:visible !important;
 }
 
-/* Prevent selected multiselect tags from shrinking or clipping */
-.stMultiSelect [data-baseweb="tag"],
-span[data-baseweb="tag"] {
-    background:linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
-    color:#0F172A !important;
-    border-radius:999px !important;
-    border:1px solid #93C5FD !important;
-    font-weight:700 !important;
-    display:inline-flex !important;
-    align-items:center !important;
+/* Minimal multiselect styling: do not override Streamlit/BaseWeb tag internals */
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div {
+    background-color:#FFFFFF !important;
+    border:1px solid #BFDBFE !important;
+    border-radius:14px !important;
+    box-shadow:0 6px 16px rgba(37,99,235,.08) !important;
+    overflow:visible !important;
+}
+
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
     flex-shrink:0 !important;
-    width:auto !important;
-    min-width:max-content !important;
-    max-width:none !important;
-    margin-left:4px !important;
-    margin-right:4px !important;
-    padding-left:10px !important;
-    padding-right:6px !important;
-    overflow:visible !important;
+    max-width:100% !important;
 }
 
-.stMultiSelect [data-baseweb="tag"] span {
-    display:inline-block !important;
-    width:auto !important;
-    min-width:max-content !important;
-    max-width:none !important;
-    overflow:visible !important;
-    text-overflow:clip !important;
-    white-space:nowrap !important;
-    padding-left:2px !important;
-    padding-right:2px !important;
-}
-
-.stMultiSelect [data-baseweb="value-container"] {
-    overflow:visible !important;
-    flex-wrap:wrap !important;
-}
-
-.stMultiSelect [data-baseweb="select"] {
-    overflow:visible !important;
-}
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
@@ -101,7 +74,7 @@ input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; overflow:hidden; background:#FFFFFF !important; box-shadow:0 10px 24px rgba(37,99,235,.08); color:#0F172A !important;}
 .stDownloadButton button,.stButton button {background:linear-gradient(135deg,#2563EB 0%,#14B8A6 100%) !important; color:white !important; border:none !important; border-radius:999px !important; padding:.65rem 1.2rem !important; font-weight:800 !important; box-shadow:0 10px 20px rgba(37,99,235,.18);}
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
-p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} [data-baseweb="select"] span {color:#0F172A !important;} hr {border-color:#DBEAFE !important;}
+p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} hr {border-color:#DBEAFE !important;}
 
 /* === CLEAN MULTISELECT TAG FIX === */
 
@@ -690,5 +663,6 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+
 
 
