@@ -28,30 +28,15 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 [data-testid="stSidebar"] * {color:#1E293B !important;}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3 {color:#0F172A !important;}
 [data-testid="stSidebar"] small,[data-testid="stSidebar"] .stCaptionContainer {color:#64748B !important;}
-div[data-baseweb="select"] > div {
-    background-color:#FFFFFF !important;
-    border:1px solid #BFDBFE !important;
-    border-radius:14px !important;
-    box-shadow:0 6px 16px rgba(37,99,235,.08) !important;
-    padding-left:8px !important;
-    padding-right:8px !important;
+
+.stMultiSelect [data-baseweb="value-container"] {
+    overflow:visible !important;
+    flex-wrap:wrap !important;
+}
+
+.stMultiSelect [data-baseweb="select"] {
     overflow:visible !important;
 }
-
-/* Minimal multiselect styling: do not override Streamlit/BaseWeb tag internals */
-[data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-    background-color:#FFFFFF !important;
-    border:1px solid #BFDBFE !important;
-    border-radius:14px !important;
-    box-shadow:0 6px 16px rgba(37,99,235,.08) !important;
-    overflow:visible !important;
-}
-
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    flex-shrink:0 !important;
-    max-width:100% !important;
-}
-
 input, textarea {background-color:#FFFFFF !important; color:#0F172A !important;}
 .hero {background:linear-gradient(135deg,#2563EB 0%,#0EA5E9 48%,#14B8A6 100%); color:white; padding:32px 34px; border-radius:30px; margin-bottom:22px; box-shadow:0 18px 45px rgba(37,99,235,.22); border:1px solid rgba(255,255,255,.28);}
 .hero h1 {font-size:38px; margin:0 0 10px; letter-spacing:-.6px; font-weight:900; color:#FFFFFF !important;}
@@ -75,147 +60,6 @@ div[data-testid="stDataFrame"] {border:1px solid #DBEAFE; border-radius:18px; ov
 .stDownloadButton button,.stButton button {background:linear-gradient(135deg,#2563EB 0%,#14B8A6 100%) !important; color:white !important; border:none !important; border-radius:999px !important; padding:.65rem 1.2rem !important; font-weight:800 !important; box-shadow:0 10px 20px rgba(37,99,235,.18);}
 h1,h2,h3,h4,h5,h6 {color:#0F172A !important;}
 p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;} hr {border-color:#DBEAFE !important;}
-
-/* === CLEAN MULTISELECT TAG FIX === */
-
-[data-testid="stMultiSelect"] [data-baseweb="select"] {
-    overflow: visible !important;
-}
-
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    overflow: visible !important;
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 4px !important;
-}
-
-/* Style ONLY the outer selected tag */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    display: inline-flex !important;
-    align-items: center !important;
-    flex: 0 0 auto !important;
-    width: auto !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-
-    background: linear-gradient(135deg,#DBEAFE 0%,#CCFBF1 100%) !important;
-    border: 1px solid #93C5FD !important;
-    border-radius: 999px !important;
-    margin: 2px 3px !important;
-    padding: 4px 7px 4px 12px !important;
-
-    overflow: visible !important;
-}
-
-/* Do NOT give the inner text span a background, border, padding, or forced width */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] > span {
-    background: transparent !important;
-    border: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    overflow: visible !important;
-    white-space: nowrap !important;
-    text-overflow: clip !important;
-    flex: 0 1 auto !important;
-}
-
-/* Keep the close button compact */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] svg {
-    flex: 0 0 auto !important;
-}
-
-/* === CLEAN MULTISELECT LAYOUT === */
-/* Keep Streamlit's native tag rendering. Only control the value-container height. */
-
-[data-testid="stMultiSelect"] [data-baseweb="select"] {
-    overflow: visible !important;
-}
-
-/* Segment: compact two-row area */
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-content: flex-start !important;
-    align-items: center !important;
-    column-gap: 4px !important;
-    row-gap: 2px !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    scrollbar-width: thin !important;
-    box-sizing: border-box !important;
-}
-
-/* Keep selected tags intact without styling their internal spans */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    flex: 0 0 auto !important;
-    max-width: none !important;
-}
-
-/* Sidebar multiselects: don't let many selections make the sidebar excessively tall */
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    max-height: 68px !important;
-    min-height: 40px !important;
-}
-
-/* Give the select a stable minimum height */
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-    min-height: 40px !important;
-    box-sizing: border-box !important;
-}
-
-
-/* === MULTISELECT LAYOUT FIX: KEEP TAGS STABLE BEFORE/AFTER FOCUS === */
-
-/* Keep the selected tags from shrinking when the search input is inactive. */
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] {
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-}
-
-/* Do not let BaseWeb compress the selected tag itself. */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    max-width: none !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-}
-
-/* Preserve the native text layout inside the tag. */
-[data-testid="stMultiSelect"] [data-baseweb="tag"] > span {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    max-width: none !important;
-    overflow: visible !important;
-    white-space: nowrap !important;
-    text-overflow: clip !important;
-}
-
-/* Give the hidden/search input only the remaining space. */
-[data-testid="stMultiSelect"] [data-baseweb="value-container"] input {
-    flex: 1 1 20px !important;
-    min-width: 20px !important;
-    width: 20px !important;
-    box-sizing: border-box !important;
-
-    /* Hide the idle caret that can visually overlap the first selected tag. */
-    caret-color: transparent !important;
-    outline: none !important;
-}
-
-/* Keep the clear button and dropdown arrow from being pushed into tags. */
-[data-testid="stMultiSelect"] [data-baseweb="select"] {
-    overflow: visible !important;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
