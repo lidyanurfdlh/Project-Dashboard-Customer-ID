@@ -124,6 +124,24 @@ p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;}
     z-index: 1 !important;
 }
 
+
+/* === VERSION E: KEEP CHIP CLOSE BUTTONS CLICKABLE === */
+/* Version D fixed the visual overlap. This addition restores click priority
+   specifically for the remove buttons inside each selected chip. */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] button {
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+[data-testid="stMultiSelect"] [data-baseweb="tag"] [role="button"] {
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -669,3 +687,4 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+
