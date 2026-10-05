@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import plotly.express as px
+import requests
 
 # === DASHBOARD CUSTOMER ID RECOMMENDATION ===
 px.defaults.template = "plotly_white"
@@ -189,6 +190,140 @@ def plotly_common_layout(fig, height=430):
     fig.update_yaxes(showgrid=True, gridcolor="#E2E8F0", zeroline=False, linecolor="#CBD5E1", tickfont=dict(color="#475569"), title_font=dict(color="#334155"))
     return fig
 
+
+@st.cache_data(ttl=86400, show_spinner=False)
+def load_indonesia_province_geojson():
+    """Load the 38-province Indonesia GeoJSON used by the Executive Overview map."""
+    url = "https://raw.githubusercontent.com/denyherianto/indonesia-geojson-topojson-maps-with-38-provinces/main/GeoJSON/indonesia-38-provinces.geojson"
+    response = requests.get(url, timeout=15)
+    response.raise_for_status()
+    return response.json()
+
+
+def build_province_map_data(rfm_data):
+    """Aggregate the active customer RFM data by province for map metrics."""
+    if rfm_data.empty or "provinsi" not in rfm_data.columns:
+        return pd.DataFrame()
+
+    work = rfm_data.copy()
+    work["monetary"] = pd.to_numeric(work.get("monetary"), errors="coerce").fillna(0)
+    work["frequency"] = pd.to_numeric(work.get("frequency"), errors="coerce").fillna(0)
+
+    province = (
+        work.groupby("provinsi", dropna=False)
+        .agg(
+            customers=("customer_id", "nunique"),
+            revenue=("monetary", "sum"),
+            orders=("frequency", "sum"),
+        )
+        .reset_index()
+    )
+
+    province["aov"] = np.where(
+        province["orders"] > 0,
+        province["revenue"] / province["orders"],
+        0
+    )
+
+    dominant = (
+        work.dropna(subset=["provinsi"])
+        .groupby(["provinsi", "segment"])
+        .size()
+        .reset_index(name="segment_customers")
+        .sort_values(
+            ["provinsi", "segment_customers", "segment"],
+            ascending=[True, False, True]
+        )
+        .drop_duplicates("provinsi")
+        .rename(columns={"segment": "dominant_segment"})
+        [["provinsi", "dominant_segment"]]
+    )
+
+    province = province.merge(dominant, on="provinsi", how="left")
+    return province
+
+
+def fmt_currency_short(x):
+    try:
+        x = float(x)
+        if abs(x) >= 1_000_000_000:
+            return f"Rp {x/1_000_000_000:.1f} M"
+        if abs(x) >= 1_000_000:
+            return f"Rp {x/1_000_000:.1f} jt"
+        if abs(x) >= 1_000:
+            return f"Rp {x/1_000:.1f} rb"
+        return f"Rp {x:,.0f}".replace(",", ".")
+    except Exception:
+        return "Rp 0"
+
+
+def regional_opportunity_cards(province_data):
+    """Show compact regional decision-support highlights below the map."""
+    if province_data.empty:
+        st.info("Belum ada data provinsi yang sesuai dengan filter saat ini.")
+        return
+
+    highest_customers = province_data.loc[province_data["customers"].idxmax()]
+    highest_revenue = province_data.loc[province_data["revenue"].idxmax()]
+
+    at_risk = province_data[
+        province_data["dominant_segment"].eq("At Risk")
+    ]
+    big_spenders = province_data[
+        province_data["dominant_segment"].eq("Big Spenders")
+    ]
+
+    highest_at_risk = (
+        at_risk.loc[at_risk["customers"].idxmax()]
+        if not at_risk.empty
+        else None
+    )
+    highest_big_spenders = (
+        big_spenders.loc[big_spenders["customers"].idxmax()]
+        if not big_spenders.empty
+        else None
+    )
+
+    cards = [
+        (
+            "👥 Basis Pelanggan Tertinggi",
+            highest_customers["provinsi"],
+            f"{fmt_int(highest_customers['customers'])} pelanggan"
+        ),
+        (
+            "💰 Revenue Tertinggi",
+            highest_revenue["provinsi"],
+            fmt_currency_short(highest_revenue["revenue"])
+        ),
+        (
+            "⚠️ At Risk Terbesar",
+            highest_at_risk["provinsi"] if highest_at_risk is not None else "Tidak tersedia",
+            f"{fmt_int(highest_at_risk['customers'])} pelanggan"
+            if highest_at_risk is not None else "Tidak ada provinsi dominan At Risk"
+        ),
+        (
+            "🎯 Big Spenders Terbesar",
+            highest_big_spenders["provinsi"] if highest_big_spenders is not None else "Tidak tersedia",
+            f"{fmt_int(highest_big_spenders['customers'])} pelanggan"
+            if highest_big_spenders is not None else "Tidak ada provinsi dominan Big Spenders"
+        ),
+    ]
+
+    cols = st.columns(4)
+    for col, (label, value, detail) in zip(cols, cards):
+        with col:
+            st.markdown(
+                f"""
+                <div class="metric-card" style="min-height:118px;">
+                    <div class="metric-label">{label}</div>
+                    <div class="metric-value" style="font-size:22px;">{value}</div>
+                    <div class="metric-help">{detail}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+
 @st.cache_data
 def load_all_data():
     data = {name: load_csv(file) for name, file in {
@@ -304,6 +439,105 @@ with tabs[0]:
     with col4:
         fig = px.bar(status_summary, x="status_clean", y="orders", color="valid_for_analysis", text="orders", title="Order Status Distribution", color_discrete_map=STATUS_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
+
+
+    # === REGIONAL CUSTOMER MARKET MAP ===
+    section(
+        "Indonesia Customer Market Map",
+        "Distribusi pelanggan aktif berdasarkan provinsi. Gunakan pilihan metrik untuk melihat konsentrasi pelanggan, revenue, order, atau nilai transaksi rata-rata."
+    )
+
+    province_map_data = build_province_map_data(rfm_view)
+
+    if province_map_data.empty:
+        st.info("Data provinsi tidak tersedia pada filter saat ini.")
+    else:
+        map_metric_label = st.selectbox(
+            "Metric Peta",
+            ["Customer Count", "Revenue", "Orders", "Average Order Value"],
+            key="executive_map_metric"
+        )
+
+        metric_config = {
+            "Customer Count": ("customers", "Jumlah Pelanggan"),
+            "Revenue": ("revenue", "Revenue"),
+            "Orders": ("orders", "Jumlah Order"),
+            "Average Order Value": ("aov", "Average Order Value"),
+        }
+        map_column, map_title = metric_config[map_metric_label]
+
+        try:
+            indonesia_geojson = load_indonesia_province_geojson()
+
+            fig_map = px.choropleth(
+                province_map_data,
+                geojson=indonesia_geojson,
+                locations="provinsi",
+                featureidkey="properties.PROVINSI",
+                color=map_column,
+                hover_name="provinsi",
+                hover_data={
+                    "customers": ":,.0f",
+                    "revenue": ":,.0f",
+                    "orders": ":,.0f",
+                    "aov": ":,.0f",
+                    "dominant_segment": True,
+                },
+                color_continuous_scale="Blues",
+                labels={
+                    "customers": "Customers",
+                    "revenue": "Revenue",
+                    "orders": "Orders",
+                    "aov": "Average Order Value",
+                    "dominant_segment": "Dominant Segment",
+                },
+                title=f"{map_title} per Provinsi"
+            )
+
+            fig_map.update_geos(
+                fitbounds="locations",
+                visible=False,
+                bgcolor="rgba(0,0,0,0)",
+                projection_type="mercator"
+            )
+            fig_map.update_layout(
+                height=560,
+                margin=dict(l=5, r=5, t=65, b=5),
+                paper_bgcolor="rgba(255,255,255,0)",
+                plot_bgcolor="#FFFFFF",
+                coloraxis_colorbar=dict(
+                    title=map_title,
+                    thickness=14,
+                    len=0.65
+                )
+            )
+
+            st.plotly_chart(
+                fig_map,
+                use_container_width=True,
+                theme=None
+            )
+
+            st.caption(
+                "Hover pada provinsi untuk melihat jumlah pelanggan, revenue, order, "
+                "Average Order Value, dan segmen pelanggan dominan."
+            )
+
+            st.subheader("Regional Marketing Opportunity")
+            regional_opportunity_cards(province_map_data)
+
+        except Exception as e:
+            st.warning(
+                "Peta provinsi belum dapat dimuat. Pastikan aplikasi memiliki akses internet "
+                "untuk mengambil data batas wilayah Indonesia."
+            )
+            st.caption(f"Detail: {e}")
+            st.dataframe(
+                province_map_data.sort_values("customers", ascending=False),
+                use_container_width=True,
+                height=300
+            )
+
 
 with tabs[1]:
     section("Data Validation", "Ringkasan validasi data, status transaksi, pelanggan audit, dan recency sebelum digunakan dalam analisis.")
