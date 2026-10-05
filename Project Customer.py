@@ -111,6 +111,19 @@ p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;}
     box-sizing: border-box !important;
 }
 
+
+/* === VERSION D: PREVENT SEARCH INPUT FROM COVERING FIRST CHIP === */
+/* Keep native Streamlit multiselect UI. Only change stacking order. */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+[data-testid="stMultiSelect"] [data-baseweb="value-container"] input {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -656,4 +669,3 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
-
