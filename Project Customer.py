@@ -294,18 +294,20 @@ for df in [rfm, segment_summary, monthly, rules, nba, top_products, line_items, 
 st.sidebar.title("🧭 Dashboard Filters")
 st.sidebar.caption("Filters are applied to Customer RFM and Next Best Action.")
 segments = sorted(rfm["segment"].dropna().unique())
-selected_segments = st.sidebar.multiselect(
+selected_segments = st.sidebar.pills(
     "Segment",
     segments,
+    selection_mode="multi",
     default=segments,
-    key="segment_filter_native"
+    key="segment_filter_pills"
 )
 provinces = sorted(rfm["provinsi"].dropna().unique()) if "provinsi" in rfm.columns else []
-selected_provinces = st.sidebar.multiselect(
+selected_provinces = st.sidebar.pills(
     "Provinsi",
     provinces,
+    selection_mode="multi",
     default=provinces,
-    key="province_filter_native"
+    key="province_filter_pills"
 ) if provinces else []
 rfm_view = rfm[rfm["segment"].isin(selected_segments)].copy()
 if selected_provinces: rfm_view = rfm_view[rfm_view["provinsi"].isin(selected_provinces)]
@@ -647,10 +649,3 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
-
-
-
-
-
-
-
