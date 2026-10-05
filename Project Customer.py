@@ -205,6 +205,10 @@ p,li,label {color:#334155;} [data-testid="stMarkdownContainer"] {color:#334155;}
     min-width: 20px !important;
     width: 20px !important;
     box-sizing: border-box !important;
+
+    /* Hide the idle caret that can visually overlap the first selected tag. */
+    caret-color: transparent !important;
+    outline: none !important;
 }
 
 /* Keep the clear button and dropdown arrow from being pushed into tags. */
@@ -747,6 +751,7 @@ with tabs[10]:
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
     st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
     st.download_button(f"Download raw_{raw_choice}.csv", raw_tables[raw_choice].to_csv(index=False).encode("utf-8"), file_name=f"raw_{raw_choice}.csv", mime="text/csv")
+
 
 
 
