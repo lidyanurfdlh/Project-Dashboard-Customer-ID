@@ -98,10 +98,10 @@ def load_raw_csv(name):
 
 def build_raw_audit(raw_tables):
     descriptions = {
-        "pelanggan": "Master data pelanggan sebelum filter transaksi valid",
-        "orders": "Raw order records sebelum filtering status",
-        "detil_order": "Detail transaksi atau line items sebelum preprocessing",
-        "produk": "Master data produk dan kategori sebelum join"
+        "pelanggan": "Customer master data before valid-transaction filtering",
+        "orders": "Raw order records before status filtering",
+        "detil_order": "Transaction details or line items before preprocessing",
+        "produk": "Product and category master data before joining"
     }
     primary_keys = {"pelanggan":"pelanggan_id", "orders":"order_id", "detil_order":"detil_id", "produk":"produk_id"}
     rows = []
@@ -112,7 +112,7 @@ def build_raw_audit(raw_tables):
             "raw_records": int(len(df)),
             "fields": int(len(df.columns)),
             "primary_key": primary_keys.get(name, "-"),
-            "description": descriptions.get(name, "Raw data sebelum preprocessing")
+            "description": descriptions.get(name, "Raw data before preprocessing")
         })
         for col in df.columns:
             field_rows.append({
@@ -165,6 +165,289 @@ STATUS_COLORS = {True: "#10B981", False: "#EF4444"}
 TABLE_DISPLAY_NAMES = {"pelanggan":"Customers","orders":"Orders","detil_order":"Order Details","produk":"Products"}
 CATEGORY_DISPLAY_NAMES = {"Makanan":"Food","Minuman":"Beverage","Alat Tulis":"Stationery","Bayi":"Baby","Perawatan Tubuh":"Personal Care","Rokok":"Cigarettes"}
 STATUS_DISPLAY_NAMES = {"selesai":"Completed","dikirim":"Shipped","dibayar":"Paid","dibatalkan":"Cancelled"}
+
+DISPLAY_COLUMN_NAMES = {
+    "table_name": "Table Name",
+    "raw_records": "Raw Records",
+    "fields": "Fields",
+    "primary_key": "Primary Key",
+    "description": "Description",
+    "field_name": "Field Name",
+    "dtype": "Data Type",
+    "missing_values": "Missing Values",
+    "unique_values": "Unique Values",
+    "metric": "Metric",
+    "value": "Value",
+    "explanation": "Explanation",
+    "check": "Check",
+    "status": "Status",
+    "rule_level": "Rule Level",
+    "antecedent": "Antecedent",
+    "consequent": "Consequent",
+    "support": "Support",
+    "confidence": "Confidence",
+    "lift": "Lift",
+    "basket_count": "Basket Count",
+    "reliability_flag": "Reliability Flag",
+    "reliability_label": "Reliability Label",
+    "interpretation_scope": "Interpretation Scope",
+    "recommended_category": "Recommended Category",
+    "recommended_product": "Recommended Product",
+    "recommendation_basis": "Recommendation Basis",
+    "recommendation_reason": "Recommendation Reason",
+    "cross_sell_product_from_rule": "Cross-sell Product from Rule",
+    "cross_sell_category_from_rule": "Cross-sell Category from Rule",
+    "segment": "Segment",
+    "customers": "Customers",
+    "nudge_type": "Nudge Type",
+    "nudge_objective": "Nudge Objective",
+    "recommended_message": "Recommended Message",
+    "business_objective": "Business Objective",
+    "kpi": "KPI",
+    "formula": "Formula",
+    "dashboard_source": "Dashboard Source",
+    "dashboard_section": "Dashboard Section",
+    "decision_supported": "Decision Supported",
+    "user_question_answered": "User Question Answered",
+    "evaluation_area": "Evaluation Area",
+    "interpretation": "Interpretation",
+    "customer_id": "Customer ID",
+    "customer_name": "Customer Name",
+    "favorite_category": "Favorite Category",
+    "favorite_product": "Favorite Product",
+    "rfm_score": "RFM Score",
+    "rfm_total": "RFM Total",
+    "recency_days": "Recency (Days)",
+    "frequency": "Frequency",
+    "monetary": "Monetary",
+    "provinsi": "Province",
+    "kategori": "Category",
+    "product_name": "Product Name",
+    "order_id": "Order ID",
+    "detil_id": "Order Detail ID",
+    "produk_id": "Product ID",
+    "pelanggan_id": "Customer ID",
+    "nama_pelanggan": "Customer Name",
+    "nama_produk": "Product Name",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "order_date": "Order Date",
+    "status_display": "Status",
+    "valid_for_analysis": "Valid for Analysis",
+    "recommendation_relevance_rate_pct": "Recommendation Relevance Rate (%)",
+}
+
+# Exact phrase translations used in audit/framework CSV outputs.
+ENGLISH_PHRASE_REPLACEMENTS = [
+    ("Meningkatkan retensi pelanggan aktif", "Increase active customer retention"),
+    ("Meningkatkan nilai transaksi", "Increase transaction value"),
+    ("Meningkatkan pembelian bundling", "Increase bundle purchases"),
+    ("Mengaktifkan pelanggan pasif", "Reactivate inactive customers"),
+    ("Mengukur relevansi rekomendasi", "Measure recommendation relevance"),
+    ("Menilai kondisi umum pelanggan aktif dan transaksi valid", "Assess the overall condition of active customers and valid transactions"),
+    ("Menjelaskan seleksi data sebelum analisis", "Explain data selection before analysis"),
+    ("Menentukan prioritas pelanggan aktif", "Determine active customer priorities"),
+    ("Melihat kategori favorit tanpa label kosong", "View favorite categories without empty labels"),
+    ("Memvalidasi pola bundling/cross-sell", "Validate bundling/cross-sell patterns"),
+    ("Menentukan rekomendasi produk dan aksi pemasaran", "Determine product recommendations and marketing actions"),
+    ("Menentukan strategi nudge berdasarkan segmen", "Determine nudge strategy by segment"),
+    ("Menghubungkan KPI dengan keputusan pemasaran", "Connect KPIs with marketing decisions"),
+    ("Meninjau data yang digunakan dashboard", "Review the data used by the dashboard"),
+    ("Menggabungkan segmen, rekomendasi, rule, dan nudge", "Combine segments, recommendations, rules, and nudges"),
+    ("Jumlah pelanggan yang dianalisis setelah pelanggan tanpa transaksi valid dikeluarkan.", "Number of customers analyzed after customers without valid transactions are excluded."),
+    ("Pelanggan ini tidak dianalisis dalam dashboard utama agar tidak muncul segmen No Valid Purchase.", "These customers are excluded from the main dashboard analysis so that a No Valid Purchase segment does not appear."),
+    ("Persentase rekomendasi utama yang tetap berada pada kategori favorit pelanggan aktif.", "Percentage of main recommendations that remain within the active customer's favorite category."),
+    ("Persentase pelanggan aktif yang memiliki rekomendasi cross-sell berbasis Association Rule.", "Percentage of active customers with Association Rule-based cross-sell recommendations."),
+    ("Persentase pelanggan aktif yang memperoleh nudge type dan action recommendation.", "Percentage of active customers receiving a nudge type and action recommendation."),
+    ("Master data pelanggan sebelum filter transaksi valid", "Customer master data before valid-transaction filtering"),
+    ("pelanggan.csv", "customers.csv"),
+    ("detil_order.csv", "order_details.csv"),
+    ("produk.csv", "products.csv"),
+    ("Raw order records sebelum filtering status", "Raw order records before status filtering"),
+    ("Detail transaksi atau line items sebelum preprocessing", "Transaction details or line items before preprocessing"),
+    ("Master data produk dan kategori sebelum join", "Product and category master data before joining"),
+    ("Raw data sebelum preprocessing", "Raw data before preprocessing"),
+    ("kategori favorit", "favorite category"),
+    ("produk favorit", "favorite product"),
+    ("diskon reaktivasi", "reactivation discount"),
+    ("rekomendasi produk", "product recommendation"),
+    ("kategori Makanan", "Food category"),
+    ("kategori Minuman", "Beverage category"),
+    ("kategori Alat Tulis", "Stationery category"),
+    ("kategori Bayi", "Baby category"),
+    ("kategori Perawatan Tubuh", "Personal Care category"),
+    ("pelanggan aktif", "active customers"),
+    ("pelanggan yang diberi", "customers receiving"),
+    ("pelanggan yang memiliki", "customers with"),
+    ("pelanggan tanpa", "customers without"),
+    ("jumlah pelanggan aktif", "active customer count"),
+    ("jumlah pelanggan", "customer count"),
+    ("jumlah order valid", "valid order count"),
+    ("jumlah order", "order count"),
+    ("jumlah transaksi", "transaction count"),
+    ("jumlah item", "item count"),
+    ("Tawarkan bundling kategori favorit untuk meningkatkan frequency.", "Offer bundling in the favorite category to increase frequency."),
+    ("Tawarkan produk premium atau paket bernilai lebih tinggi.", "Offer premium products or higher-value bundles."),
+    ("Kirim reminder dan promo terbatas untuk mendorong pembelian ulang.", "Send a reminder and limited promotion to encourage repeat purchase."),
+    ("Berikan diskon reaktivasi atau rekomendasi produk favorit sebelumnya.", "Provide a reactivation discount or recommendation based on previously favored products."),
+    ("Rekomendasi mengikuti kategori favorit", "Recommendation follows the favorite category"),
+    ("berdasarkan transaksi valid pelanggan", "based on valid customer transactions"),
+    ("Berapa pelanggan aktif, order valid, revenue, dan status transaksi?", "How many active customers, valid orders, revenue, and transaction statuses are there?"),
+    ("Mengapa 18 pelanggan tidak dianalisis dalam dashboard utama?", "Why are 18 customers excluded from the main dashboard analysis?"),
+    ("Pelanggan mana yang aktif, bernilai tinggi, pasif, atau berisiko?", "Which customers are active, high-value, inactive, or at risk?"),
+    ("Kategori apa yang paling sering menjadi favorit pelanggan aktif?", "Which categories are most often the favorite among active customers?"),
+    ("Rules mana yang cukup stabil untuk digunakan sebagai insight?", "Which rules are sufficiently stable to be used as insights?"),
+    ("Produk apa yang direkomendasikan dan pesan apa yang digunakan untuk tiap pelanggan aktif?", "Which products are recommended and what message is used for each active customer?"),
+    ("Rekomendasi utama sesuai kategori favorit pelanggan aktif.", "The main recommendation matches the active customer's favorite category."),
+    ("Persentase rekomendasi utama yang tetap berada pada kategori favorit pelanggan aktif.", "Percentage of main recommendations that remain within the active customer's favorite category."),
+    ("Persentase pelanggan aktif yang memiliki rekomendasi cross-sell berbasis Association Rule.", "Percentage of active customers with Association Rule-based cross-sell recommendations."),
+    ("Persentase pelanggan aktif yang memperoleh nudge type dan action recommendation.", "Percentage of active customers receiving a nudge type and action recommendation."),
+    ("Jumlah pelanggan repeat order / jumlah pelanggan aktif", "Repeat-order customers / active customers"),
+    ("Total revenue / jumlah order valid", "Total revenue / valid orders"),
+    ("Order yang membeli produk rekomendasi bundling / order yang menerima rekomendasi bundling", "Orders purchasing recommended bundle products / orders receiving bundle recommendations"),
+    ("Pelanggan pasif yang kembali transaksi / pelanggan yang diberi win-back nudge", "Inactive customers who return to transact / customers receiving a win-back nudge"),
+    ("Rekomendasi utama sesuai kategori favorit / total rekomendasi customer aktif", "Main recommendations matching favorite category / total active-customer recommendations"),
+    ("Harus 0 agar perhitungan recency valid.", "Must be 0 for the recency calculation to be valid."),
+    ("Persentase rekomendasi utama yang tetap berada pada kategori favorit pelanggan aktif.", "Percentage of main recommendations that remain within the active customer's favorite category."),
+    ("Recommendation follows the customer's favorite category", "Recommendation follows the customer's favorite category"),
+    ("Category Stable", "Category Stable"),
+    ("Product Exploratory", "Product Exploratory"),
+    ("Makanan", "Food"),
+    ("Minuman", "Beverage"),
+    ("Alat Tulis", "Stationery"),
+    ("Perawatan Tubuh", "Personal Care"),
+    ("Bayi", "Baby"),
+    ("Rokok", "Cigarettes"),
+    ("Customer master data before valid-transaction filtering", "Customer master data before valid-transaction filtering"),
+    ("Raw order records before status filtering", "Raw order records before status filtering"),
+    ("Transaction details or line items before preprocessing", "Transaction details or line items before preprocessing"),
+    ("Product and category master data before joining", "Product and category master data before joining"),
+    ("Raw data before preprocessing", "Raw data before preprocessing"),
+    ("Jumlah seluruh pelanggan pada pelanggan.csv sebelum seleksi", "Total customers in pelanggan.csv before selection"),
+    ("Jumlah pelanggan yang memiliki minimal satu transaksi valid", "Customers with at least one valid transaction"),
+    ("Pelanggan tanpa transaksi valid. Kelompok ini tidak dimasukkan ke analisis utama.", "Customers without valid transactions. This group is excluded from the main analysis."),
+    ("Jumlah order pada orders.csv sebelum filter status.", "Number of orders in orders.csv before status filtering."),
+    ("Jumlah order valid setelah filter status dan pembayaran.", "Number of valid orders after status and payment filtering."),
+    ("Jumlah seluruh item detail transaksi sebelum preprocessing.", "Total transaction line items before preprocessing."),
+    ("Jumlah item detail yang terkait dengan order valid.", "Line items associated with valid orders."),
+    ("Jumlah pelanggan aktif yang digunakan dalam analisis.", "Number of active customers used in the analysis."),
+    ("Jumlah pelanggan yang tidak memiliki order valid.", "Number of customers without valid orders."),
+    ("Tanggal order valid terakhir pada dataset.", "Latest valid order date in the dataset."),
+    ("Tanggal analisis dihitung dari tanggal order valid terakhir.", "Analysis date calculated from the latest valid order date."),
+    ("Recency tidak boleh negatif. Nilai harus 0 atau lebih.", "Recency must not be negative. The value must be 0 or greater."),
+    ("Nilai recency minimum setelah validasi.", "Minimum recency after validation."),
+    ("Nilai recency maksimum setelah validasi.", "Maximum recency after validation."),
+    ("Jumlah rules yang dibentuk dari transaksi valid.", "Number of rules generated from valid transactions."),
+    ("Rules kategori digunakan sebagai insight utama karena lebih stabil.", "Category rules are used as the main insight because they are more stable."),
+    ("Rules produk bersifat eksploratif karena lebih sensitif pada sparse transaction.", "Product rules are exploratory because they are more sensitive to sparse transactions."),
+    ("Lift di atas 10 perlu dibaca hati-hati karena dapat muncul dari support kecil.", "Lift above 10 should be interpreted cautiously because it can result from low support."),
+    ("Basket count <= 4 ditandai sebagai dukungan transaksi terbatas.", "Basket count <= 4 is flagged as limited transaction support."),
+    ("Insight utama kategori untuk cross-sell.", "Primary category insight for cross-sell."),
+    ("Insight eksploratif produk; perlu validasi lebih lanjut sebelum dipakai sebagai dasar keputusan.", "Exploratory product insight; further validation is required before using it for decision-making."),
+    ("Kategori favorit pelanggan aktif", "Active customer's favorite category"),
+    ("Rekomendasi mengikuti kategori favorit", "Recommendation follows the customer's favorite category"),
+    ("berdasarkan transaksi valid pelanggan.", "based on the customer's valid transactions."),
+    ("berdasarkan transaksi valid pelanggan aktif.", "based on active customers' valid transactions."),
+    ("Tidak tersedia", "Not available"),
+    ("Tidak ada", "None"),
+    ("Jumlah pelanggan", "Customer count"),
+    ("Jumlah order", "Order count"),
+    ("Ringkasan", "Summary"),
+    ("pemasaran", "marketing"),
+    ("pelanggan aktif", "active customers"),
+    ("transaksi valid", "valid transactions"),
+    ("sebelum preprocessing", "before preprocessing"),
+    ("sebelum filter transaksi valid", "before valid-transaction filtering"),
+    ("sebelum filtering status", "before status filtering"),
+    ("sebelum join", "before joining"),
+    ("setelah preprocessing", "after preprocessing"),
+    ("setelah validasi", "after validation"),
+    ("berdasarkan", "based on"),
+    ("digunakan", "used"),
+    ("digunakan dalam analisis", "used in the analysis"),
+    ("dimasukkan ke analisis", "included in the analysis"),
+    ("tidak dimasukkan", "not included"),
+    ("memiliki", "have"),
+    ("minimal satu", "at least one"),
+    ("transaksi", "transaction"),
+    ("transaksi valid", "valid transaction"),
+    ("kategori", "category"),
+    ("produk", "product"),
+    ("rekomendasi", "recommendation"),
+    ("Rekomendasi", "Recommendation"),
+    ("pesan", "message"),
+    ("Pesan", "Message"),
+    ("Tawarkan", "Offer"),
+    ("tawarkan", "offer"),
+    ("Kirim", "Send"),
+    ("kirim", "send"),
+    ("Berikan", "Provide"),
+    ("berikan", "provide"),
+    ("untuk meningkatkan", "to increase"),
+    ("untuk mendorong", "to encourage"),
+    ("karena", "because"),
+    ("agar", "so that"),
+    ("lebih tinggi", "higher"),
+    ("lebih stabil", "more stable"),
+    ("berisiko", "at risk"),
+    ("pasif", "inactive"),
+    ("aktif", "active"),
+    ("ulang", "again"),
+    ("pembelian", "purchase"),
+    ("pembelian ulang", "repeat purchase"),
+    ("bundling", "bundling"),
+    ("sebelumnya", "previously"),
+    ("terbatas", "limited"),
+    ("dapat", "can"),
+    ("muncul", "appear"),
+    ("dalam", "in"),
+    ("pada", "in"),
+    ("dari", "from"),
+    ("dengan", "with"),
+    ("yang", "that"),
+    ("dan", "and"),
+    ("atau", "or"),
+    ("sebagai", "as"),
+    ("perlu", "need"),
+    ("jika", "if"),
+    ("saat ini", "currently"),
+    ("sesuai", "matching"),
+    ("mudah dibaca", "easy to read"),
+    ("Tempat menggabungkan", "Place to combine"),
+    ("menjadi satu keputusan", "into one decision"),
+]
+
+def _translate_display_value(value):
+    if not isinstance(value, str):
+        return value
+    # Exact canonical labels first.
+    if value in TABLE_DISPLAY_NAMES:
+        return TABLE_DISPLAY_NAMES[value]
+    if value in CATEGORY_DISPLAY_NAMES:
+        return CATEGORY_DISPLAY_NAMES[value]
+    if value in STATUS_DISPLAY_NAMES:
+        return STATUS_DISPLAY_NAMES[value]
+    if value in {"Stabil", "stable", "category_stable"}:
+        return "Stable" if value != "category_stable" else "Category Stable"
+    if value in {"Eksploratif", "exploratory", "product_exploratory"}:
+        return "Exploratory" if value != "product_exploratory" else "Product Exploratory"
+    if value == "Perlu Validasi":
+        return "Needs Validation"
+    out = value
+    for src, dst in sorted(ENGLISH_PHRASE_REPLACEMENTS, key=lambda pair: len(pair[0]), reverse=True):
+        out = out.replace(src, dst)
+    return out
+
+def english_display_df(df):
+    """Return a reviewer-facing English copy without changing analytical data."""
+    if df is None or not hasattr(df, "copy"):
+        return df
+    out = df.copy()
+    out = out.rename(columns={k: v for k, v in DISPLAY_COLUMN_NAMES.items() if k in out.columns})
+    for col in out.columns:
+        out[col] = out[col].map(_translate_display_value)
+    return out
+
 SPARSE_BASKET_THRESHOLD = 4
 EXTREME_LIFT_THRESHOLD = 10
 
@@ -265,7 +548,7 @@ def fmt_currency_short(x):
 def regional_opportunity_cards(province_data):
     """Show compact regional decision-support highlights below the map."""
     if province_data.empty:
-        st.info("Belum ada data provinsi yang sesuai dengan filter saat ini.")
+        st.info("No province data matches the current filters.")
         return
 
     highest_customers = province_data.loc[province_data["customers"].idxmax()]
@@ -293,7 +576,7 @@ def regional_opportunity_cards(province_data):
         (
             "👥 Largest Customer Base",
             highest_customers["provinsi"],
-            f"{fmt_int(highest_customers['customers'])} pelanggan"
+            f"{fmt_int(highest_customers['customers'])} customers"
         ),
         (
             "💰 Highest Revenue",
@@ -303,13 +586,13 @@ def regional_opportunity_cards(province_data):
         (
             "⚠️ Largest At-Risk Segment",
             highest_at_risk["provinsi"] if highest_at_risk is not None else "Not available",
-            f"{fmt_int(highest_at_risk['customers'])} pelanggan"
+            f"{fmt_int(highest_at_risk['customers'])} customers"
             if highest_at_risk is not None else "No province dominated by At Risk customers"
         ),
         (
             "🎯 Largest Big Spenders Segment",
             highest_big_spenders["provinsi"] if highest_big_spenders is not None else "Not available",
-            f"{fmt_int(highest_big_spenders['customers'])} pelanggan"
+            f"{fmt_int(highest_big_spenders['customers'])} customers"
             if highest_big_spenders is not None else "No province dominated by Big Spenders customers"
         ),
     ]
@@ -472,7 +755,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 c1,c2,c3,c4,c5 = st.columns(5)
-with c1: metric_card("Raw Customers", fmt_int(summary["raw_customers"]), "Initial customers pada dataset.")
+with c1: metric_card("Raw Customers", fmt_int(summary["raw_customers"]), "Initial customers in the dataset.")
 with c2: metric_card("Analyzed Customers", fmt_int(summary["analyzed_customers"]), "Number of customers included in the analysis.")
 with c3: metric_card("Audit Customers", fmt_int(summary["excluded_customers_without_valid_orders"]), "Number of customers recorded in the data audit.")
 with c4: metric_card("Valid Orders", fmt_int(summary["valid_non_cancelled_orders"]), "Orders with paid, shipped, and completed status.")
@@ -481,13 +764,13 @@ with c5: metric_card("Relevance Rate", f"{summary['recommendation_relevance_rate
 tabs = st.tabs(["🏠 Executive Overview", "🧹 Data Validation", "👥 Customer RFM", "📦 Product & Revenue", "🔗 Association Rule Validation", "🎯 Next Best Action", "🧠 Nudge Framework", "📈 KPI & Decision Support", "📋 Data Explorer", "📖 Dashboard Guide", "📥 Raw Data Audit", "🎯 Marketing Decision Center"])
 
 with tabs[0]:
-    section("Executive Overview", "Ringkasan utama dashboard berdasarkan data pelanggan, transaksi, segmentasi RFM, dan rekomendasi pemasaran.")
+    section("Executive Overview", "Main dashboard summary based on customer data, transactions, RFM segmentation, and marketing recommendations.")
     st.subheader("Raw Data Before Preprocessing")
     rc1, rc2, rc3, rc4 = st.columns(4)
     with rc1: metric_card("Raw Customers", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields before preprocessing")
     with rc2: metric_card("Raw Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields before status filtering")
     with rc3: metric_card("Raw Order Details", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields before joining and filtering")
-    with rc4: metric_card("Raw Produk", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} product master fields")
+    with rc4: metric_card("Raw Products", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} product master fields")
     raw_chart = raw_data_summary.copy()
     raw_chart["table_name_display"] = raw_chart["table_name"].map(TABLE_DISPLAY_NAMES).fillna(raw_chart["table_name"])
     raw_col1, raw_col2 = st.columns(2)
@@ -622,8 +905,8 @@ with tabs[0]:
             )
 
             st.caption(
-                "Hover pada provinsi untuk melihat jumlah pelanggan, revenue, order, "
-                "Average Order Value, dan segmen pelanggan dominan."
+                "Hover over a province to view customer count, revenue, orders, "
+                "Average Order Value, and the dominant customer segment."
             )
 
             st.subheader("Regional Marketing Opportunity")
@@ -631,8 +914,8 @@ with tabs[0]:
 
         except Exception as e:
             st.warning(
-                "Peta provinsi belum dapat dimuat. Pastikan aplikasi memiliki akses internet "
-                "untuk mengambil data batas wilayah Indonesia."
+                "The province map could not be loaded. Make sure the application has internet access "
+                "to retrieve Indonesia province boundary data."
             )
             st.caption(f"Detail: {e}")
             st.dataframe(
@@ -647,15 +930,15 @@ with tabs[1]:
     c1, c2 = st.columns(2)
     with c1:
         st.subheader("Raw Data Audit Before Preprocessing")
-        st.dataframe(raw_data_summary_display, use_container_width=True, height=190)
+        st.dataframe(english_display_df(raw_data_summary_display), use_container_width=True, height=190)
     with c2:
         st.subheader("Preprocessing Audit")
-        st.dataframe(preprocessing_audit, use_container_width=True, height=190)
+        st.dataframe(english_display_df(preprocessing_audit), use_container_width=True, height=190)
 
     col1,col2 = st.columns(2)
     with col1:
         st.subheader("Recency Validation")
-        st.dataframe(recency_validation, use_container_width=True)
+        st.dataframe(english_display_df(recency_validation), use_container_width=True)
     with col2:
         fig = px.histogram(rfm, x="recency_days", color="segment", title="Recency Distribution of Active Customers", color_discrete_map=SEGMENT_COLORS)
         st.plotly_chart(plotly_common_layout(fig), use_container_width=True, theme=None)
@@ -695,7 +978,7 @@ with tabs[2]:
                     reasons = segment_explanation(profile)
                     st.markdown("**Why This Segment?** " + ("; ".join(reasons) if reasons else "Based on the calculated RFM profile."))
         else:
-            st.info("Tidak ada customer yang tersedia pada filter saat ini.")
+            st.info("No customers are available under the current filters.")
 
     st.subheader("Customer RFM Table")
     st.dataframe(rfm_view.sort_values("rfm_total", ascending=False), use_container_width=True, height=520)
@@ -736,7 +1019,7 @@ with tabs[4]:
     st.markdown(f'<div class="warn-box"><b>Methodological note:</b> category rules are used as the main insight. Product rules with basket count ≤ {SPARSE_BASKET_THRESHOLD} atau lift &gt; {EXTREME_LIFT_THRESHOLD} are interpreted as exploratory findings.</div>', unsafe_allow_html=True)
     rules_plot = rules.copy(); rules_plot["reliability_label"] = rules_plot.apply(short_reliability_flag, axis=1)
     st.subheader("Association Rule Validation Summary")
-    st.dataframe(association_validation, use_container_width=True)
+    st.dataframe(english_display_df(association_validation), use_container_width=True)
     col1,col2 = st.columns(2)
     with col1:
         fig = px.scatter(rules_plot, x="support", y="confidence", size="basket_count", color="reliability_label", hover_data=[c for c in ["rule_level","antecedent","consequent","lift","basket_count"] if c in rules_plot.columns], title="Support vs Confidence by Reliability")
@@ -765,7 +1048,7 @@ with tabs[4]:
     level_filter = st.multiselect("Rule level", sorted(rules_plot["rule_level"].unique()), default=sorted(rules_plot["rule_level"].unique()))
     rel_filter = st.multiselect("Reliability label", sorted(rules_plot["reliability_label"].unique()), default=sorted(rules_plot["reliability_label"].unique()))
     rules_view = rules_plot[rules_plot["rule_level"].isin(level_filter) & rules_plot["reliability_label"].isin(rel_filter)]
-    st.dataframe(rules_view, use_container_width=True, height=520)
+    st.dataframe(english_display_df(rules_view), use_container_width=True, height=520)
 
 with tabs[5]:
     section("Next Best Action per Active Customer", "Primary recommendations for active customers, including campaign targeting and recommendation rationale.")
@@ -797,7 +1080,7 @@ with tabs[5]:
         st.markdown(f'<div class="info-box"><b>Campaign direction:</b> {action}. Use NBA category/product recommendations as the campaign message target without claiming untested conversion uplift.</div>', unsafe_allow_html=True)
         campaign_cols = [c for c in ["customer_id","segment","provinsi","favorite_category","favorite_product","recommended_category","recommended_product","nudge_type"] if c in target_df.columns]
         if campaign_cols:
-            st.dataframe(target_df[campaign_cols], use_container_width=True, height=320)
+            st.dataframe(english_display_df(target_df[campaign_cols]), use_container_width=True, height=320)
             st.download_button("Download Campaign Target", target_df[campaign_cols].to_csv(index=False).encode("utf-8"), file_name=f"campaign_{target.replace(' ','_').lower()}.csv", mime="text/csv")
 
     with st.expander("💡 Why This Recommendation?"):
@@ -814,11 +1097,11 @@ with tabs[5]:
     nba_display = nba_filtered.copy()
     for col in ["cross_sell_product_from_rule", "cross_sell_category_from_rule"]:
         if col in nba_display.columns: nba_display[col] = nba_display[col].apply(clean_empty)
-    st.dataframe(nba_display, use_container_width=True, height=560)
+    st.dataframe(english_display_df(nba_display), use_container_width=True, height=560)
 
 with tabs[6]:
     section("Nudge Framework", "Nudges are mapped as communication strategies for active customer segments; the simulator provides recommendations, not evidence of causal effects.")
-    st.dataframe(nudge_framework, use_container_width=True, height=300)
+    st.dataframe(english_display_df(nudge_framework), use_container_width=True, height=300)
     fig = px.bar(nudge_framework, x="customers", y="segment", color="nudge_type", orientation="h", text="customers", title="Customers by Segment and Recommended Nudge")
     st.plotly_chart(plotly_common_layout(fig, height=430), use_container_width=True, theme=None)
 
@@ -854,9 +1137,9 @@ with tabs[6]:
 
 with tabs[7]:
     section("KPI & Decision Support", "KPI and decision frameworks to translate analytical results into marketing decisions.")
-    st.subheader("KPI Framework"); st.dataframe(kpi_framework, use_container_width=True, height=300)
-    st.subheader("Decision-Support Framework"); st.dataframe(decision_framework, use_container_width=True, height=260)
-    st.subheader("Recommendation Evaluation"); st.dataframe(recommendation_evaluation, use_container_width=True, height=260)
+    st.subheader("KPI Framework"); st.dataframe(english_display_df(kpi_framework), use_container_width=True, height=300)
+    st.subheader("Decision-Support Framework"); st.dataframe(english_display_df(decision_framework), use_container_width=True, height=260)
+    st.subheader("Recommendation Evaluation"); st.dataframe(english_display_df(recommendation_evaluation), use_container_width=True, height=260)
     eval_chart = recommendation_evaluation.copy(); eval_chart["value"] = pd.to_numeric(eval_chart["value"], errors="coerce")
     fig = px.bar(eval_chart.dropna(subset=["value"]), x="metric", y="value", color="evaluation_area", title="Evaluation Metrics")
     fig.update_layout(xaxis_tickangle=-30)
@@ -879,8 +1162,8 @@ with tabs[8]:
         "raw_produk": "Raw product table before joining with order details.",
     }
     selected_table = st.selectbox("Select table", list(tables.keys()))
-    st.markdown(f"<div class='info-box'><b>Table Function:</b> {table_info.get(selected_table, 'Tabel output pengolahan data untuk mendukung visualisasi dashboard.')}</div>", unsafe_allow_html=True)
-    st.dataframe(tables[selected_table], use_container_width=True, height=580)
+    st.markdown(f"<div class='info-box'><b>Table Function:</b> {table_info.get(selected_table, 'Processed data table used to support dashboard visualizations.')}</div>", unsafe_allow_html=True)
+    st.dataframe(english_display_df(tables[selected_table]), use_container_width=True, height=580)
     st.download_button(f"Download {selected_table}.csv", tables[selected_table].to_csv(index=False).encode("utf-8"), file_name=f"{selected_table}.csv", mime="text/csv")
 
 
@@ -906,17 +1189,17 @@ with tabs[9]:
 with tabs[10]:
     section("Raw Data Audit", "Summary of the structure and condition of raw data tables before analysis.")
     c_raw1, c_raw2, c_raw3, c_raw4 = st.columns(4)
-    with c_raw1: metric_card("Customers", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields pada pelanggan.csv")
-    with c_raw2: metric_card("Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields pada orders.csv")
-    with c_raw3: metric_card("Order Details", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields pada detil_order.csv")
-    with c_raw4: metric_card("Products", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields pada produk.csv")
+    with c_raw1: metric_card("Customers", fmt_int(raw_tables["pelanggan"].shape[0]), f"{raw_tables['pelanggan'].shape[1]} fields in customers.csv")
+    with c_raw2: metric_card("Orders", fmt_int(raw_tables["orders"].shape[0]), f"{raw_tables['orders'].shape[1]} fields in orders.csv")
+    with c_raw3: metric_card("Order Details", fmt_int(raw_tables["detil_order"].shape[0]), f"{raw_tables['detil_order'].shape[1]} fields in order_details.csv")
+    with c_raw4: metric_card("Products", fmt_int(raw_tables["produk"].shape[0]), f"{raw_tables['produk'].shape[1]} fields in products.csv")
 
     st.subheader("Raw Data Summary")
-    st.dataframe(raw_data_summary_display, use_container_width=True, height=190)
+    st.dataframe(english_display_df(raw_data_summary_display), use_container_width=True, height=190)
     st.subheader("Raw Field Summary")
     st.dataframe(raw_field_summary_display, use_container_width=True, height=320)
     raw_choice = st.selectbox("Select raw table to display", list(raw_tables.keys()))
-    st.dataframe(raw_tables[raw_choice], use_container_width=True, height=430)
+    st.dataframe(english_display_df(raw_tables[raw_choice]), use_container_width=True, height=430)
     st.download_button(
         f"Download raw_{raw_choice}.csv",
         raw_tables[raw_choice].to_csv(index=False).encode("utf-8"),
@@ -925,7 +1208,7 @@ with tabs[10]:
     )
 
 with tabs[11]:
-    section("Marketing Decision Center", "Tempat menggabungkan RFM, NBA, Association Rule, dan Nudge menjadi satu keputusan pemasaran yang mudah dibaca.")
+    section("Marketing Decision Center", "Combines RFM, NBA, Association Rules, and Nudges into one easy-to-read marketing decision.")
     target_segments = sorted(rfm_view["segment"].dropna().unique()) if "segment" in rfm_view.columns else []
     selected_target = st.selectbox("Who should we target?", target_segments if target_segments else ["Not available"], key="decision_target")
     target_rfm = rfm_view[rfm_view["segment"] == selected_target].copy() if target_segments else rfm_view.copy()
@@ -961,8 +1244,7 @@ with tabs[11]:
         display_cols = [c for c in ["customer_id","favorite_category","favorite_product","recommended_category","recommended_product","nudge_type"] if c in target_nba.columns]
         st.subheader("Target Customer Actions")
         if display_cols:
-            st.dataframe(target_nba[display_cols], use_container_width=True, height=360)
+            st.dataframe(english_display_df(target_nba[display_cols]), use_container_width=True, height=360)
     st.warning("Decision Center is a descriptive decision-support layer. It does not predict campaign conversion or causal treatment effects.")
-
 
 
